@@ -1,8 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, Cpu, Cloud, Workflow } from "lucide-react";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
-import { TeamCard } from "@/components/TeamCard";
-import { team } from "@/lib/team";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -115,21 +113,7 @@ function Home() {
         </div>
       </section>
 
-      {/* TEAM PREVIEW */}
-      <section className="container-page py-20 md:py-28">
-        <div className="mx-auto max-w-2xl text-center">
-          <SectionEyebrow>Meet our architects</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Dedicated architects driving our vision
-          </h2>
-        </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m) => (
-            <TeamCard key={m.name} member={m} />
-          ))}
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="container-page pb-24">

@@ -31,7 +31,7 @@ export function Navbar() {
     >
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2" aria-label="Infinity BIM home">
-          <img src={logo} alt="Infinity BIM" className="h-9 w-auto" />
+          <img src={logo} alt="Infinity BIM" className="h-12 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">

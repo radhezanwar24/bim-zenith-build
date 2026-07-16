@@ -8,7 +8,7 @@ export function Footer() {
     <footer className="mt-24 border-t border-border bg-surface">
       <div className="container-page grid gap-12 py-16 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src={logo} alt="Infinity BIM" className="h-10 w-auto" />
+          <img src={logo} alt="Infinity BIM" className="h-14 w-auto" />
           <h3 className="mt-6 text-base font-semibold">About us</h3>
           <p className="mt-3 max-w-md text-sm leading-relaxed text-muted-foreground">
             We are a Digital Engineering and BIM consultancy delivering intelligent,
