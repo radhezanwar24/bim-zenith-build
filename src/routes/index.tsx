@@ -113,7 +113,21 @@ function Home() {
         </div>
       </section>
 
-
+      {/* CONSULTANCY DESCRIPTION */}
+      <section className="container-page py-20 md:py-28 bg-background border-t border-border">
+        <div className="mx-auto max-w-4xl text-center">
+          <SectionEyebrow>Consultancy</SectionEyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            Intelligent BIM & Digital Engineering
+          </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+            We are a Digital Engineering and BIM consultancy delivering intelligent,
+            coordinated, and automation-driven solutions for architects, consultants,
+            contractors, and developers. Our expertise helps transform complex projects
+            into efficient, accurate, and construction-ready outcomes.
+          </p>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="container-page pb-24">
