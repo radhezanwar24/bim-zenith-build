@@ -6,16 +6,17 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
-      { title: "Meet Our Architects — Infinity BIM" },
+      { title: "Meet the Leadership Behind Infinity BIM" },
       {
         name: "description",
         content:
-          "Meet the dedicated architects and engineers driving Infinity BIM's vision in digital engineering, BIM, and automation.",
+          "Four leaders. One vision. Transforming the future of the AEC industry through BIM, technology, and innovation.",
       },
-      { property: "og:title", content: "Meet Our Architects — Infinity BIM" },
+      { property: "og:title", content: "Meet the Leadership Behind Infinity BIM" },
       {
         property: "og:description",
-        content: "Dedicated architects driving our vision.",
+        content:
+          "Four leaders. One vision. Transforming the future of the AEC industry through BIM, technology, and innovation.",
       },
       { property: "og:url", content: "/team" },
     ],
@@ -27,16 +28,30 @@ export const Route = createFileRoute("/team")({
 function Team() {
   return (
     <section className="container-page py-20 md:py-28">
-      <div className="mx-auto max-w-2xl text-center fade-up">
-        <SectionEyebrow>Meet our architects</SectionEyebrow>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-          Dedicated architects driving our vision
+      <div className="mx-auto max-w-3xl text-center reveal">
+        <SectionEyebrow>Leadership Team</SectionEyebrow>
+        <h1 className="mt-5 text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
+          Meet the Leadership Behind{" "}
+          <span className="text-royal">Infinity BIM</span>
         </h1>
+        <p className="mt-6 text-xl font-medium text-navy sm:text-2xl">
+          Four leaders. One vision.
+        </p>
+        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          Transforming the future of the AEC industry through BIM, technology, and
+          innovation.
+        </p>
       </div>
 
-      <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-        {team.map((m) => (
-          <TeamCard key={m.name} member={m} />
+      <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        {team.map((m, i) => (
+          <div
+            key={m.name}
+            className="reveal"
+            style={{ transitionDelay: `${i * 90}ms` }}
+          >
+            <TeamCard member={m} />
+          </div>
         ))}
       </div>
     </section>

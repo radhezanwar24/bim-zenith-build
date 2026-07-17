@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
+import { SoftwareGrid } from "@/components/SoftwareGrid";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -91,41 +93,11 @@ function About() {
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          {[
-            "Autodesk Revit",
-            "Autodesk Navisworks",
-            "Autodesk AutoCAD",
-            "Autodesk Construction Cloud (ACC)",
-            "BIM 360",
-            "Autodesk Docs",
-            "Autodesk Civil 3D",
-            "Autodesk InfraWorks",
-            "Autodesk Recap",
-            "Dynamo",
-            "Rhino",
-            "SketchUp",
-            "Enscape",
-            "Twinmotion",
-            "Lumion",
-            "Solibri",
-            "Revizto",
-            "Bluebeam",
-            "Bentley MicroStation",
-            "Tekla Structures",
-            "Synchro",
-            "Primavera P6",
-            "Microsoft Project",
-          ].map((platform) => (
-            <div
-              key={platform}
-              className="flex items-center justify-center rounded-xl border border-border bg-card p-4 text-center text-sm font-medium text-navy transition-all hover:-translate-y-0.5 hover:border-royal/40 hover:shadow-[var(--shadow-card)]"
-            >
-              {platform}
-            </div>
-          ))}
+        <div className="reveal">
+          <SoftwareGrid />
         </div>
       </section>
+
 
       {/* CLIENT TESTIMONIALS */}
       <section className="border-b border-border bg-surface py-20 md:py-28">
