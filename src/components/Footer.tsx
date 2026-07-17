@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { SocialIcons } from "@/components/SocialIcons";
+
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -66,11 +68,13 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted-foreground sm:flex-row">
+        <div className="container-page flex flex-col items-center justify-between gap-4 py-6 text-xs text-muted-foreground sm:flex-row">
           <p>Copyright © {year} Infinity BIM</p>
+          <SocialIcons />
           <p>Endless Possibilities in BIM</p>
         </div>
       </div>
     </footer>
   );
 }
+
