@@ -32,15 +32,25 @@ function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden">
+        {/* Photographic backdrop */}
+        <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
+          <img
+            src={heroBim}
+            alt=""
+            width={1920}
+            height={1200}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div
-          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.55]"
+          className="pointer-events-none absolute inset-0 -z-10"
+          aria-hidden
           style={{
             background:
-              "radial-gradient(60rem 30rem at 10% -10%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(50rem 25rem at 90% 10%, oklch(0.52 0.19 260 / 0.18), transparent 60%)",
+              "linear-gradient(180deg, oklch(1 0 0 / 0.72) 0%, oklch(1 0 0 / 0.88) 55%, oklch(1 0 0 / 1) 100%), radial-gradient(60rem 30rem at 10% -10%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(50rem 25rem at 90% 10%, oklch(0.52 0.19 260 / 0.18), transparent 60%)",
           }}
-          aria-hidden
         />
-        <div className="container-page pt-20 pb-24 md:pt-28 md:pb-32">
+        <div className="container-page pt-24 pb-28 md:pt-32 md:pb-36">
           <div className="mx-auto max-w-3xl text-center fade-up">
             <SectionEyebrow>About us</SectionEyebrow>
             <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-navy sm:text-5xl md:text-6xl">
@@ -57,14 +67,14 @@ function Home() {
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-royal hover:shadow-md"
+                className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal hover:shadow-[0_12px_28px_-12px_var(--royal)]"
               >
                 Reach out to us
-                <ArrowRight className="h-4 w-4" aria-hidden />
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-accent"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-6 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
               >
                 About us
               </Link>
@@ -72,6 +82,7 @@ function Home() {
           </div>
         </div>
       </section>
+
 
       {/* TECHNOLOGY / INTELLIGENT TECH */}
       <section className="border-y border-border bg-surface">
