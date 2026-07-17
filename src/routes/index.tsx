@@ -163,7 +163,7 @@ function Home() {
       </section>
 
       {/* CTA */}
-      <section className="container-page pb-24">
+      <section className="container-page pb-24 reveal">
         <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground md:px-16 md:py-20">
           <div
             className="pointer-events-none absolute inset-0 opacity-30"
