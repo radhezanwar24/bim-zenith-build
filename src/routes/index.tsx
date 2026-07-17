@@ -148,7 +148,7 @@ function Home() {
 
       {/* CONSULTANCY DESCRIPTION */}
       <section className="container-page py-20 md:py-28 bg-background border-t border-border">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className="mx-auto max-w-4xl text-center reveal">
           <SectionEyebrow>Consultancy</SectionEyebrow>
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             Intelligent BIM & Digital Engineering
