@@ -13,6 +13,8 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { RevealProvider } from "@/components/RevealProvider";
+
 
 function NotFoundComponent() {
   return (
@@ -134,10 +136,13 @@ function RootComponent() {
       <div className="flex min-h-dvh flex-col">
         <Navbar />
         <main id="main" className="flex-1">
-          <Outlet />
+          <RevealProvider>
+            <Outlet />
+          </RevealProvider>
         </main>
         <Footer />
       </div>
     </QueryClientProvider>
   );
 }
+
