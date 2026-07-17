@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Sparkles, Cpu, Cloud, Workflow } from "lucide-react";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
+import heroBim from "@/assets/hero-bim.jpg";
+import techBg from "@/assets/tech-bg.jpg";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
