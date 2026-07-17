@@ -85,22 +85,39 @@ function Home() {
 
 
       {/* TECHNOLOGY / INTELLIGENT TECH */}
-      <section className="border-y border-border bg-surface">
+      <section className="relative overflow-hidden border-y border-border bg-navy text-primary-foreground">
+        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+          <img
+            src={techBg}
+            alt=""
+            loading="lazy"
+            width={1920}
+            height={1000}
+            className="h-full w-full object-cover opacity-40"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, oklch(0.28 0.09 260 / 0.85), oklch(0.28 0.09 260 / 0.95))",
+            }}
+          />
+        </div>
         <div className="container-page grid gap-12 py-20 md:grid-cols-12 md:py-28">
-          <div className="md:col-span-5">
+          <div className="md:col-span-5 reveal">
             <SectionEyebrow>Technology</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
               Transforming Projects with{" "}
-              <span className="text-royal">Intelligent Technology</span>
+              <span className="text-sky">Intelligent Technology</span>
             </h2>
           </div>
-          <div className="md:col-span-7">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+          <div className="md:col-span-7 reveal">
+            <p className="text-lg leading-relaxed text-primary-foreground/85">
               We integrate advanced BIM technologies, AI powered automation, digital
               engineering workflows, and intelligent collaboration tools to deliver
               faster, smarter, and more efficient project outcomes.
             </p>
-            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-primary-foreground/70">
               Integrating BIM, AI, cloud collaboration, and automation to redefine the
               future of digital project delivery.
             </p>
@@ -111,21 +128,23 @@ function Home() {
                 { icon: Cpu, label: "AI-powered Automation" },
                 { icon: Cloud, label: "Cloud Collaboration" },
                 { icon: Workflow, label: "Digital Engineering" },
-              ].map(({ icon: Icon, label }) => (
+              ].map(({ icon: Icon, label }, i) => (
                 <div
                   key={label}
-                  className="flex items-center gap-3 rounded-xl border border-border bg-background p-4 transition-colors hover:border-royal/40"
+                  className="reveal flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-sky/60 hover:bg-white/10"
+                  style={{ transitionDelay: `${i * 80}ms` }}
                 >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent text-royal">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky/20 text-sky">
                     <Icon className="h-5 w-5" aria-hidden />
                   </span>
-                  <span className="text-sm font-medium text-navy">{label}</span>
+                  <span className="text-sm font-medium text-primary-foreground">{label}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </section>
+
 
       {/* CONSULTANCY DESCRIPTION */}
       <section className="container-page py-20 md:py-28 bg-background border-t border-border">
