@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+
 import logo from "@/assets/logo.png";
 
 const nav = [
@@ -58,40 +58,61 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy hover:bg-muted md:hidden"
+          className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy transition-colors hover:bg-muted md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <span className="sr-only">Toggle menu</span>
+          <span
+            aria-hidden
+            className={`absolute block h-[2px] w-5 rounded bg-current transition-all duration-300 ease-out ${
+              open ? "translate-y-0 rotate-45" : "-translate-y-1.5"
+            }`}
+          />
+          <span
+            aria-hidden
+            className={`absolute block h-[2px] w-5 rounded bg-current transition-all duration-200 ${
+              open ? "scale-x-0 opacity-0" : "opacity-100"
+            }`}
+          />
+          <span
+            aria-hidden
+            className={`absolute block h-[2px] w-5 rounded bg-current transition-all duration-300 ease-out ${
+              open ? "translate-y-0 -rotate-45" : "translate-y-1.5"
+            }`}
+          />
         </button>
       </div>
 
-      {open && (
-        <div className="border-t border-border bg-background md:hidden">
-          <nav className="container-page flex flex-col py-3" aria-label="Mobile">
-            {nav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                onClick={() => setOpen(false)}
-                activeOptions={{ exact: n.to === "/" }}
-                activeProps={{ className: "text-navy" }}
-                inactiveProps={{ className: "text-muted-foreground" }}
-                className="rounded-md px-3 py-3 text-base font-medium hover:bg-muted"
-              >
-                {n.label}
-              </Link>
-            ))}
+      <div
+        className={`overflow-hidden border-t border-border bg-background md:hidden transition-[max-height,opacity] duration-300 ease-out ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="container-page flex flex-col py-3" aria-label="Mobile">
+          {nav.map((n) => (
             <Link
-              to="/contact"
+              key={n.to}
+              to={n.to}
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-5 py-3 text-sm font-medium text-primary-foreground"
+              activeOptions={{ exact: n.to === "/" }}
+              activeProps={{ className: "text-navy" }}
+              inactiveProps={{ className: "text-muted-foreground" }}
+              className="rounded-md px-3 py-3 text-base font-medium transition-colors hover:bg-muted"
             >
-              Reach out to us
+              {n.label}
             </Link>
-          </nav>
-        </div>
-      )}
+          ))}
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-royal"
+          >
+            Reach out to us
+          </Link>
+        </nav>
+      </div>
+
     </header>
   );
 }
