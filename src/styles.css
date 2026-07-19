@@ -139,12 +139,37 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Reveal variants */
+.reveal-left { transform: translateX(-24px); }
+.reveal-right { transform: translateX(24px); }
+.reveal-scale { transform: scale(0.96); }
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible { transform: none; }
+
+/* Blueprint / grid background overlay */
+@utility bg-blueprint {
+  background-image:
+    linear-gradient(to right, oklch(0.52 0.19 260 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.52 0.19 260 / 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Floating slow drift for background graphics */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float-slow { animation: floatY 8s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .page-transition, .fade-up {
+  .reveal, .page-transition, .fade-up, .animate-float-slow {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 }
+
+
 

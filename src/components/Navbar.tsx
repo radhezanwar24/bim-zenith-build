@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import logo from "@/assets/logo.png";
@@ -13,25 +13,39 @@ const nav = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isHome = pathname === "/";
+  const transparent = isHome && !scrolled;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const linkBase =
+    "relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:scale-x-0 after:transition-transform hover:after:scale-x-100";
+
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "border-b border-border/70 bg-background/85 backdrop-blur-md"
-          : "bg-background/60 backdrop-blur-sm"
+      className={`sticky top-0 z-50 w-full transition-all duration-500 ${
+        transparent
+          ? "border-b border-transparent bg-transparent"
+          : scrolled
+          ? "border-b border-border/70 bg-background/90 shadow-[0_4px_20px_-12px_rgba(11,28,58,0.15)] backdrop-blur-md"
+          : "border-b border-border/40 bg-background/80 backdrop-blur-md"
       }`}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+      <div className="container-page flex h-20 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-2" aria-label="Infinity BIM home">
-          <img src={logo} alt="Infinity BIM" className="h-12 w-auto" />
+          <img
+            src={logo}
+            alt="Infinity BIM"
+            className={`h-14 w-auto transition-all duration-500 sm:h-16 ${
+              transparent ? "brightness-0 invert" : ""
+            }`}
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
@@ -40,16 +54,23 @@ export function Navbar() {
               key={n.to}
               to={n.to}
               activeOptions={{ exact: n.to === "/" }}
-              activeProps={{ className: "text-navy after:scale-x-100" }}
-              inactiveProps={{ className: "text-muted-foreground hover:text-navy" }}
-              className="relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:scale-x-0 after:bg-royal after:transition-transform hover:after:scale-x-100"
+              activeProps={{ className: "after:scale-x-100" }}
+              className={`${linkBase} ${
+                transparent
+                  ? "text-white/85 hover:text-white after:bg-white"
+                  : "text-muted-foreground hover:text-navy after:bg-royal"
+              }`}
             >
               {n.label}
             </Link>
           ))}
           <Link
             to="/contact"
-            className="ml-3 inline-flex items-center rounded-full bg-navy px-5 py-2 text-sm font-medium text-primary-foreground shadow-sm transition-all hover:bg-royal hover:shadow-md"
+            className={`ml-3 inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
+              transparent
+                ? "bg-white text-navy hover:bg-sky/90"
+                : "bg-navy text-primary-foreground hover:bg-royal"
+            }`}
           >
             Reach out to us
           </Link>
@@ -58,7 +79,9 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy transition-colors hover:bg-muted md:hidden"
+          className={`relative inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
+            transparent ? "text-white hover:bg-white/10" : "text-navy hover:bg-muted"
+          }`}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
@@ -112,7 +135,6 @@ export function Navbar() {
           </Link>
         </nav>
       </div>
-
     </header>
   );
 }
