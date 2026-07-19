@@ -1,24 +1,31 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Cpu, Cloud, Workflow } from "lucide-react";
+import {
+  ArrowRight, CheckCircle2, Globe2, Layers, ShieldCheck,
+  Users, Cpu, Sparkles,
+} from "lucide-react";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
-import heroBim from "@/assets/hero-bim.jpg";
-import techBg from "@/assets/tech-bg.jpg";
-
+import { StatCounter } from "@/components/StatCounter";
+import { ServicesGrid } from "@/components/ServicesGrid";
+import { IndustriesGrid } from "@/components/IndustriesGrid";
+import { ClientLogosRow } from "@/components/ClientLogosRow";
+import heroMain from "@/assets/hero-main.jpg";
+import companyPreview from "@/assets/company-preview.jpg";
+import trackBg from "@/assets/track-record-bg.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Infinity BIM — Endless Possibilities in BIM" },
+      { title: "Infinity BIM — Building the Future Through Intelligent BIM" },
       {
         name: "description",
         content:
-          "Digital Engineering and BIM consultancy delivering intelligent, coordinated, and automation-driven solutions for architects, consultants, contractors, and developers.",
+          "Delivering BIM, Digital Engineering, CAD Automation, Scan-to-BIM, and Construction Technology solutions across global markets with precision and innovation.",
       },
-      { property: "og:title", content: "Infinity BIM — Endless Possibilities in BIM" },
+      { property: "og:title", content: "Infinity BIM — Intelligent BIM & Digital Engineering" },
       {
         property: "og:description",
         content:
-          "Enhance your design experience. Transforming projects with intelligent technology.",
+          "Global BIM & Digital Engineering consultancy for architects, consultants, contractors, and developers.",
       },
       { property: "og:url", content: "/" },
     ],
@@ -30,170 +37,380 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden">
+      {/* ========== HERO ========== */}
+      <section className="relative -mt-20 overflow-hidden bg-navy">
         {/* Photographic backdrop */}
-        <div className="pointer-events-none absolute inset-0 -z-20" aria-hidden>
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
           <img
-            src={heroBim}
+            src={heroMain}
             alt=""
             width={1920}
             height={1200}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-right opacity-90"
           />
+          {/* Navy gradient wash for readability on the left */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, oklch(0.20 0.07 260 / 0.95) 0%, oklch(0.20 0.07 260 / 0.72) 45%, oklch(0.20 0.07 260 / 0.15) 75%, transparent 100%)",
+            }}
+          />
+          {/* Blueprint grid overlay */}
+          <div className="absolute inset-0 bg-blueprint opacity-40" />
+          {/* Floating architectural accents */}
+          <div className="absolute left-[8%] top-1/3 h-40 w-40 rounded-full bg-sky/20 blur-3xl animate-float-slow" />
+          <div className="absolute right-[15%] bottom-1/4 h-56 w-56 rounded-full bg-royal/25 blur-3xl animate-float-slow" style={{ animationDelay: "-3s" }} />
         </div>
-        <div
-          className="pointer-events-none absolute inset-0 -z-10"
-          aria-hidden
-          style={{
-            background:
-              "linear-gradient(180deg, oklch(1 0 0 / 0.72) 0%, oklch(1 0 0 / 0.88) 55%, oklch(1 0 0 / 1) 100%), radial-gradient(60rem 30rem at 10% -10%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(50rem 25rem at 90% 10%, oklch(0.52 0.19 260 / 0.18), transparent 60%)",
-          }}
-        />
-        <div className="container-page pt-24 pb-28 md:pt-32 md:pb-36">
-          <div className="mx-auto max-w-3xl text-center fade-up">
-            <SectionEyebrow>About us</SectionEyebrow>
-            <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-navy sm:text-5xl md:text-6xl">
-              Enhance Your <span className="text-royal">Design Experience</span>
+
+        <div className="container-page relative flex min-h-[92vh] items-center pt-32 pb-24 md:min-h-[95vh] md:pt-40 md:pb-32">
+          <div className="max-w-3xl fade-up">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Digital Engineering · BIM · Automation
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Building the Future Through{" "}
+              <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
+                Intelligent BIM
+              </span>{" "}
+              & Digital Engineering
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              We specialize in providing comprehensive architectural services, from
-              initial concept design to project completion, ensuring a seamless
-              experience for our clients.
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
+              Delivering BIM, Digital Engineering, CAD Automation, Scan-to-BIM, and
+              Construction Technology solutions across global markets with precision
+              and innovation.
             </p>
-            <p className="mx-auto mt-4 max-w-2xl text-base italic text-muted-foreground">
-              Start with the client — understand their vision and bring it to life.
-            </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
-                to="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal hover:shadow-[0_12px_28px_-12px_var(--royal)]"
+                to="/about"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-navy shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky hover:shadow-[0_16px_32px_-16px_rgba(255,255,255,0.6)]"
               >
-                Reach out to us
+                Explore Services
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
               <Link
-                to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-6 py-3 text-sm font-medium text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent"
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
               >
-                About us
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom fade into next section */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" aria-hidden />
+      </section>
+
+      {/* ========== COMPANY PREVIEW ========== */}
+      <section className="container-page py-24 md:py-32">
+        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+          <div className="reveal reveal-left md:col-span-6">
+            <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]">
+              <img
+                src={companyPreview}
+                alt="BIM team collaborating around a 3D model"
+                loading="lazy"
+                width={1408}
+                height={1008}
+                className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.04]"
+              />
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  background:
+                    "linear-gradient(180deg, transparent 60%, oklch(0.20 0.07 260 / 0.25) 100%)",
+                }}
+                aria-hidden
+              />
+            </div>
+            {/* Decorative accent */}
+            <div className="pointer-events-none absolute -z-10 h-64 w-64 -translate-x-8 translate-y-8 rounded-full bg-sky/20 blur-3xl" aria-hidden />
+          </div>
+
+          <div className="reveal reveal-right md:col-span-6 md:pl-6">
+            <SectionEyebrow>About Infinity BIM</SectionEyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+              Engineering Better <span className="text-royal">Digital Construction</span>
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              Infinity BIM delivers intelligent Building Information Modeling (BIM),
+              Digital Engineering, CAD, and Automation solutions for architects,
+              engineers, contractors, and infrastructure professionals worldwide. We
+              combine engineering expertise with technology to create efficient,
+              coordinated, and future-ready project delivery.
+            </p>
+            <Link
+              to="/about"
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal"
+            >
+              Learn More
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== KEY MILESTONES ========== */}
+      <section className="border-y border-border bg-surface py-24 md:py-32">
+        <div className="container-page grid gap-8 md:grid-cols-2">
+          {/* Left dark card */}
+          <div className="reveal reveal-left relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-40"
+              style={{
+                background:
+                  "radial-gradient(28rem 14rem at 20% 0%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(28rem 14rem at 100% 100%, oklch(0.52 0.19 260 / 0.5), transparent 60%)",
+              }}
+              aria-hidden
+            />
+            <div className="relative">
+              <SectionEyebrow>
+                <span className="text-sky">Milestones</span>
+              </SectionEyebrow>
+              <h3 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+                Key Milestones
+              </h3>
+              <ul className="mt-8 space-y-4">
+                {[
+                  "Global Project Delivery",
+                  "Multi-Sector Engineering Expertise",
+                  "End-to-End BIM Solutions",
+                  "International Quality Standards",
+                  "Dedicated BIM Specialists",
+                  "Automation-Driven Workflows",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sky" aria-hidden />
+                    <span className="text-base text-primary-foreground/90">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right light card */}
+          <div className="reveal reveal-right relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12">
+            <div className="bg-blueprint pointer-events-none absolute inset-0 opacity-40" aria-hidden />
+            <div className="relative">
+              <SectionEyebrow>Our Services</SectionEyebrow>
+              <h3 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+                Discover Our Services
+              </h3>
+              <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+                Our experienced BIM professionals deliver coordinated engineering
+                solutions for healthcare, commercial, residential, industrial,
+                infrastructure, hospitality, transportation, and data center projects.
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-3">
+                {[
+                  { icon: Layers, label: "End-to-end BIM" },
+                  { icon: Globe2, label: "Global delivery" },
+                  { icon: ShieldCheck, label: "ISO standards" },
+                  { icon: Users, label: "Expert team" },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center gap-2 rounded-xl bg-accent/50 px-3 py-2.5">
+                    <Icon className="h-4 w-4 text-royal" aria-hidden />
+                    <span className="text-xs font-medium text-navy">{label}</span>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/about"
+                className="group mt-10 inline-flex items-center gap-2 self-start rounded-full bg-navy px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal"
+              >
+                Discover More
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ========== SERVICES OVERVIEW ========== */}
+      <section className="container-page py-24 md:py-32">
+        <div className="mx-auto max-w-3xl text-center reveal">
+          <SectionEyebrow>Services</SectionEyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            End-to-End <span className="text-royal">BIM & Digital Engineering</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            A complete suite of intelligent modeling, coordination, and automation
+            services — delivered by seasoned BIM specialists.
+          </p>
+        </div>
+        <ServicesGrid />
+      </section>
 
-      {/* TECHNOLOGY / INTELLIGENT TECH */}
-      <section className="relative overflow-hidden border-y border-border bg-navy text-primary-foreground">
-        <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+      {/* ========== GLOBAL PROJECT EXPERIENCE ========== */}
+      <section className="border-y border-border bg-surface py-24 md:py-32">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center reveal">
+            <SectionEyebrow>Global Project Experience</SectionEyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+              Trusted by Global AEC Leaders
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+              Delivering BIM and Digital Engineering solutions using industry-leading
+              construction technology trusted by global AEC professionals.
+            </p>
+          </div>
+          <div className="reveal">
+            <ClientLogosRow />
+          </div>
+        </div>
+      </section>
+
+      {/* ========== TRACK RECORD ========== */}
+      <section className="relative overflow-hidden bg-navy py-24 text-primary-foreground md:py-32">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
           <img
-            src={techBg}
+            src={trackBg}
             alt=""
             loading="lazy"
             width={1920}
-            height={1000}
-            className="h-full w-full object-cover opacity-40"
+            height={912}
+            className="h-full w-full object-cover opacity-60"
           />
           <div
             className="absolute inset-0"
             style={{
               background:
-                "linear-gradient(180deg, oklch(0.28 0.09 260 / 0.85), oklch(0.28 0.09 260 / 0.95))",
+                "linear-gradient(180deg, oklch(0.20 0.07 260 / 0.85), oklch(0.20 0.07 260 / 0.95))",
             }}
           />
         </div>
-        <div className="container-page grid gap-12 py-20 md:grid-cols-12 md:py-28">
-          <div className="md:col-span-5 reveal">
-            <SectionEyebrow>Technology</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
-              Transforming Projects with{" "}
-              <span className="text-sky">Intelligent Technology</span>
+        {/* Blue highlight strip */}
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-sky to-transparent" aria-hidden />
+        <div className="container-page relative">
+          <div className="mx-auto max-w-3xl text-center reveal">
+            <SectionEyebrow>
+              <span className="text-sky">Our Track Record</span>
+            </SectionEyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+              Excellence, Measured in Numbers
             </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/75">
+              Delivering BIM and Digital Engineering excellence across multiple
+              industries and international markets.
+            </p>
           </div>
-          <div className="md:col-span-7 reveal">
-            <p className="text-lg leading-relaxed text-primary-foreground/85">
-              We integrate advanced BIM technologies, AI powered automation, digital
-              engineering workflows, and intelligent collaboration tools to deliver
-              faster, smarter, and more efficient project outcomes.
-            </p>
-            <p className="mt-6 text-base leading-relaxed text-primary-foreground/70">
-              Integrating BIM, AI, cloud collaboration, and automation to redefine the
-              future of digital project delivery.
-            </p>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-2">
-              {[
-                { icon: Sparkles, label: "Advanced BIM" },
-                { icon: Cpu, label: "AI-powered Automation" },
-                { icon: Cloud, label: "Cloud Collaboration" },
-                { icon: Workflow, label: "Digital Engineering" },
-              ].map(({ icon: Icon, label }, i) => (
-                <div
-                  key={label}
-                  className="reveal flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-sky/60 hover:bg-white/10"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-sky/20 text-sky">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </span>
-                  <span className="text-sm font-medium text-primary-foreground">{label}</span>
-                </div>
-              ))}
-            </div>
+          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            <StatCounter value={30} label="Projects Delivered" />
+            <StatCounter value={5} label="Industry Sectors" />
+            <StatCounter value={6} label="Countries Served" />
+            <StatCounter value={25} label="BIM Professionals" />
+            <StatCounter value={10} label="Years Combined Experience" />
           </div>
         </div>
       </section>
 
-
-      {/* CONSULTANCY DESCRIPTION */}
-      <section className="container-page py-20 md:py-28 bg-background border-t border-border">
-        <div className="mx-auto max-w-4xl text-center reveal">
-          <SectionEyebrow>Consultancy</SectionEyebrow>
+      {/* ========== INDUSTRIES ========== */}
+      <section className="container-page py-24 md:py-32">
+        <div className="mx-auto max-w-3xl text-center reveal">
+          <SectionEyebrow>Industries Served</SectionEyebrow>
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
-            Intelligent BIM & Digital Engineering
+            Sectors We <span className="text-royal">Power</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-            We are a Digital Engineering and BIM consultancy delivering intelligent,
-            coordinated, and automation-driven solutions for architects, consultants,
-            contractors, and developers. Our expertise helps transform complex projects
-            into efficient, accurate, and construction-ready outcomes.
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            From healthcare to hyperscale data centers — Infinity BIM delivers
+            coordinated engineering across every major built environment.
           </p>
         </div>
+        <IndustriesGrid />
       </section>
 
-      {/* CTA */}
-      <section className="container-page pb-24 reveal">
-        <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground md:px-16 md:py-20">
+      {/* ========== WHY CHOOSE ========== */}
+      <section className="border-t border-border bg-surface py-24 md:py-32">
+        <div className="container-page">
+          <div className="mx-auto max-w-3xl text-center reveal">
+            <SectionEyebrow>Why Infinity BIM</SectionEyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+              A Partner Built for <span className="text-royal">Complex Delivery</span>
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                icon: Cpu,
+                title: "Automation-Driven",
+                desc: "Dynamo, scripting, and AI-assisted workflows that compress delivery timelines.",
+              },
+              {
+                icon: Globe2,
+                title: "Global Standards",
+                desc: "ISO 19650-aligned delivery with international quality benchmarks.",
+              },
+              {
+                icon: Sparkles,
+                title: "Intelligent Coordination",
+                desc: "Multi-discipline clash-free models that construct right the first time.",
+              },
+              {
+                icon: ShieldCheck,
+                title: "Reliable Delivery",
+                desc: "Predictable timelines, transparent reporting, and rigorous QA/QC.",
+              },
+              {
+                icon: Users,
+                title: "Senior BIM Talent",
+                desc: "Modelers, coordinators, and engineers with deep sector experience.",
+              },
+              {
+                icon: Layers,
+                title: "End-to-End Scope",
+                desc: "From concept design through construction, handover, and digital twin.",
+              },
+            ].map(({ icon: Icon, title, desc }, i) => (
+              <div
+                key={title}
+                className="reveal group rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
+                style={{ transitionDelay: `${(i % 3) * 80}ms` }}
+              >
+                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-royal to-navy text-primary-foreground shadow-sm transition-transform duration-500 group-hover:scale-110">
+                  <Icon className="h-6 w-6" aria-hidden />
+                </span>
+                <h3 className="mt-5 text-lg font-semibold text-navy">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== CTA ========== */}
+      <section className="container-page py-24">
+        <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
+          <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-30" aria-hidden />
           <div
-            className="pointer-events-none absolute inset-0 opacity-30"
+            className="pointer-events-none absolute inset-0 opacity-70"
             style={{
               background:
-                "radial-gradient(30rem 15rem at 20% 0%, oklch(0.78 0.10 240 / 0.6), transparent 60%), radial-gradient(30rem 15rem at 80% 100%, oklch(0.52 0.19 260 / 0.7), transparent 60%)",
+                "radial-gradient(30rem 15rem at 20% 0%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(30rem 15rem at 80% 100%, oklch(0.52 0.19 260 / 0.5), transparent 60%)",
             }}
             aria-hidden
           />
           <div className="relative">
-            <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
               Let's build what's next, together.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-primary-foreground/80">
               Reach out to discuss your project, or learn more about our team and
-              capabilities.
+              global engineering capabilities.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-background px-6 py-3 text-sm font-medium text-navy transition-transform hover:scale-[1.02]"
+                className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky"
               >
-                Reach out to us
-                <ArrowRight className="h-4 w-4" aria-hidden />
+                Contact Us
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
               </Link>
               <Link
                 to="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-primary-foreground backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/15"
               >
-                About us
+                About Us
               </Link>
             </div>
           </div>
