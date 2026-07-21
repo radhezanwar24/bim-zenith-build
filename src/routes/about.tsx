@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionEyebrow } from "@/components/SectionEyebrow";
 import { SoftwareGrid } from "@/components/SoftwareGrid";
 import {
   Accordion,
@@ -7,6 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import aiBimHero from "@/assets/ai-bim-hero.jpg";
 
 
 export const Route = createFileRoute("/about")({
@@ -34,12 +34,48 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <section className="container-page pt-20 pb-16 md:pt-28">
+      {/* INNOVATION IN PROGRESS — HERO */}
+      <section className="relative -mt-20 overflow-hidden bg-navy">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <img
+            src={aiBimHero}
+            alt=""
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover opacity-70"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, oklch(0.20 0.07 260 / 0.85) 0%, oklch(0.20 0.07 260 / 0.65) 55%, oklch(0.20 0.07 260 / 0.85) 100%)",
+            }}
+          />
+          <div className="absolute inset-0 bg-blueprint opacity-25" />
+        </div>
+        <div className="container-page relative flex min-h-[70vh] items-center pt-32 pb-24 md:pt-40 md:pb-32">
+          <div className="max-w-3xl fade-up">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Innovation in Progress
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              Wall Automation{" "}
+              <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
+                Successfully Completed
+              </span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+              Now integrating AI-powered BIM technologies for smarter digital engineering.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page pt-20 pb-16 md:pt-24">
         <div className="mx-auto max-w-3xl text-center fade-up">
-          <SectionEyebrow>About us</SectionEyebrow>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
             Enhance Your <span className="text-royal">Design Experience</span>
-          </h1>
+          </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             We specialize in providing comprehensive architectural services, from
             initial concept design to project completion, ensuring a seamless
@@ -48,6 +84,12 @@ function About() {
           <p className="mx-auto mt-4 max-w-2xl text-base italic text-muted-foreground">
             Start with the client — understand their vision and bring it to life.
           </p>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-royal">
+            Established in 2022
+          </p>
+        </div>
+      </section>
+
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionEyebrow } from "@/components/SectionEyebrow";
+
 import { TeamCard } from "@/components/TeamCard";
 import { team } from "@/lib/team";
 
