@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 
 import logo from "@/assets/logo.png";
 
@@ -14,6 +14,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
 
@@ -23,6 +24,20 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick =
+    (to: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+      setOpen(false);
+      if (pathname === to) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } else {
+        // Ensure destination page also lands at top (SSR + navigation).
+        requestAnimationFrame(() =>
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" }),
+        );
+      }
+    };
 
   const linkBase =
     "relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:scale-x-0 after:transition-transform hover:after:scale-x-100";
@@ -38,7 +53,12 @@ export function Navbar() {
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2" aria-label="Infinity BIM home">
+        <Link
+          to="/"
+          onClick={handleNavClick("/")}
+          className="flex items-center gap-2"
+          aria-label="Infinity BIM home"
+        >
           <img
             src={logo}
             alt="Infinity BIM"
@@ -53,6 +73,7 @@ export function Navbar() {
             <Link
               key={n.to}
               to={n.to}
+              onClick={handleNavClick(n.to)}
               activeOptions={{ exact: n.to === "/" }}
               activeProps={{ className: "after:scale-x-100" }}
               className={`${linkBase} ${
@@ -66,6 +87,7 @@ export function Navbar() {
           ))}
           <Link
             to="/contact"
+            onClick={handleNavClick("/contact")}
             className={`ml-3 inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
               transparent
                 ? "bg-white text-navy hover:bg-sky/90"
@@ -75,6 +97,7 @@ export function Navbar() {
             Reach out to us
           </Link>
         </nav>
+
 
         <button
           type="button"
@@ -117,7 +140,7 @@ export function Navbar() {
             <Link
               key={n.to}
               to={n.to}
-              onClick={() => setOpen(false)}
+              onClick={handleNavClick(n.to)}
               activeOptions={{ exact: n.to === "/" }}
               activeProps={{ className: "text-navy" }}
               inactiveProps={{ className: "text-muted-foreground" }}
@@ -128,12 +151,13 @@ export function Navbar() {
           ))}
           <Link
             to="/contact"
-            onClick={() => setOpen(false)}
+            onClick={handleNavClick("/contact")}
             className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-royal"
           >
             Reach out to us
           </Link>
         </nav>
+
       </div>
     </header>
   );

@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SectionEyebrow } from "@/components/SectionEyebrow";
+
 import { TeamCard } from "@/components/TeamCard";
 import { team } from "@/lib/team";
 
@@ -29,15 +29,17 @@ function Team() {
   return (
     <section className="container-page py-20 md:py-28">
       <div className="mx-auto max-w-3xl text-center reveal">
-        <SectionEyebrow>Leadership Team</SectionEyebrow>
-        <h1 className="mt-5 text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
+        <h1 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
           Meet the Leadership Behind{" "}
           <span className="text-royal">Infinity BIM</span>
         </h1>
         <p className="mt-6 text-xl font-medium text-navy sm:text-2xl">
           Four leaders. One vision.
         </p>
-        <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-base font-medium text-royal sm:text-lg">
+          Driven by vision. United by excellence.
+        </p>
+        <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
           Transforming the future of the AEC industry through BIM, technology, and
           innovation.
         </p>

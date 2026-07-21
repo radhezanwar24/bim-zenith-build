@@ -1,24 +1,23 @@
 import { useReveal } from "@/hooks/use-reveal";
 import { useRouterState } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 /**
- * Runs the scroll-reveal observer on every route change and also fades the
- * main content in for a smooth page-transition feel.
+ * Scrolls to the top on route change and re-runs the scroll-reveal observer
+ * so newly mounted route elements animate in reliably.
  */
 export function RevealProvider({ children }: { children: React.ReactNode }) {
-  const location = useRouterState({ select: (s) => s.location.pathname });
-  const [key, setKey] = useState(location);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
-    setKey(location);
-    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
-  }, [location]);
+    if (typeof window === "undefined") return;
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
 
-  useReveal();
+  useReveal(pathname);
 
   return (
-    <div key={key} className="page-transition">
+    <div key={pathname} className="page-transition">
       {children}
     </div>
   );

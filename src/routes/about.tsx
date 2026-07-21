@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SectionEyebrow } from "@/components/SectionEyebrow";
 import { SoftwareGrid } from "@/components/SoftwareGrid";
 import {
   Accordion,
@@ -7,6 +6,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import aiBimHero from "@/assets/ai-bim-hero.jpg";
 
 
 export const Route = createFileRoute("/about")({
@@ -34,12 +34,48 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <section className="container-page pt-20 pb-16 md:pt-28">
+      {/* INNOVATION IN PROGRESS — HERO */}
+      <section className="relative -mt-20 overflow-hidden bg-navy">
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <img
+            src={aiBimHero}
+            alt=""
+            width={1920}
+            height={1080}
+            className="h-full w-full object-cover opacity-70"
+          />
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(180deg, oklch(0.20 0.07 260 / 0.85) 0%, oklch(0.20 0.07 260 / 0.65) 55%, oklch(0.20 0.07 260 / 0.85) 100%)",
+            }}
+          />
+          <div className="absolute inset-0 bg-blueprint opacity-25" />
+        </div>
+        <div className="container-page relative flex min-h-[70vh] items-center pt-32 pb-24 md:pt-40 md:pb-32">
+          <div className="max-w-3xl fade-up">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Innovation in Progress
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
+              Wall Automation{" "}
+              <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
+                Successfully Completed
+              </span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+              Now integrating AI-powered BIM technologies for smarter digital engineering.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="container-page pt-20 pb-16 md:pt-24">
         <div className="mx-auto max-w-3xl text-center fade-up">
-          <SectionEyebrow>About us</SectionEyebrow>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
+          <h2 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
             Enhance Your <span className="text-royal">Design Experience</span>
-          </h1>
+          </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             We specialize in providing comprehensive architectural services, from
             initial concept design to project completion, ensuring a seamless
@@ -48,14 +84,17 @@ function About() {
           <p className="mx-auto mt-4 max-w-2xl text-base italic text-muted-foreground">
             Start with the client — understand their vision and bring it to life.
           </p>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-royal">
+            Established in 2022
+          </p>
         </div>
       </section>
 
       <section className="border-y border-border bg-surface">
         <div className="container-page grid gap-12 py-20 md:grid-cols-12">
           <div className="md:col-span-5">
-            <SectionEyebrow>Technology</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+
               Transforming Projects with{" "}
               <span className="text-royal">Intelligent Technology</span>
             </h2>
@@ -83,10 +122,11 @@ function About() {
       {/* GLOBAL PROJECT EXPERIENCE */}
       <section className="container-page py-20 md:py-28 border-b border-border">
         <div className="mx-auto max-w-3xl text-center">
-          <SectionEyebrow>Tools & Capabilities</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Global Project Experience
           </h2>
+          <div className="hidden">{/* removed eyebrow */}</div>
+
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Delivering projects using industry-leading BIM, digital engineering, and
             construction technology platforms trusted by global AEC professionals.
@@ -103,8 +143,7 @@ function About() {
       <section className="border-b border-border bg-surface py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
-            <SectionEyebrow>Success Stories</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Client Testimonials
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -121,12 +160,54 @@ function About() {
         </div>
       </section>
 
+      {/* COMPANY VISION */}
+      <section className="relative overflow-hidden bg-navy py-20 text-primary-foreground md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(30rem 15rem at 15% 0%, oklch(0.78 0.10 240 / 0.30), transparent 60%), radial-gradient(30rem 15rem at 85% 100%, oklch(0.52 0.19 260 / 0.45), transparent 60%)",
+          }}
+          aria-hidden
+        />
+        <div className="container-page relative mx-auto max-w-4xl text-center reveal">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-sky">
+            Our Vision
+          </span>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+            Building the Future of{" "}
+            <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
+              Digital Engineering
+            </span>
+          </h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+            <p>
+              Infinity BIM was established with the vision to transform project
+              delivery through BIM, intelligent BIM, digital engineering, and
+              innovation.
+            </p>
+            <p>
+              We believe strong partnerships, technical excellence, and continuous
+              improvement are the foundation of every successful project.
+            </p>
+            <p>
+              As we grow globally, our commitment remains the same — delivering
+              quality, reliability, and value to every client.
+            </p>
+          </div>
+          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.22em] text-sky">
+            Established in 2022
+          </p>
+        </div>
+      </section>
+
       {/* FREQUENTLY ASKED QUESTIONS */}
+
       <section className="bg-background py-20 md:py-28">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-14">
-            <SectionEyebrow>FAQ</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Frequently Asked Questions
             </h2>
           </div>

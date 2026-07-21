@@ -129,10 +129,12 @@ function Home() {
           </div>
 
           <div className="reveal reveal-right md:col-span-6 md:pl-6">
-            <SectionEyebrow>About Infinity BIM</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               Engineering Better <span className="text-royal">Digital Construction</span>
             </h2>
+            <p className="mt-3 text-sm font-medium uppercase tracking-[0.22em] text-royal">
+              Established in 2022
+            </p>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
               Infinity BIM delivers intelligent Building Information Modeling (BIM),
               Digital Engineering, CAD, and Automation solutions for architects,
