@@ -14,7 +14,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const navigate = useNavigate();
+  
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
 
