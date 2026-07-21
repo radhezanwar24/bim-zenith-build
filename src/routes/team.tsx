@@ -10,13 +10,13 @@ export const Route = createFileRoute("/team")({
       {
         name: "description",
         content:
-          "Four leaders. One vision. Transforming the future of the AEC industry through BIM, technology, and innovation.",
+          "Driven by vision. United by excellence. Transforming the future of the AEC industry through BIM, technology, and innovation.",
       },
       { property: "og:title", content: "Meet the Leadership Behind Infinity BIM" },
       {
         property: "og:description",
         content:
-          "Four leaders. One vision. Transforming the future of the AEC industry through BIM, technology, and innovation.",
+          "Driven by vision. United by excellence. Transforming the future of the AEC industry through BIM, technology, and innovation.",
       },
       { property: "og:url", content: "/team" },
     ],
@@ -34,9 +34,6 @@ function Team() {
           <span className="text-royal">Infinity BIM</span>
         </h1>
         <p className="mt-6 text-xl font-medium text-navy sm:text-2xl">
-          Four leaders. One vision.
-        </p>
-        <p className="mt-2 text-base font-medium text-royal sm:text-lg">
           Driven by vision. United by excellence.
         </p>
         <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
