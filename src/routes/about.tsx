@@ -160,7 +160,50 @@ function About() {
         </div>
       </section>
 
+      {/* COMPANY VISION */}
+      <section className="relative overflow-hidden bg-navy py-20 text-primary-foreground md:py-28">
+        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
+        <div
+          className="pointer-events-none absolute inset-0 opacity-70"
+          style={{
+            background:
+              "radial-gradient(30rem 15rem at 15% 0%, oklch(0.78 0.10 240 / 0.30), transparent 60%), radial-gradient(30rem 15rem at 85% 100%, oklch(0.52 0.19 260 / 0.45), transparent 60%)",
+          }}
+          aria-hidden
+        />
+        <div className="container-page relative mx-auto max-w-4xl text-center reveal">
+          <span className="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-sky">
+            Our Vision
+          </span>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+            Building the Future of{" "}
+            <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
+              Digital Engineering
+            </span>
+          </h2>
+          <div className="mx-auto mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
+            <p>
+              Infinity BIM was established with the vision to transform project
+              delivery through BIM, intelligent BIM, digital engineering, and
+              innovation.
+            </p>
+            <p>
+              We believe strong partnerships, technical excellence, and continuous
+              improvement are the foundation of every successful project.
+            </p>
+            <p>
+              As we grow globally, our commitment remains the same — delivering
+              quality, reliability, and value to every client.
+            </p>
+          </div>
+          <p className="mt-8 text-sm font-semibold uppercase tracking-[0.22em] text-sky">
+            Established in 2022
+          </p>
+        </div>
+      </section>
+
       {/* FREQUENTLY ASKED QUESTIONS */}
+
       <section className="bg-background py-20 md:py-28">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-14">

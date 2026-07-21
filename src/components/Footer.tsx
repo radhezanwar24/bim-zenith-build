@@ -78,7 +78,7 @@ export function Footer() {
 
       <div className="relative border-t border-white/10">
         <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-primary-foreground/60 sm:flex-row">
-          <p>© {year} Infinity BIM · All rights reserved</p>
+          <p>© {year} Infinity BIM · Established in 2022 · All rights reserved</p>
           <p className="italic">Endless Possibilities in BIM</p>
         </div>
       </div>
