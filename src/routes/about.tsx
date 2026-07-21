@@ -122,10 +122,11 @@ function About() {
       {/* GLOBAL PROJECT EXPERIENCE */}
       <section className="container-page py-20 md:py-28 border-b border-border">
         <div className="mx-auto max-w-3xl text-center">
-          <SectionEyebrow>Tools & Capabilities</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Global Project Experience
           </h2>
+          <div className="hidden">{/* removed eyebrow */}</div>
+
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
             Delivering projects using industry-leading BIM, digital engineering, and
             construction technology platforms trusted by global AEC professionals.
