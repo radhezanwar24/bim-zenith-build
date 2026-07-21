@@ -140,7 +140,7 @@ export function Navbar() {
             <Link
               key={n.to}
               to={n.to}
-              onClick={() => setOpen(false)}
+              onClick={handleNavClick(n.to)}
               activeOptions={{ exact: n.to === "/" }}
               activeProps={{ className: "text-navy" }}
               inactiveProps={{ className: "text-muted-foreground" }}
@@ -151,12 +151,13 @@ export function Navbar() {
           ))}
           <Link
             to="/contact"
-            onClick={() => setOpen(false)}
+            onClick={handleNavClick("/contact")}
             className="mt-2 inline-flex items-center justify-center rounded-full bg-navy px-5 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-royal"
           >
             Reach out to us
           </Link>
         </nav>
+
       </div>
     </header>
   );
