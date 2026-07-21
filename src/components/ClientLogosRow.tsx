@@ -1,15 +1,17 @@
-/**
- * Grayscale-to-color client logo row. Uses inline SVG wordmarks so we don't
- * depend on any external brand assets. Purely typographic — clean and premium.
- */
+import logoHabitat from "@/assets/logo-habitat.webp";
+import logoEmaar from "@/assets/logo-emaar.png";
+import logoDlf from "@/assets/logo-dlf.png";
+import logoLesico from "@/assets/logo-lesico.png";
+import logoCartotech from "@/assets/logo-cartotech.webp";
+import logoMjdesigns from "@/assets/logo-mjdesigns.webp";
 
 const clients = [
-  { name: "Habitat Studio", tag: "Architects" },
-  { name: "EMAAR", tag: "" },
-  { name: "DLF", tag: "Building India" },
-  { name: "Lesico", tag: "Group" },
-  { name: "Cartotech", tag: "" },
-  { name: "MJ Designs", tag: "" },
+  { name: "Habitat Studio Architects", logo: logoHabitat },
+  { name: "EMAAR", logo: logoEmaar },
+  { name: "DLF Building India", logo: logoDlf },
+  { name: "Lesico Group", logo: logoLesico },
+  { name: "Cartotech", logo: logoCartotech },
+  { name: "MJ Designs", logo: logoMjdesigns },
 ];
 
 export function ClientLogosRow() {
@@ -21,20 +23,18 @@ export function ClientLogosRow() {
       {clients.map((c) => (
         <li key={c.name} className="flex items-center justify-center">
           <div
-            className="group flex flex-col items-center justify-center text-center opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
-            title={`${c.name} ${c.tag}`.trim()}
+            className="group flex items-center justify-center h-16 w-full opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+            title={c.name}
           >
-            <span className="font-display text-xl font-bold tracking-tight text-navy transition-colors group-hover:text-royal sm:text-2xl">
-              {c.name}
-            </span>
-            {c.tag && (
-              <span className="mt-0.5 text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                {c.tag}
-              </span>
-            )}
+            <img
+              src={c.logo}
+              alt={`${c.name} logo`}
+              className="max-h-12 max-w-[140px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </div>
         </li>
       ))}
     </ul>
   );
 }
+
