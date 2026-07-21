@@ -1,40 +1,47 @@
-/**
- * Software / platform grid for the "Global Project Experience" section.
- * Uses Simple Icons CDN for brand logos where an official slug exists,
- * and falls back to an elegant monogram badge for the rest.
- * Every tile has the same footprint so the grid stays visually uniform.
- */
+import swRevit from "@/assets/sw-revit.png";
+import swAutocad from "@/assets/sw-autocad.png";
+import swNavisworks from "@/assets/sw-navisworks.jpg";
+import swBim360 from "@/assets/sw-bim360.jpg";
+import swDocs from "@/assets/sw-docs.png";
+import swCivil3d from "@/assets/sw-civil3d.png";
+import swEnscape from "@/assets/sw-enscape.png";
+import swTwinmotion from "@/assets/sw-twinmotion.png";
+import swLumion from "@/assets/sw-lumion.jpg";
+import swSolibri from "@/assets/sw-solibri.jpg";
+import swRevizto from "@/assets/sw-revizto.png";
+import swBentley from "@/assets/sw-bentley.png";
+import swTekla from "@/assets/sw-tekla.png";
+import swPrimavera from "@/assets/sw-primavera.png";
+import swMsproject from "@/assets/sw-msproject.jpg";
 
 type Software = {
   name: string;
-  /** Simple Icons slug — https://simpleicons.org/. Omit for a monogram tile. */
+  logo?: string;
   slug?: string;
-  /** Brand accent color (hex without leading #). */
-  color: string;
-  /** Optional shorter display label. */
+  color?: string;
   short?: string;
 };
 
 const items: Software[] = [
-  { name: "Autodesk Revit", slug: "autodesk", color: "0696D7" },
-  { name: "Autodesk AutoCAD", slug: "autodesk", color: "E51050" },
-  { name: "Autodesk Navisworks", slug: "autodesk", color: "F58220" },
+  { name: "Autodesk Revit", logo: swRevit },
+  { name: "Autodesk AutoCAD", logo: swAutocad },
+  { name: "Autodesk Navisworks", logo: swNavisworks },
   { name: "Autodesk Construction Cloud", slug: "autodesk", color: "0696D7", short: "ACC" },
-  { name: "BIM 360", slug: "autodesk", color: "0696D7" },
-  { name: "Autodesk Docs", slug: "autodesk", color: "0696D7" },
-  { name: "Civil 3D", slug: "autodesk", color: "6EBE44" },
+  { name: "BIM 360", logo: swBim360 },
+  { name: "Autodesk Docs", logo: swDocs },
+  { name: "Civil 3D", logo: swCivil3d },
   { name: "Dynamo", slug: "autodesk", color: "3E8EDE" },
   { name: "Rhino", slug: "rhinoceros", color: "801010" },
   { name: "SketchUp", slug: "sketchup", color: "005F9E" },
-  { name: "Enscape", color: "F27021" },
-  { name: "Twinmotion", slug: "unrealengine", color: "0E1128" },
-  { name: "Lumion", color: "3B7DDD" },
-  { name: "Solibri", color: "F47920" },
-  { name: "Revizto", color: "1F3864" },
-  { name: "Bentley", color: "009639" },
-  { name: "Tekla", slug: "trimble", color: "0033A0" },
-  { name: "Primavera", color: "C74634" },
-  { name: "Microsoft Project", color: "217346" },
+  { name: "Enscape", logo: swEnscape },
+  { name: "Twinmotion", logo: swTwinmotion },
+  { name: "Lumion", logo: swLumion },
+  { name: "Solibri", logo: swSolibri },
+  { name: "Revizto", logo: swRevizto },
+  { name: "Bentley", logo: swBentley },
+  { name: "Tekla", logo: swTekla },
+  { name: "Primavera", logo: swPrimavera },
+  { name: "Microsoft Project", logo: swMsproject },
 ];
 
 function initials(name: string) {
@@ -64,7 +71,14 @@ export function SoftwareGrid() {
               className="pointer-events-none absolute inset-x-0 top-0 h-[3px] scale-x-0 transform bg-gradient-to-r from-royal via-sky to-royal transition-transform duration-500 group-hover:scale-x-100"
             />
 
-            {s.slug ? (
+            {s.logo ? (
+              <img
+                src={s.logo}
+                alt={`${s.name} logo`}
+                loading="lazy"
+                className="h-9 w-9 object-contain transition-transform duration-500 group-hover:scale-110"
+              />
+            ) : s.slug ? (
               <img
                 src={`https://cdn.simpleicons.org/${s.slug}/${s.color}`}
                 alt={`${s.name} logo`}
@@ -77,7 +91,7 @@ export function SoftwareGrid() {
               <span
                 aria-hidden
                 className="grid h-9 w-9 place-items-center rounded-lg text-[13px] font-bold tracking-tight text-white shadow-sm transition-transform duration-500 group-hover:scale-110"
-                style={{ backgroundColor: `#${s.color}` }}
+                style={{ backgroundColor: s.color ? `#${s.color}` : '#0696D7' }}
               >
                 {initials(s.name)}
               </span>
@@ -92,3 +106,4 @@ export function SoftwareGrid() {
     </ul>
   );
 }
+
