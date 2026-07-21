@@ -53,7 +53,12 @@ export function Navbar() {
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
-        <Link to="/" className="flex items-center gap-2" aria-label="Infinity BIM home">
+        <Link
+          to="/"
+          onClick={handleNavClick("/")}
+          className="flex items-center gap-2"
+          aria-label="Infinity BIM home"
+        >
           <img
             src={logo}
             alt="Infinity BIM"
@@ -68,6 +73,7 @@ export function Navbar() {
             <Link
               key={n.to}
               to={n.to}
+              onClick={handleNavClick(n.to)}
               activeOptions={{ exact: n.to === "/" }}
               activeProps={{ className: "after:scale-x-100" }}
               className={`${linkBase} ${
@@ -81,6 +87,7 @@ export function Navbar() {
           ))}
           <Link
             to="/contact"
+            onClick={handleNavClick("/contact")}
             className={`ml-3 inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
               transparent
                 ? "bg-white text-navy hover:bg-sky/90"
@@ -90,6 +97,7 @@ export function Navbar() {
             Reach out to us
           </Link>
         </nav>
+
 
         <button
           type="button"
