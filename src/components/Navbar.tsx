@@ -14,6 +14,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const navigate = useNavigate();
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
 
@@ -23,6 +24,20 @@ export function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick =
+    (to: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+      setOpen(false);
+      if (pathname === to) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      } else {
+        // Ensure destination page also lands at top (SSR + navigation).
+        requestAnimationFrame(() =>
+          window.scrollTo({ top: 0, left: 0, behavior: "auto" }),
+        );
+      }
+    };
 
   const linkBase =
     "relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:scale-x-0 after:transition-transform hover:after:scale-x-100";
