@@ -90,14 +90,11 @@ function About() {
         </div>
       </section>
 
-        </div>
-      </section>
-
       <section className="border-y border-border bg-surface">
         <div className="container-page grid gap-12 py-20 md:grid-cols-12">
           <div className="md:col-span-5">
-            <SectionEyebrow>Technology</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+
               Transforming Projects with{" "}
               <span className="text-royal">Intelligent Technology</span>
             </h2>
