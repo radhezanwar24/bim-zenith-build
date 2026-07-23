@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 import { services } from "@/lib/services";
@@ -74,10 +74,8 @@ function Services() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Link
+              <article
                 key={service.key}
-                to={service.path}
-                aria-label={`View ${service.name}`}
                 className="reveal group relative flex min-h-[360px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
@@ -94,7 +92,7 @@ function Services() {
                 <p className="relative mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {service.cardDescription}
                 </p>
-              </Link>
+              </article>
             );
           })}
         </div>
