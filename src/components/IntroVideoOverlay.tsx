@@ -59,7 +59,7 @@ export function IntroVideoOverlay() {
         autoPlay
         playsInline
         preload="auto"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain md:object-cover"
         onEnded={() => setVisible(false)}
       />
 
