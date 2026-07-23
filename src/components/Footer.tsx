@@ -1,11 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+
 import logo from "@/assets/logo.png";
 import { SocialIcons } from "@/components/SocialIcons";
 
-
 export function Footer() {
   const year = new Date().getFullYear();
+
   return (
     <footer className="relative mt-24 overflow-hidden bg-navy text-primary-foreground">
       <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden>
@@ -23,9 +24,9 @@ export function Footer() {
         <div className="md:col-span-5">
           <img src={logo} alt="Infinity BIM" className="h-20 w-auto brightness-0 invert" />
           <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-            Infinity BIM is a global Digital Engineering and BIM consultancy delivering
-            intelligent, coordinated, and automation-driven solutions for architects,
-            consultants, contractors, and developers.
+            Infinity BIM is a global Digital Engineering and BIM consultancy delivering intelligent,
+            coordinated, and automation-driven solutions for architects, consultants, contractors,
+            and developers.
           </p>
           <div className="mt-6">
             <SocialIcons />
@@ -37,11 +38,21 @@ export function Footer() {
             Quick Links
           </h3>
           <ul className="mt-5 space-y-3 text-sm">
-            <li><Link to="/" className="text-primary-foreground/70 transition-colors hover:text-white">Home</Link></li>
-            <li><Link to="/about" className="text-primary-foreground/70 transition-colors hover:text-white">About Us</Link></li>
-            <li><Link to="/team" className="text-primary-foreground/70 transition-colors hover:text-white">Team</Link></li>
-            <li><Link to="/contact" className="text-primary-foreground/70 transition-colors hover:text-white">Contact</Link></li>
-            <li><span className="cursor-not-allowed text-primary-foreground/40" aria-disabled>Services <span className="ml-1 text-[10px] uppercase">(soon)</span></span></li>
+            <li>
+              <FooterLink to="/">Home</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/about">About Us</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/services">Services</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/team">Team</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/contact">Contact</FooterLink>
+            </li>
           </ul>
         </div>
 
@@ -70,7 +81,7 @@ export function Footer() {
             </li>
             <li className="inline-flex items-start gap-3 text-primary-foreground/75">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-sky" aria-hidden />
-              <span>Global delivery — India · UAE · UK · USA</span>
+              <span>Global delivery - India, UAE, UK, USA</span>
             </li>
           </ul>
         </div>
@@ -83,5 +94,13 @@ export function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterLink({ to, children }: { to: string; children: React.ReactNode }) {
+  return (
+    <Link to={to} className="text-primary-foreground/70 transition-colors hover:text-white">
+      {children}
+    </Link>
   );
 }

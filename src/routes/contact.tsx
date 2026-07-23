@@ -1,18 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { useState } from "react";
+
 import { SectionEyebrow } from "@/components/SectionEyebrow";
+
+const contactEmail = "info.infinitybim@gmail.com";
+const contactPhoneDisplay = "+91 9067059933";
+const contactPhoneHref = "+919067059933";
+const whatsappNumber = "919067059933";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Reach out to us — Infinity BIM" },
+      { title: "Reach out to us - Infinity BIM" },
       {
         name: "description",
         content:
           "Get in touch with Infinity BIM. Email info.infinitybim@gmail.com or call +91 9067059933.",
       },
-      { property: "og:title", content: "Reach out to us — Infinity BIM" },
+      { property: "og:title", content: "Reach out to us - Infinity BIM" },
       {
         property: "og:description",
         content: "Connect with the Infinity BIM team.",
@@ -26,6 +32,7 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+
   return (
     <section className="container-page py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center fade-up">
@@ -34,24 +41,20 @@ function Contact() {
           Reach out to us
         </h1>
         <p className="mx-auto mt-5 max-w-xl text-base text-muted-foreground">
-          Tell us about your project — our team will get back to you shortly.
+          Tell us about your project - our team will get back to you shortly.
         </p>
       </div>
 
       <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-5">
-        {/* Info */}
         <aside className="space-y-6 lg:col-span-2">
           <ContactItem icon={Mail} label="Email">
-            <a
-              href="mailto:info.infinitybim@gmail.com"
-              className="text-navy hover:text-royal"
-            >
-              info.infinitybim@gmail.com
+            <a href={`mailto:${contactEmail}`} className="text-navy hover:text-royal">
+              {contactEmail}
             </a>
           </ContactItem>
           <ContactItem icon={Phone} label="Phone">
-            <a href="tel:+919067059933" className="text-navy hover:text-royal">
-              +91 9067059933
+            <a href={`tel:${contactPhoneHref}`} className="text-navy hover:text-royal">
+              {contactPhoneDisplay}
             </a>
           </ContactItem>
           <ContactItem icon={MapPin} label="Location">
@@ -71,11 +74,16 @@ function Contact() {
           </div>
         </aside>
 
-        {/* Form */}
         <form
           className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] lg:col-span-3 md:p-8"
           onSubmit={(e) => {
             e.preventDefault();
+            const text = buildLeadMessage(e.currentTarget);
+            window.open(
+              `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
+              "_blank",
+              "noopener,noreferrer",
+            );
             setSent(true);
           }}
         >
@@ -97,21 +105,63 @@ function Contact() {
               />
             </div>
           </div>
-          <button
-            type="submit"
-            className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-navy px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-royal sm:w-auto"
-          >
-            Send message
-          </button>
+
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <button
+              type="submit"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-royal sm:w-auto"
+            >
+              <Send className="h-4 w-4" aria-hidden />
+              Send on WhatsApp
+            </button>
+            <button
+              type="button"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-accent sm:w-auto"
+              onClick={(e) => {
+                const form = e.currentTarget.form;
+                if (!form?.reportValidity()) return;
+                const text = buildLeadMessage(form);
+                window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
+                  "Infinity BIM website enquiry",
+                )}&body=${encodeURIComponent(text)}`;
+                setSent(true);
+              }}
+            >
+              <Mail className="h-4 w-4" aria-hidden />
+              Send by Email
+            </button>
+          </div>
+
           {sent && (
             <p className="mt-4 text-sm text-royal" role="status">
-              Thanks — we'll be in touch soon.
+              Thanks - your message has been prepared. Please send it in the opened app.
             </p>
           )}
         </form>
       </div>
     </section>
   );
+}
+
+function buildLeadMessage(form: HTMLFormElement) {
+  const data = new FormData(form);
+  const name = String(data.get("name") ?? "").trim();
+  const email = String(data.get("email") ?? "").trim();
+  const phone = String(data.get("phone") ?? "").trim();
+  const subject = String(data.get("subject") ?? "").trim();
+  const message = String(data.get("message") ?? "").trim();
+
+  return [
+    "New Infinity BIM website enquiry",
+    "",
+    `Name: ${name || "Not provided"}`,
+    `Email: ${email || "Not provided"}`,
+    `Phone: ${phone || "Not provided"}`,
+    `Subject: ${subject || "Project enquiry"}`,
+    "",
+    "Message:",
+    message || "Not provided",
+  ].join("\n");
 }
 
 function ContactItem({

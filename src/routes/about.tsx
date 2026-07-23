@@ -149,10 +149,10 @@ function About() {
           </div>
 
           <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-dashed border-border bg-background px-8 py-16 text-center shadow-[var(--shadow-card)]">
-            <p className="text-lg font-medium text-navy">Testimonials coming soon.</p>
+            <p className="text-lg font-medium text-navy">Client feedback is being collected.</p>
             <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
-              We partner with global teams to deliver exceptional digital delivery results.
-              Testimonials from our clients will be published here soon.
+              We partner with global teams to deliver exceptional digital delivery results. Verified
+              client stories will be published after review and approval.
             </p>
           </div>
         </div>
