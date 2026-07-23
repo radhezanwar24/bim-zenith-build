@@ -49,7 +49,14 @@ export function SoftwareGrid() {
       className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
     >
       {items.map((s) => (
-        <li key={s.name} className={s.name === "Bluebeam" ? "lg:col-start-3" : undefined}>
+        <li
+          key={s.name}
+          className={
+            s.name === "Bluebeam"
+              ? "col-span-2 mx-auto w-full max-w-[18rem] sm:col-span-1 sm:max-w-none lg:col-start-3"
+              : undefined
+          }
+        >
           <div
             className="group relative flex h-full min-h-[110px] flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl border border-border bg-card p-5 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
             title={s.name}

@@ -44,9 +44,9 @@
   --radius: 0.75rem;
 
   /* Brand palette derived from Infinity BIM logo */
-  --navy: oklch(0.28 0.09 260);      /* Deep Navy Blue */
-  --royal: oklch(0.52 0.19 260);     /* Royal Blue */
-  --sky: oklch(0.78 0.10 240);       /* Light Blue accent */
+  --navy: oklch(0.28 0.09 260); /* Deep Navy Blue */
+  --royal: oklch(0.52 0.19 260); /* Royal Blue */
+  --sky: oklch(0.78 0.1 240); /* Light Blue accent */
   --surface: oklch(0.985 0.003 240); /* Very light grey */
 
   --background: oklch(1 0 0);
@@ -70,7 +70,7 @@
   --ring: oklch(0.52 0.19 260);
 
   --shadow-card: 0 1px 2px oklch(0.28 0.09 260 / 0.04), 0 8px 24px oklch(0.28 0.09 260 / 0.06);
-  --shadow-elevated: 0 2px 6px oklch(0.28 0.09 260 / 0.06), 0 20px 40px oklch(0.28 0.09 260 / 0.10);
+  --shadow-elevated: 0 2px 6px oklch(0.28 0.09 260 / 0.06), 0 20px 40px oklch(0.28 0.09 260 / 0.1);
 }
 
 @layer base {
@@ -90,7 +90,12 @@
     text-rendering: optimizeLegibility;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
     color: var(--navy);
@@ -102,8 +107,12 @@
   margin-inline: auto;
   padding-inline: 1.25rem;
   max-width: 80rem;
-  @media (min-width: 640px) { padding-inline: 2rem; }
-  @media (min-width: 1024px) { padding-inline: 3rem; }
+  @media (min-width: 640px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1024px) {
+    padding-inline: 3rem;
+  }
 }
 
 @utility fade-up {
@@ -111,8 +120,14 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Scroll-triggered reveal — attach `.reveal` to any element; the
@@ -135,17 +150,31 @@
   animation: pageFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 @keyframes pageFade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Reveal variants */
-.reveal-left { transform: translateX(-24px); }
-.reveal-right { transform: translateX(24px); }
-.reveal-scale { transform: scale(0.96); }
+.reveal-left {
+  transform: translateX(-24px);
+}
+.reveal-right {
+  transform: translateX(24px);
+}
+.reveal-scale {
+  transform: scale(0.96);
+}
 .reveal-left.is-visible,
 .reveal-right.is-visible,
-.reveal-scale.is-visible { transform: none; }
+.reveal-scale.is-visible {
+  transform: none;
+}
 
 /* Blueprint / grid background overlay */
 @utility bg-blueprint {
@@ -157,13 +186,23 @@
 
 /* Floating slow drift for background graphics */
 @keyframes floatY {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
 }
-.animate-float-slow { animation: floatY 8s ease-in-out infinite; }
+.animate-float-slow {
+  animation: floatY 8s ease-in-out infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal, .page-transition, .fade-up, .animate-float-slow {
+  .reveal,
+  .page-transition,
+  .fade-up,
+  .animate-float-slow {
     animation: none !important;
     transition: none !important;
     opacity: 1 !important;
@@ -171,5 +210,20 @@
   }
 }
 
+@media (max-width: 767px) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 
-
+  .page-transition,
+  .fade-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -13,6 +13,11 @@ export function useReveal(key?: unknown) {
       const els = document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)");
       if (!els.length) return () => {};
 
+      if (!("IntersectionObserver" in window)) {
+        els.forEach((el) => el.classList.add("is-visible"));
+        return () => {};
+      }
+
       const io = new IntersectionObserver(
         (entries) => {
           for (const e of entries) {
@@ -27,17 +32,13 @@ export function useReveal(key?: unknown) {
 
       els.forEach((el) => io.observe(el));
 
-      // Safety fallback: any reveal element that hasn't fired within 1.2s
-      // (e.g. above the fold on a very tall viewport, or observer misfire on
-      // route change) becomes visible so pages never render blank.
+      // Safety fallback: reveal elements should enhance the page, never hide it.
+      // Some mobile browsers can delay observer callbacks during first paint.
       const timeout = window.setTimeout(() => {
         document
           .querySelectorAll<HTMLElement>(".reveal:not(.is-visible)")
-          .forEach((el) => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) el.classList.add("is-visible");
-          });
-      }, 1200);
+          .forEach((el) => el.classList.add("is-visible"));
+      }, 700);
 
       return () => {
         io.disconnect();
