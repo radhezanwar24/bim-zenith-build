@@ -3,6 +3,7 @@ import {
   Outlet,
   Link,
   createRootRouteWithContext,
+  useRouterState,
   useRouter,
   HeadContent,
   Scripts,
@@ -14,7 +15,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { RevealProvider } from "@/components/RevealProvider";
-
 
 function NotFoundComponent() {
   return (
@@ -130,6 +130,20 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  useEffect(() => {
+    if (typeof window === "undefined" || pathname === "/") return;
+
+    const navigation = performance.getEntriesByType("navigation")[0] as
+      PerformanceNavigationTiming | undefined;
+    const isReload = navigation?.type === "reload";
+
+    if (isReload) {
+      router.navigate({ to: "/", replace: true });
+    }
+  }, [pathname, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -145,4 +159,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

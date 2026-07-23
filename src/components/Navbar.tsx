@@ -51,9 +51,15 @@ export function Navbar() {
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
-        <Link
-          to="/"
-          onClick={handleNavClick("/")}
+        <a
+          href="/"
+          onClick={(e) => {
+            setOpen(false);
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+            }
+          }}
           className="flex items-center gap-2"
           aria-label="Infinity BIM home"
         >
@@ -64,7 +70,7 @@ export function Navbar() {
               transparent ? "brightness-0 invert" : ""
             }`}
           />
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-1 md:flex" aria-label="Primary">
           {nav.map((n) => (
