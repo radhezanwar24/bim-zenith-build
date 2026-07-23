@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { IntroVideoOverlay } from "@/components/IntroVideoOverlay";
 import { RevealProvider } from "@/components/RevealProvider";
 
 function NotFoundComponent() {
@@ -148,6 +149,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-dvh flex-col">
+        <IntroVideoOverlay />
         <Navbar />
         <main id="main" className="flex-1">
           <RevealProvider>
