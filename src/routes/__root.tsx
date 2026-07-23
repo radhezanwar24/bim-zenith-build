@@ -8,7 +8,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -133,9 +133,14 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const checkedReloadRef = useRef(false);
 
   useEffect(() => {
-    if (typeof window === "undefined" || pathname === "/") return;
+    if (typeof window === "undefined" || checkedReloadRef.current) return;
+
+    checkedReloadRef.current = true;
+
+    if (pathname === "/") return;
 
     const navigation = performance.getEntriesByType("navigation")[0] as
       PerformanceNavigationTiming | undefined;
