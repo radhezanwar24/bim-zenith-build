@@ -11,9 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesStructuralBimRouteImport } from './routes/services/structural-bim'
+import { Route as ServicesMepBimRouteImport } from './routes/services/mep-bim'
+import { Route as ServicesDataCenterBimRouteImport } from './routes/services/data-center-bim'
+import { Route as ServicesArchitecturalBimRouteImport } from './routes/services/architectural-bim'
 
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
@@ -23,6 +28,11 @@ const TeamRoute = TeamRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -40,41 +50,109 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesStructuralBimRoute = ServicesStructuralBimRouteImport.update({
+  id: '/structural-bim',
+  path: '/structural-bim',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesMepBimRoute = ServicesMepBimRouteImport.update({
+  id: '/mep-bim',
+  path: '/mep-bim',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesDataCenterBimRoute = ServicesDataCenterBimRouteImport.update({
+  id: '/data-center-bim',
+  path: '/data-center-bim',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesArchitecturalBimRoute =
+  ServicesArchitecturalBimRouteImport.update({
+    id: '/architectural-bim',
+    path: '/architectural-bim',
+    getParentRoute: () => ServicesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/architectural-bim': typeof ServicesArchitecturalBimRoute
+  '/services/data-center-bim': typeof ServicesDataCenterBimRoute
+  '/services/mep-bim': typeof ServicesMepBimRoute
+  '/services/structural-bim': typeof ServicesStructuralBimRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/architectural-bim': typeof ServicesArchitecturalBimRoute
+  '/services/data-center-bim': typeof ServicesDataCenterBimRoute
+  '/services/mep-bim': typeof ServicesMepBimRoute
+  '/services/structural-bim': typeof ServicesStructuralBimRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/services': typeof ServicesRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/team': typeof TeamRoute
+  '/services/architectural-bim': typeof ServicesArchitecturalBimRoute
+  '/services/data-center-bim': typeof ServicesDataCenterBimRoute
+  '/services/mep-bim': typeof ServicesMepBimRoute
+  '/services/structural-bim': typeof ServicesStructuralBimRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/sitemap.xml' | '/team'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/sitemap.xml'
+    | '/team'
+    | '/services/architectural-bim'
+    | '/services/data-center-bim'
+    | '/services/mep-bim'
+    | '/services/structural-bim'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/sitemap.xml' | '/team'
-  id: '__root__' | '/' | '/about' | '/contact' | '/sitemap.xml' | '/team'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/sitemap.xml'
+    | '/team'
+    | '/services/architectural-bim'
+    | '/services/data-center-bim'
+    | '/services/mep-bim'
+    | '/services/structural-bim'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/services'
+    | '/sitemap.xml'
+    | '/team'
+    | '/services/architectural-bim'
+    | '/services/data-center-bim'
+    | '/services/mep-bim'
+    | '/services/structural-bim'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TeamRoute: typeof TeamRoute
 }
@@ -93,6 +171,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -116,16 +201,73 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/structural-bim': {
+      id: '/services/structural-bim'
+      path: '/structural-bim'
+      fullPath: '/services/structural-bim'
+      preLoaderRoute: typeof ServicesStructuralBimRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/mep-bim': {
+      id: '/services/mep-bim'
+      path: '/mep-bim'
+      fullPath: '/services/mep-bim'
+      preLoaderRoute: typeof ServicesMepBimRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/data-center-bim': {
+      id: '/services/data-center-bim'
+      path: '/data-center-bim'
+      fullPath: '/services/data-center-bim'
+      preLoaderRoute: typeof ServicesDataCenterBimRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/architectural-bim': {
+      id: '/services/architectural-bim'
+      path: '/architectural-bim'
+      fullPath: '/services/architectural-bim'
+      preLoaderRoute: typeof ServicesArchitecturalBimRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesArchitecturalBimRoute: typeof ServicesArchitecturalBimRoute
+  ServicesDataCenterBimRoute: typeof ServicesDataCenterBimRoute
+  ServicesMepBimRoute: typeof ServicesMepBimRoute
+  ServicesStructuralBimRoute: typeof ServicesStructuralBimRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesArchitecturalBimRoute: ServicesArchitecturalBimRoute,
+  ServicesDataCenterBimRoute: ServicesDataCenterBimRoute,
+  ServicesMepBimRoute: ServicesMepBimRoute,
+  ServicesStructuralBimRoute: ServicesStructuralBimRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TeamRoute: TeamRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

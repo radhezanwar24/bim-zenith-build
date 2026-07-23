@@ -6,6 +6,7 @@ import logo from "@/assets/logo.png";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
+  { to: "/services", label: "Services" },
   { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -14,7 +15,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  
+
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
 
@@ -25,19 +26,16 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNavClick =
-    (to: string) => (e: MouseEvent<HTMLAnchorElement>) => {
-      setOpen(false);
-      if (pathname === to) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      } else {
-        // Ensure destination page also lands at top (SSR + navigation).
-        requestAnimationFrame(() =>
-          window.scrollTo({ top: 0, left: 0, behavior: "auto" }),
-        );
-      }
-    };
+  const handleNavClick = (to: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    setOpen(false);
+    if (pathname === to) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    } else {
+      // Ensure destination page also lands at top (SSR + navigation).
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
+    }
+  };
 
   const linkBase =
     "relative px-4 py-2 text-sm font-medium transition-colors after:absolute after:bottom-1 after:left-4 after:right-4 after:h-px after:origin-left after:scale-x-0 after:transition-transform hover:after:scale-x-100";
@@ -48,8 +46,8 @@ export function Navbar() {
         transparent
           ? "border-b border-transparent bg-transparent"
           : scrolled
-          ? "border-b border-border/70 bg-background/90 shadow-[0_4px_20px_-12px_rgba(11,28,58,0.15)] backdrop-blur-md"
-          : "border-b border-border/40 bg-background/80 backdrop-blur-md"
+            ? "border-b border-border/70 bg-background/90 shadow-[0_4px_20px_-12px_rgba(11,28,58,0.15)] backdrop-blur-md"
+            : "border-b border-border/40 bg-background/80 backdrop-blur-md"
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
@@ -97,7 +95,6 @@ export function Navbar() {
             Reach out to us
           </Link>
         </nav>
-
 
         <button
           type="button"
@@ -157,7 +154,6 @@ export function Navbar() {
             Reach out to us
           </Link>
         </nav>
-
       </div>
     </header>
   );

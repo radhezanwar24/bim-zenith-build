@@ -1,7 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ArrowRight, CheckCircle2, Globe2, Layers, ShieldCheck,
-  Users, Cpu, Sparkles,
+  ArrowRight,
+  CheckCircle2,
+  Globe2,
+  Layers,
+  ShieldCheck,
+  Users,
+  Cpu,
+  Sparkles,
 } from "lucide-react";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 import { StatCounter } from "@/components/StatCounter";
@@ -60,13 +66,17 @@ function Home() {
           <div className="absolute inset-0 bg-blueprint opacity-40" />
           {/* Floating architectural accents */}
           <div className="absolute left-[8%] top-1/3 h-40 w-40 rounded-full bg-sky/20 blur-3xl animate-float-slow" />
-          <div className="absolute right-[15%] bottom-1/4 h-56 w-56 rounded-full bg-royal/25 blur-3xl animate-float-slow" style={{ animationDelay: "-3s" }} />
+          <div
+            className="absolute right-[15%] bottom-1/4 h-56 w-56 rounded-full bg-royal/25 blur-3xl animate-float-slow"
+            style={{ animationDelay: "-3s" }}
+          />
         </div>
 
         <div className="container-page relative flex min-h-[92vh] items-center pt-32 pb-24 md:min-h-[95vh] md:pt-40 md:pb-32">
           <div className="max-w-3xl fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Digital Engineering · BIM · Automation
+              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Digital Engineering · BIM ·
+              Automation
             </span>
             <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
               Building the Future Through{" "}
@@ -76,9 +86,8 @@ function Home() {
               & Digital Engineering
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
-              Delivering BIM, Digital Engineering, CAD Automation, Scan-to-BIM, and
-              Construction Technology solutions across global markets with precision
-              and innovation.
+              Delivering BIM, Digital Engineering, CAD Automation, Scan-to-BIM, and Construction
+              Technology solutions across global markets with precision and innovation.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
@@ -86,7 +95,10 @@ function Home() {
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-navy shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky hover:shadow-[0_16px_32px_-16px_rgba(255,255,255,0.6)]"
               >
                 Explore Services
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden
+                />
               </Link>
               <Link
                 to="/contact"
@@ -99,7 +111,10 @@ function Home() {
         </div>
 
         {/* Bottom fade into next section */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background" aria-hidden />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-background"
+          aria-hidden
+        />
       </section>
 
       {/* ========== COMPANY PREVIEW ========== */}
@@ -125,7 +140,10 @@ function Home() {
               />
             </div>
             {/* Decorative accent */}
-            <div className="pointer-events-none absolute -z-10 h-64 w-64 -translate-x-8 translate-y-8 rounded-full bg-sky/20 blur-3xl" aria-hidden />
+            <div
+              className="pointer-events-none absolute -z-10 h-64 w-64 -translate-x-8 translate-y-8 rounded-full bg-sky/20 blur-3xl"
+              aria-hidden
+            />
           </div>
 
           <div className="reveal reveal-right md:col-span-6 md:pl-6">
@@ -136,18 +154,20 @@ function Home() {
               Established in 2022
             </p>
             <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
-              Infinity BIM delivers intelligent Building Information Modeling (BIM),
-              Digital Engineering, CAD, and Automation solutions for architects,
-              engineers, contractors, and infrastructure professionals worldwide. We
-              combine engineering expertise with technology to create efficient,
-              coordinated, and future-ready project delivery.
+              Infinity BIM delivers intelligent Building Information Modeling (BIM), Digital
+              Engineering, CAD, and Automation solutions for architects, engineers, contractors, and
+              infrastructure professionals worldwide. We combine engineering expertise with
+              technology to create efficient, coordinated, and future-ready project delivery.
             </p>
             <Link
               to="/about"
               className="group mt-8 inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal"
             >
               Learn More
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+              <ArrowRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden
+              />
             </Link>
           </div>
         </div>
@@ -193,16 +213,23 @@ function Home() {
 
           {/* Right light card */}
           <div className="reveal reveal-right relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12">
-            <div className="bg-blueprint pointer-events-none absolute inset-0 opacity-40" aria-hidden />
+            <div
+              className="bg-blueprint pointer-events-none absolute inset-0 opacity-40"
+              aria-hidden
+            />
             <div className="relative">
               <SectionEyebrow>Our Services</SectionEyebrow>
               <h3 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
-                Discover Our Services
+                Delivering Excellence Through Intelligent BIM
               </h3>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
-                Our experienced BIM professionals deliver coordinated engineering
-                solutions for healthcare, commercial, residential, industrial,
-                infrastructure, hospitality, transportation, and data center projects.
+                Infinity BIM delivers intelligent Building Information Modeling (BIM) solutions that
+                enhance collaboration, improve project certainty, and optimize delivery across the
+                entire project lifecycle. We help clients make informed decisions, minimize risks,
+                and achieve greater efficiency through data-driven digital workflows.
+              </p>
+              <p className="mt-5 text-sm font-semibold uppercase tracking-[0.18em] text-royal">
+                Engineering Digital Excellence. Delivering Real-World Results.
               </p>
               <div className="mt-8 grid grid-cols-2 gap-3">
                 {[
@@ -211,18 +238,24 @@ function Home() {
                   { icon: ShieldCheck, label: "ISO standards" },
                   { icon: Users, label: "Expert team" },
                 ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex items-center gap-2 rounded-xl bg-accent/50 px-3 py-2.5">
+                  <div
+                    key={label}
+                    className="flex items-center gap-2 rounded-xl bg-accent/50 px-3 py-2.5"
+                  >
                     <Icon className="h-4 w-4 text-royal" aria-hidden />
                     <span className="text-xs font-medium text-navy">{label}</span>
                   </div>
                 ))}
               </div>
               <Link
-                to="/about"
+                to="/services"
                 className="group mt-10 inline-flex items-center gap-2 self-start rounded-full bg-navy px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal"
               >
                 Discover More
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden
+                />
               </Link>
             </div>
           </div>
@@ -237,8 +270,8 @@ function Home() {
             End-to-End <span className="text-royal">BIM & Digital Engineering</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            A complete suite of intelligent modeling, coordination, and automation
-            services — delivered by seasoned BIM specialists.
+            A complete suite of intelligent modeling, coordination, and automation services —
+            delivered by seasoned BIM specialists.
           </p>
         </div>
         <ServicesGrid />
@@ -253,8 +286,8 @@ function Home() {
               Trusted by Global AEC Leaders
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Delivering BIM and Digital Engineering solutions using industry-leading
-              construction technology trusted by global AEC professionals.
+              Delivering BIM and Digital Engineering solutions using industry-leading construction
+              technology trusted by global AEC professionals.
             </p>
           </div>
           <div className="reveal">
@@ -283,7 +316,10 @@ function Home() {
           />
         </div>
         {/* Blue highlight strip */}
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-sky to-transparent" aria-hidden />
+        <div
+          className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-transparent via-sky to-transparent"
+          aria-hidden
+        />
         <div className="container-page relative">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>
@@ -293,8 +329,8 @@ function Home() {
               Excellence, Measured in Numbers
             </h2>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/75">
-              Delivering BIM and Digital Engineering excellence across multiple
-              industries and international markets.
+              Delivering BIM and Digital Engineering excellence across multiple industries and
+              international markets.
             </p>
           </div>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
@@ -315,8 +351,8 @@ function Home() {
             Sectors We <span className="text-royal">Power</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            From healthcare to hyperscale data centers — Infinity BIM delivers
-            coordinated engineering across every major built environment.
+            From healthcare to hyperscale data centers — Infinity BIM delivers coordinated
+            engineering across every major built environment.
           </p>
         </div>
         <IndustriesGrid />
@@ -383,7 +419,10 @@ function Home() {
       {/* ========== CTA ========== */}
       <section className="container-page py-24">
         <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
-          <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-30" aria-hidden />
+          <div
+            className="pointer-events-none absolute inset-0 bg-blueprint opacity-30"
+            aria-hidden
+          />
           <div
             className="pointer-events-none absolute inset-0 opacity-70"
             style={{
@@ -397,8 +436,8 @@ function Home() {
               Let's build what's next, together.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-base text-primary-foreground/80">
-              Reach out to discuss your project, or learn more about our team and
-              global engineering capabilities.
+              Reach out to discuss your project, or learn more about our team and global engineering
+              capabilities.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <Link
@@ -406,7 +445,10 @@ function Home() {
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-navy transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky"
               >
                 Contact Us
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  aria-hidden
+                />
               </Link>
               <Link
                 to="/about"

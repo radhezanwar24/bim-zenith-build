@@ -5,14 +5,10 @@ import swBim360 from "@/assets/sw-bim360.jpg";
 import swDocs from "@/assets/sw-docs.png";
 import swCivil3d from "@/assets/sw-civil3d.png";
 import swEnscape from "@/assets/sw-enscape.png";
-import swTwinmotion from "@/assets/sw-twinmotion.png";
-import swLumion from "@/assets/sw-lumion.jpg";
-import swSolibri from "@/assets/sw-solibri.jpg";
-import swRevizto from "@/assets/sw-revizto.png";
-import swBentley from "@/assets/sw-bentley.png";
 import swTekla from "@/assets/sw-tekla.png";
-import swPrimavera from "@/assets/sw-primavera.png";
-import swMsproject from "@/assets/sw-msproject.jpg";
+import swStaadpro from "@/assets/sw-staadpro.jpg";
+import swBluebeam from "@/assets/sw-bluebeam.jpg";
+import swDynamo from "@/assets/sw-dynamo.png";
 
 type Software = {
   name: string;
@@ -23,25 +19,17 @@ type Software = {
 };
 
 const items: Software[] = [
+  { name: "AutoCAD", logo: swAutocad },
   { name: "Autodesk Revit", logo: swRevit },
-  { name: "Autodesk AutoCAD", logo: swAutocad },
   { name: "Autodesk Navisworks", logo: swNavisworks },
-  { name: "Autodesk Construction Cloud", slug: "autodesk", color: "0696D7", short: "ACC" },
+  { name: "Tekla Structures", logo: swTekla },
   { name: "BIM 360", logo: swBim360 },
-  { name: "Autodesk Docs", logo: swDocs },
+  { name: "Autodesk Construction Cloud (ACC)", logo: swDocs },
   { name: "Civil 3D", logo: swCivil3d },
-  { name: "Dynamo", slug: "autodesk", color: "3E8EDE" },
-  { name: "Rhino", slug: "rhinoceros", color: "801010" },
-  { name: "SketchUp", slug: "sketchup", color: "005F9E" },
+  { name: "Dynamo", logo: swDynamo },
   { name: "Enscape", logo: swEnscape },
-  { name: "Twinmotion", logo: swTwinmotion },
-  { name: "Lumion", logo: swLumion },
-  { name: "Solibri", logo: swSolibri },
-  { name: "Revizto", logo: swRevizto },
-  { name: "Bentley", logo: swBentley },
-  { name: "Tekla", logo: swTekla },
-  { name: "Primavera", logo: swPrimavera },
-  { name: "Microsoft Project", logo: swMsproject },
+  { name: "STAAD.Pro", logo: swStaadpro },
+  { name: "Bluebeam", logo: swBluebeam },
 ];
 
 function initials(name: string) {
@@ -91,7 +79,7 @@ export function SoftwareGrid() {
               <span
                 aria-hidden
                 className="grid h-9 w-9 place-items-center rounded-lg text-[13px] font-bold tracking-tight text-white shadow-sm transition-transform duration-500 group-hover:scale-110"
-                style={{ backgroundColor: s.color ? `#${s.color}` : '#0696D7' }}
+                style={{ backgroundColor: s.color ? `#${s.color}` : "#0696D7" }}
               >
                 {initials(s.name)}
               </span>
@@ -106,4 +94,3 @@ export function SoftwareGrid() {
     </ul>
   );
 }
-

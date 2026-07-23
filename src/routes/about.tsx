@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/accordion";
 import aiBimHero from "@/assets/ai-bim-hero.jpg";
 
-
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -74,15 +73,16 @@ function About() {
       <section className="container-page pt-20 pb-16 md:pt-24">
         <div className="mx-auto max-w-3xl text-center fade-up">
           <h2 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
-            Enhance Your <span className="text-royal">Design Experience</span>
+            Delivering Excellence Through <span className="text-royal">Intelligent BIM</span>
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            We specialize in providing comprehensive architectural services, from
-            initial concept design to project completion, ensuring a seamless
-            experience for our clients.
+            Infinity BIM delivers intelligent Building Information Modeling (BIM) solutions that
+            enhance collaboration, improve project certainty, and optimize delivery across the
+            entire project lifecycle. We help clients make informed decisions, minimize risks, and
+            achieve greater efficiency through data-driven digital workflows.
           </p>
           <p className="mx-auto mt-4 max-w-2xl text-base italic text-muted-foreground">
-            Start with the client — understand their vision and bring it to life.
+            Engineering Digital Excellence. Delivering Real-World Results.
           </p>
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-royal">
             Established in 2022
@@ -94,26 +94,24 @@ function About() {
         <div className="container-page grid gap-12 py-20 md:grid-cols-12">
           <div className="md:col-span-5">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-
-              Transforming Projects with{" "}
-              <span className="text-royal">Intelligent Technology</span>
+              Transforming Projects with <span className="text-royal">Intelligent Technology</span>
             </h2>
           </div>
           <div className="md:col-span-7 space-y-6">
             <p className="text-lg leading-relaxed text-muted-foreground">
-              We integrate advanced BIM technologies, AI powered automation, digital
-              engineering workflows, and intelligent collaboration tools to deliver
-              faster, smarter, and more efficient project outcomes.
+              We integrate advanced BIM technologies, AI powered automation, digital engineering
+              workflows, and intelligent collaboration tools to deliver faster, smarter, and more
+              efficient project outcomes.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              Integrating BIM, AI, cloud collaboration, and automation to redefine the
-              future of digital project delivery.
+              Integrating BIM, AI, cloud collaboration, and automation to redefine the future of
+              digital project delivery.
             </p>
             <p className="text-base leading-relaxed text-muted-foreground">
-              We are a Digital Engineering and BIM consultancy delivering intelligent,
-              coordinated, and automation-driven solutions for architects, consultants,
-              contractors, and developers. Our expertise helps transform complex
-              projects into efficient, accurate, and construction-ready outcomes.
+              We are a Digital Engineering and BIM consultancy delivering intelligent, coordinated,
+              and automation-driven solutions for architects, consultants, contractors, and
+              developers. Our expertise helps transform complex projects into efficient, accurate,
+              and construction-ready outcomes.
             </p>
           </div>
         </div>
@@ -128,8 +126,8 @@ function About() {
           <div className="hidden">{/* removed eyebrow */}</div>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Delivering projects using industry-leading BIM, digital engineering, and
-            construction technology platforms trusted by global AEC professionals.
+            Delivering projects using industry-leading BIM, digital engineering, and construction
+            technology platforms trusted by global AEC professionals.
           </p>
         </div>
 
@@ -137,7 +135,6 @@ function About() {
           <SoftwareGrid />
         </div>
       </section>
-
 
       {/* CLIENT TESTIMONIALS */}
       <section className="border-b border-border bg-surface py-20 md:py-28">
@@ -154,7 +151,8 @@ function About() {
           <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-dashed border-border bg-background px-8 py-16 text-center shadow-[var(--shadow-card)]">
             <p className="text-lg font-medium text-navy">Testimonials coming soon.</p>
             <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
-              We partner with global teams to deliver exceptional digital delivery results. Testimonials from our clients will be published here soon.
+              We partner with global teams to deliver exceptional digital delivery results.
+              Testimonials from our clients will be published here soon.
             </p>
           </div>
         </div>
@@ -183,17 +181,16 @@ function About() {
           </h2>
           <div className="mx-auto mt-8 max-w-3xl space-y-5 text-lg leading-relaxed text-primary-foreground/85 md:text-xl">
             <p>
-              Infinity BIM was established with the vision to transform project
-              delivery through BIM, intelligent BIM, digital engineering, and
-              innovation.
+              Infinity BIM was established with the vision to transform project delivery through
+              BIM, intelligent BIM, digital engineering, and innovation.
             </p>
             <p>
-              We believe strong partnerships, technical excellence, and continuous
-              improvement are the foundation of every successful project.
+              We believe strong partnerships, technical excellence, and continuous improvement are
+              the foundation of every successful project.
             </p>
             <p>
-              As we grow globally, our commitment remains the same — delivering
-              quality, reliability, and value to every client.
+              As we grow globally, our commitment remains the same — delivering quality,
+              reliability, and value to every client.
             </p>
           </div>
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.22em] text-sky">
@@ -219,8 +216,8 @@ function About() {
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
                 Infinity BIM provides comprehensive BIM, Digital Engineering, and Structural
-                Engineering solutions for architects, consultants, contractors, developers,
-                and EPC companies worldwide.
+                Engineering solutions for architects, consultants, contractors, developers, and EPC
+                companies worldwide.
               </AccordionContent>
             </AccordionItem>
 
@@ -229,9 +226,9 @@ function About() {
                 Which countries do you work in?
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                Infinity BIM supports projects across the USA, Canada, United Kingdom,
-                Australia, United Arab Emirates, Saudi Arabia, Qatar, Singapore, India,
-                and other international markets through remote digital collaboration.
+                Infinity BIM supports projects across the USA, Canada, United Kingdom, Australia,
+                United Arab Emirates, Saudi Arabia, Qatar, Singapore, India, and other international
+                markets through remote digital collaboration.
               </AccordionContent>
             </AccordionItem>
 
@@ -240,9 +237,9 @@ function About() {
                 How can I request a proposal?
               </AccordionTrigger>
               <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                Simply contact our team through the website, share your project drawings
-                or requirements, and we'll provide a tailored technical and commercial
-                proposal along with the project scope, timeline, and delivery plan.
+                Simply contact our team through the website, share your project drawings or
+                requirements, and we'll provide a tailored technical and commercial proposal along
+                with the project scope, timeline, and delivery plan.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
