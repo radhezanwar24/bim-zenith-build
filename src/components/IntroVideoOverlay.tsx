@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function IntroVideoOverlay() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [soundBlocked, setSoundBlocked] = useState(false);
 
   useEffect(() => {
@@ -12,7 +12,6 @@ export function IntroVideoOverlay() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    setVisible(true);
     video.muted = false;
     video.volume = 1;
 
@@ -57,6 +56,7 @@ export function IntroVideoOverlay() {
       <video
         ref={videoRef}
         src="/intro-video.mp4"
+        autoPlay
         playsInline
         preload="auto"
         className="h-full w-full object-cover"
