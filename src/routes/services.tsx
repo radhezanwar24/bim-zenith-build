@@ -1,5 +1,4 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
 
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 import { services } from "@/lib/services";
@@ -75,8 +74,10 @@ function Services() {
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <article
+              <Link
                 key={service.key}
+                to={service.path}
+                aria-label={`View ${service.name}`}
                 className="reveal group relative flex min-h-[360px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
                 style={{ transitionDelay: `${index * 80}ms` }}
               >
@@ -93,17 +94,7 @@ function Services() {
                 <p className="relative mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {service.cardDescription}
                 </p>
-                <Link
-                  to={service.path}
-                  className="group/link relative mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-navy px-5 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:bg-royal"
-                >
-                  Learn More
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover/link:translate-x-1"
-                    aria-hidden
-                  />
-                </Link>
-              </article>
+              </Link>
             );
           })}
         </div>
