@@ -1,7 +1,70 @@
 import { createFileRoute } from "@tanstack/react-router";
-
 import { SectionEyebrow } from "@/components/SectionEyebrow";
-import { services } from "@/lib/services";
+import {
+  Building2,
+  GitMerge,
+  DraftingCompass,
+  ClipboardCheck,
+  Calculator,
+  Box,
+  ScanLine,
+  Clock,
+  Coins,
+  Cog,
+} from "lucide-react";
+
+const coreServices = [
+  {
+    name: "Architectural, Structural & MEP BIM Modeling",
+    description: "LOD 100 - 500",
+    icon: Building2,
+  },
+  {
+    name: "Clash Detection & Multidisciplinary Coordination",
+    description: "Identify clashes early, reduce rework",
+    icon: GitMerge,
+  },
+  {
+    name: "Construction Documentation & Shop Drawings",
+    description: "Accurate, coordinated & construction-ready drawings",
+    icon: DraftingCompass,
+  },
+  {
+    name: "Permit Sets & GFC Documentation",
+    description: "Code-compliant drawings for approvals and submissions",
+    icon: ClipboardCheck,
+  },
+  {
+    name: "Quantity Take-Offs (BOQ) & Cost Estimation",
+    description: "Accurate quantities for better planning and budgeting",
+    icon: Calculator,
+  },
+  {
+    name: "Revit Family Creation & Parametric Content",
+    description: "Smart, parametric & industry-standard components",
+    icon: Box,
+  },
+  {
+    name: "Scan to BIM",
+    description: "Point Cloud to Intelligent BIM Models",
+    icon: ScanLine,
+  },
+  {
+    name: "4D BIM Scheduling",
+    description: "Time-based simulation for better planning and sequencing",
+    icon: Clock,
+  },
+  {
+    name: "5D BIM Cost Integration",
+    description: "Cost-aware models for better decision-making and control",
+    icon: Coins,
+  },
+  {
+    name: "BIM Coordination & Digital Project Management",
+    description: "End-to-end coordination and BIM project management support",
+    icon: Cog,
+  },
+];
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -59,38 +122,46 @@ function Services() {
       </section>
 
       <section className="container-page py-20 md:py-28">
-        <div className="mx-auto max-w-3xl text-center reveal">
-          <SectionEyebrow>Core BIM Disciplines</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
-            Explore Our Specialized Services
+        <div className="mx-auto max-w-4xl text-center reveal mb-16">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-[2px] w-12 bg-royal/40 rounded-full" />
+            <span className="text-xs font-bold uppercase tracking-[0.2em] text-royal font-display flex items-center gap-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-royal" />
+              Our Core Services
+              <span className="h-1.5 w-1.5 rounded-full bg-royal" />
+            </span>
+            <div className="h-[2px] w-12 bg-royal/40 rounded-full" />
+          </div>
+          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            Explore Our Specialized BIM Solutions
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            Four focused service lines, one coordinated delivery mindset: accurate models, reliable
-            documentation, and digital workflows built for real construction outcomes.
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground max-w-2xl mx-auto">
+            High-quality building information models, clash-free coordination, precise documentation,
+            and data-driven scheduling and costing built for real-world construction outcomes.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {services.map((service, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {coreServices.map((service, index) => {
             const Icon = service.icon;
             return (
               <article
-                key={service.key}
-                className="reveal group relative flex min-h-[360px] flex-col overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
-                style={{ transitionDelay: `${index * 80}ms` }}
+                key={service.name}
+                className="reveal group relative flex flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)]"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute -right-20 -top-20 h-48 w-48 rounded-full bg-gradient-to-br from-sky/25 to-royal/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
+                  className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-sky/10 to-royal/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <span className="relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-royal to-navy text-white shadow-sm transition-transform duration-500 group-hover:scale-110">
-                  <Icon className="h-7 w-7" aria-hidden />
-                </span>
-                <h3 className="relative mt-6 text-xl font-semibold leading-tight text-navy">
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface text-royal transition-all duration-500 group-hover:bg-royal group-hover:text-white group-hover:scale-110 shadow-sm border border-border group-hover:border-transparent">
+                  <Icon className="h-6 w-6" aria-hidden />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-navy mb-3 line-clamp-2 min-h-[40px] flex items-center justify-center font-display">
                   {service.name}
                 </h3>
-                <p className="relative mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {service.cardDescription}
+                <p className="text-xs leading-relaxed text-muted-foreground max-w-[200px] flex-1">
+                  {service.description}
                 </p>
               </article>
             );
