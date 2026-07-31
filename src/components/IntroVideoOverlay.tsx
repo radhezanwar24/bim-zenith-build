@@ -1,14 +1,23 @@
 import { Volume2, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+const INTRO_SEEN_KEY = "infinity-bim:intro-seen";
+const INTRO_REPLAY_EVENT = "infinity-bim:replay-intro";
+
 export function IntroVideoOverlay() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [soundBlocked, setSoundBlocked] = useState(false);
 
   useEffect(() => {
+    if (sessionStorage.getItem(INTRO_SEEN_KEY) !== "true") {
+      setVisible(true);
+    }
+  }, []);
+
+  useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !visible) return;
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -30,7 +39,7 @@ export function IntroVideoOverlay() {
     return () => {
       document.body.style.overflow = previousOverflow;
     };
-  }, []);
+  }, [visible]);
 
   useEffect(() => {
     if (!visible) {
@@ -38,7 +47,35 @@ export function IntroVideoOverlay() {
     }
   }, [visible]);
 
+  useEffect(() => {
+    const replayIntro = () => {
+      sessionStorage.removeItem(INTRO_SEEN_KEY);
+      setSoundBlocked(false);
+      setVisible(true);
+      requestAnimationFrame(() => {
+        const video = videoRef.current;
+        if (!video) return;
+        video.currentTime = 0;
+        video.muted = false;
+        video.volume = 1;
+        void video.play().catch(() => {
+          setSoundBlocked(true);
+          video.muted = true;
+          void video.play().catch(() => undefined);
+        });
+      });
+    };
+
+    window.addEventListener(INTRO_REPLAY_EVENT, replayIntro);
+    return () => window.removeEventListener(INTRO_REPLAY_EVENT, replayIntro);
+  }, []);
+
   if (!visible) return null;
+
+  const closeIntro = () => {
+    sessionStorage.setItem(INTRO_SEEN_KEY, "true");
+    setVisible(false);
+  };
 
   const playWithSound = async () => {
     const video = videoRef.current;
@@ -60,12 +97,12 @@ export function IntroVideoOverlay() {
         playsInline
         preload="auto"
         className="h-full w-full object-contain md:object-cover"
-        onEnded={() => setVisible(false)}
+        onEnded={closeIntro}
       />
 
       <button
         type="button"
-        onClick={() => setVisible(false)}
+        onClick={closeIntro}
         className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/45 text-white backdrop-blur transition-colors hover:bg-white/15"
         aria-label="Skip intro video"
       >

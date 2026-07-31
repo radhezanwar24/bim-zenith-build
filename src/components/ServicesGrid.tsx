@@ -1,14 +1,37 @@
 import {
-  Box, PencilRuler, ScanLine, Wrench, Building2, FileText,
-  GitMerge, Search, Cloud, Cog, Calculator, Layers,
+  Box,
+  PencilRuler,
+  ScanLine,
+  Wrench,
+  Building2,
+  FileText,
+  GitMerge,
+  Search,
+  Cloud,
+  Cog,
+  Calculator,
+  Layers,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
-  { icon: Box, title: "Building Information Modeling", desc: "Intelligent 3D models across all disciplines." },
-  { icon: PencilRuler, title: "CAD Drafting", desc: "Precise, standards-compliant drawing production." },
+  {
+    icon: Box,
+    title: "Building Information Modeling",
+    desc: "Intelligent 3D models across all disciplines.",
+  },
+  {
+    icon: PencilRuler,
+    title: "CAD Drafting",
+    desc: "Precise, standards-compliant drawing production.",
+  },
   { icon: ScanLine, title: "Scan to BIM", desc: "Reality capture converted into accurate BIM." },
   { icon: Wrench, title: "MEP BIM", desc: "Coordinated mechanical, electrical, plumbing models." },
-  { icon: Building2, title: "Structural BIM", desc: "Detailed structural modeling and documentation." },
+  {
+    icon: Building2,
+    title: "Structural BIM",
+    desc: "Detailed structural modeling and documentation.",
+  },
   { icon: FileText, title: "Construction Documentation", desc: "Construction-ready drawing sets." },
   { icon: GitMerge, title: "BIM Coordination", desc: "Multi-discipline coordination workflows." },
   { icon: Search, title: "Clash Detection", desc: "Proactive interference resolution." },
@@ -22,10 +45,14 @@ export function ServicesGrid() {
   return (
     <ul role="list" className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {services.map(({ icon: Icon, title, desc }, i) => (
-        <li
+        <motion.li
           key={title}
-          className="reveal group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
-          style={{ transitionDelay: `${(i % 3) * 60}ms` }}
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.75, delay: (i % 3) * 0.07, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -6 }}
+          className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
         >
           <div
             aria-hidden
@@ -36,7 +63,7 @@ export function ServicesGrid() {
           </span>
           <h3 className="relative mt-5 text-lg font-semibold text-navy">{title}</h3>
           <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-        </li>
+        </motion.li>
       ))}
     </ul>
   );

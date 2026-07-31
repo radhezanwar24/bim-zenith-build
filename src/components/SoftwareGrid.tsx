@@ -9,6 +9,7 @@ import swTekla from "@/assets/sw-tekla.png";
 import swStaadpro from "@/assets/sw-staadpro.jpg";
 import swBluebeam from "@/assets/sw-bluebeam.jpg";
 import swDynamo from "@/assets/sw-dynamo.png";
+import { motion } from "framer-motion";
 
 type Software = {
   name: string;
@@ -49,8 +50,12 @@ export function SoftwareGrid() {
       className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
     >
       {items.map((s) => (
-        <li
+        <motion.li
           key={s.name}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className={
             s.name === "Bluebeam"
               ? "col-span-2 mx-auto w-full max-w-[18rem] sm:col-span-1 sm:max-w-none lg:col-start-3"
@@ -96,7 +101,7 @@ export function SoftwareGrid() {
               {s.short ?? s.name}
             </span>
           </div>
-        </li>
+        </motion.li>
       ))}
     </ul>
   );

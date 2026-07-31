@@ -10,6 +10,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
+import { MotionReveal } from "@/components/MotionReveal";
 import { StatCounter } from "@/components/StatCounter";
 import { ServicesGrid } from "@/components/ServicesGrid";
 import { IndustriesGrid } from "@/components/IndustriesGrid";
@@ -174,16 +175,36 @@ function Home() {
       </section>
 
       {/* ========== KEY MILESTONES ========== */}
-      <section className="border-y border-border bg-surface py-24 md:py-32">
+      <section className="relative overflow-hidden border-y border-border bg-surface py-24 md:py-32">
+        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-45" aria-hidden />
+        <div
+          className="pointer-events-none absolute left-[8%] top-16 h-28 w-28 rounded-[2rem] border border-royal/15 bg-white/40 rotate-12"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute bottom-12 right-[10%] h-40 w-40 rounded-full border border-sky/25 bg-sky/10 blur-[1px]"
+          aria-hidden
+        />
         <div className="container-page grid gap-8 md:grid-cols-2">
           {/* Left dark card */}
-          <div className="reveal reveal-left relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12">
+          <MotionReveal
+            direction="left"
+            className="relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
+          >
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
               style={{
                 background:
                   "radial-gradient(28rem 14rem at 20% 0%, oklch(0.78 0.10 240 / 0.35), transparent 60%), radial-gradient(28rem 14rem at 100% 100%, oklch(0.52 0.19 260 / 0.5), transparent 60%)",
               }}
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-0 bg-blueprint opacity-20"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute right-8 top-10 h-20 w-20 rounded-2xl border border-white/15 rotate-12"
               aria-hidden
             />
             <div className="relative">
@@ -201,18 +222,29 @@ function Home() {
                   "International Quality Standards",
                   "Dedicated BIM Specialists",
                   "Automation-Driven Workflows",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sky" aria-hidden />
+                ].map((item, index) => (
+                  <li key={item} className="relative flex items-start gap-4">
+                    {index < 5 && (
+                      <span
+                        className="absolute left-[9px] top-7 h-[calc(100%+0.65rem)] w-px bg-gradient-to-b from-sky/45 to-white/10"
+                        aria-hidden
+                      />
+                    )}
+                    <span className="relative z-10 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-sky/50 bg-navy shadow-[0_0_0_5px_rgba(255,255,255,0.04)]">
+                      <CheckCircle2 className="h-4 w-4 text-sky" aria-hidden />
+                    </span>
                     <span className="text-base text-primary-foreground/90">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
+          </MotionReveal>
 
           {/* Right light card */}
-          <div className="reveal reveal-right relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12">
+          <MotionReveal
+            direction="right"
+            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12"
+          >
             <div
               className="bg-blueprint pointer-events-none absolute inset-0 opacity-40"
               aria-hidden
@@ -258,7 +290,7 @@ function Home() {
                 />
               </Link>
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </section>
 

@@ -1,7 +1,15 @@
 import {
-  HeartPulse, Building, Home, Factory, TrainFront, Hotel,
-  GraduationCap, Server, Landmark,
+  HeartPulse,
+  Building,
+  Home,
+  Factory,
+  TrainFront,
+  Hotel,
+  GraduationCap,
+  Server,
+  Landmark,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const industries = [
   { icon: HeartPulse, label: "Healthcare", image: "/sectors/healthcare.jpg" },
@@ -19,10 +27,14 @@ export function IndustriesGrid() {
   return (
     <ul role="list" className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {industries.map(({ icon: Icon, label, image }, i) => (
-        <li
+        <motion.li
           key={label}
-          className="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
-          style={{ transitionDelay: `${(i % 3) * 50}ms` }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.18 }}
+          transition={{ duration: 0.75, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+          whileHover={{ y: -6 }}
+          className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
         >
           {/* Sector Image */}
           <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
@@ -45,9 +57,8 @@ export function IndustriesGrid() {
               {label}
             </span>
           </div>
-        </li>
+        </motion.li>
       ))}
     </ul>
   );
 }
-

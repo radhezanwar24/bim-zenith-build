@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import { MotionReveal } from "@/components/MotionReveal";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 import {
   Building2,
@@ -122,7 +124,7 @@ function Services() {
       </section>
 
       <section className="container-page py-20 md:py-28">
-        <div className="mx-auto max-w-4xl text-center reveal mb-16">
+        <MotionReveal className="mx-auto mb-16 max-w-4xl text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[2px] w-12 bg-royal/40 rounded-full" />
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-royal font-display flex items-center gap-2">
@@ -136,19 +138,24 @@ function Services() {
             Explore Our Specialized BIM Solutions
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground max-w-2xl mx-auto">
-            High-quality building information models, clash-free coordination, precise documentation,
-            and data-driven scheduling and costing built for real-world construction outcomes.
+            High-quality building information models, clash-free coordination, precise
+            documentation, and data-driven scheduling and costing built for real-world construction
+            outcomes.
           </p>
-        </div>
+        </MotionReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {coreServices.map((service, index) => {
             const Icon = service.icon;
             return (
-              <article
+              <motion.article
                 key={service.name}
-                className="reveal group relative flex flex-col items-center text-center overflow-hidden rounded-3xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-2 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)]"
-                style={{ transitionDelay: `${index * 50}ms` }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.16 }}
+                transition={{ duration: 0.75, delay: (index % 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -8 }}
+                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border border-border bg-card p-6 text-center shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)]"
               >
                 <div
                   aria-hidden
@@ -163,7 +170,7 @@ function Services() {
                 <p className="text-xs leading-relaxed text-muted-foreground max-w-[200px] flex-1">
                   {service.description}
                 </p>
-              </article>
+              </motion.article>
             );
           })}
         </div>

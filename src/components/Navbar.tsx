@@ -3,6 +3,8 @@ import { useEffect, useState, type MouseEvent } from "react";
 
 import logo from "@/assets/logo.png";
 
+const INTRO_REPLAY_EVENT = "infinity-bim:replay-intro";
+
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Us" },
@@ -58,6 +60,7 @@ export function Navbar() {
             if (pathname === "/") {
               e.preventDefault();
               window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+              window.dispatchEvent(new Event(INTRO_REPLAY_EVENT));
             }
           }}
           className="flex items-center gap-2"
