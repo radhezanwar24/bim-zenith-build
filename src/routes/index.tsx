@@ -63,14 +63,7 @@ function Home() {
                 "linear-gradient(90deg, oklch(0.20 0.07 260 / 0.95) 0%, oklch(0.20 0.07 260 / 0.72) 45%, oklch(0.20 0.07 260 / 0.15) 75%, transparent 100%)",
             }}
           />
-          {/* Blueprint grid overlay */}
-          <div className="absolute inset-0 bg-blueprint opacity-40" />
-          {/* Floating architectural accents */}
-          <div className="absolute left-[8%] top-1/3 h-40 w-40 rounded-full bg-sky/20 blur-3xl animate-float-slow" />
-          <div
-            className="absolute right-[15%] bottom-1/4 h-56 w-56 rounded-full bg-royal/25 blur-3xl animate-float-slow"
-            style={{ animationDelay: "-3s" }}
-          />
+          <div className="absolute inset-0 bg-blueprint opacity-30" />
         </div>
 
         <div className="container-page relative flex min-h-[92vh] items-center pt-32 pb-24 md:min-h-[95vh] md:pt-40 md:pb-32">
@@ -140,11 +133,6 @@ function Home() {
                 aria-hidden
               />
             </div>
-            {/* Decorative accent */}
-            <div
-              className="pointer-events-none absolute -z-10 h-64 w-64 -translate-x-8 translate-y-8 rounded-full bg-sky/20 blur-3xl"
-              aria-hidden
-            />
           </div>
 
           <div className="reveal reveal-right md:col-span-6 md:pl-6">
@@ -176,15 +164,7 @@ function Home() {
 
       {/* ========== KEY MILESTONES ========== */}
       <section className="relative overflow-hidden border-y border-border bg-surface py-24 md:py-32">
-        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-45" aria-hidden />
-        <div
-          className="pointer-events-none absolute left-[8%] top-16 h-28 w-28 rounded-[2rem] border border-royal/15 bg-white/40 rotate-12"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute bottom-12 right-[10%] h-40 w-40 rounded-full border border-sky/25 bg-sky/10 blur-[1px]"
-          aria-hidden
-        />
+        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-35" aria-hidden />
         <div className="container-page grid gap-8 md:grid-cols-2">
           {/* Left dark card */}
           <MotionReveal
@@ -201,10 +181,6 @@ function Home() {
             />
             <div
               className="pointer-events-none absolute inset-0 bg-blueprint opacity-20"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute right-8 top-10 h-20 w-20 rounded-2xl border border-white/15 rotate-12"
               aria-hidden
             />
             <div className="relative">

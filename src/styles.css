@@ -83,7 +83,15 @@
   }
 
   body {
-    background-color: var(--color-background);
+    background:
+      radial-gradient(70rem 42rem at 15% 8%, oklch(0.32 0.12 255 / 0.45), transparent 62%),
+      radial-gradient(60rem 36rem at 88% 4%, oklch(0.48 0.17 260 / 0.3), transparent 64%),
+      linear-gradient(
+        135deg,
+        oklch(0.13 0.055 260) 0%,
+        oklch(0.19 0.07 258) 46%,
+        oklch(0.1 0.035 250) 100%
+      );
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
@@ -189,15 +197,15 @@
   transform: none;
 }
 
-/* Blueprint / grid background overlay */
+/* Premium atmospheric wash used where older blueprint overlays were applied. */
 @utility bg-blueprint {
-  background-image:
-    linear-gradient(to right, oklch(0.52 0.19 260 / 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.52 0.19 260 / 0.06) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background:
+    linear-gradient(135deg, oklch(0.78 0.1 240 / 0.06), transparent 44%),
+    linear-gradient(315deg, oklch(0.52 0.19 260 / 0.08), transparent 50%);
+  background-size: auto;
 }
 
-/* Floating slow drift for background graphics */
+/* Retained for legacy classes, but background motion now comes from particles. */
 @keyframes floatY {
   0%,
   100% {
@@ -208,7 +216,7 @@
   }
 }
 .animate-float-slow {
-  animation: floatY 8s ease-in-out infinite;
+  animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

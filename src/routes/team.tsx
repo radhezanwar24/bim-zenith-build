@@ -33,15 +33,13 @@ function Team() {
 
   return (
     <>
-      <section className="relative isolate overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-50" aria-hidden />
+      <section className="relative isolate overflow-hidden bg-transparent text-primary-foreground">
         <div
-          className="pointer-events-none absolute left-[10%] top-[22%] h-40 w-40 rounded-[2rem] border border-royal/15 bg-sky/10 rotate-12 animate-float-slow"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,oklch(0.12_0.055_260/.9),oklch(0.18_0.07_258/.72)_52%,oklch(1_0_0/.96)_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute right-[14%] top-[28%] h-56 w-56 rounded-full border border-sky/20 bg-royal/10 blur-sm animate-float-slow"
-          style={{ animationDelay: "-3s" }}
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(70rem_34rem_at_50%_34%,oklch(0.52_0.19_260/.28),transparent_64%)]"
           aria-hidden
         />
         <div
@@ -50,11 +48,11 @@ function Team() {
         />
         <div className="container-page relative flex min-h-[calc(100vh-5rem)] items-center justify-center py-20 md:py-28">
           <MotionReveal className="mx-auto max-w-4xl text-center">
-            <span className="mb-6 inline-flex items-center rounded-full border border-royal/15 bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-royal shadow-sm backdrop-blur">
+            <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
               Meet Our Team
             </span>
-            <h1 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
-              Meet the Leadership Behind <span className="text-royal">Infinity BIM</span>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+              Meet the Leadership Behind <span className="text-sky">Infinity BIM</span>
             </h1>
           </MotionReveal>
         </div>
