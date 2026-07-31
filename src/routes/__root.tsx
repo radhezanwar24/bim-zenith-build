@@ -15,7 +15,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { IntroVideoOverlay } from "@/components/IntroVideoOverlay";
 import { RevealProvider } from "@/components/RevealProvider";
-import { ParticleBackground } from "@/components/ParticleBackground";
 
 function NotFoundComponent() {
   return (
@@ -134,8 +133,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ParticleBackground />
-      <div className="relative z-10 flex min-h-dvh flex-col">
+      <div className="flex min-h-dvh flex-col">
         <IntroVideoOverlay />
         <Navbar />
         <main id="main" className="flex-1">
