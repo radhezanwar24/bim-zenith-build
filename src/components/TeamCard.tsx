@@ -1,32 +1,41 @@
 import type { Member } from "@/lib/team";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Linkedin } from "lucide-react";
 
 type TeamCardProps = {
   member: Member;
-  active: boolean;
-  dimmed: boolean;
+  variant?: "compact" | "expanded";
   onActivate: () => void;
   onDeactivate: () => void;
 };
 
-export function TeamCard({ member, active, dimmed, onActivate, onDeactivate }: TeamCardProps) {
+function QualificationLines({ credentials }: { credentials: string }) {
+  return (
+    <div className="mt-3 space-y-1.5 text-xs uppercase leading-relaxed tracking-wider text-muted-foreground">
+      {credentials.split("|").map((item) => (
+        <p key={item.trim()}>{item.trim()}</p>
+      ))}
+    </div>
+  );
+}
+
+export function TeamCard({ member, variant = "compact", onActivate, onDeactivate }: TeamCardProps) {
+  const expanded = variant === "expanded";
+
   return (
     <motion.article
       layout
       onMouseEnter={onActivate}
       onPointerEnter={onActivate}
       onFocus={onActivate}
-      onMouseLeave={onDeactivate}
-      onPointerLeave={onDeactivate}
-      onBlur={onDeactivate}
-      animate={{
-        opacity: dimmed ? 0.18 : 1,
-        filter: dimmed ? "grayscale(0.65)" : "grayscale(0)",
-      }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className={`group relative flex h-[36rem] flex-col overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-card)] transition-colors duration-500 lg:h-[34rem] ${
-        active ? "border-royal/35" : "border-border"
+      onMouseLeave={expanded ? onDeactivate : undefined}
+      onPointerLeave={expanded ? onDeactivate : undefined}
+      onBlur={expanded ? onDeactivate : undefined}
+      transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+      className={`group relative overflow-hidden rounded-2xl border bg-card shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
+        expanded
+          ? "grid min-h-[32rem] grid-cols-1 md:grid-cols-[minmax(18rem,0.82fr)_minmax(0,1.18fr)]"
+          : "flex h-[34rem] flex-col"
       }`}
     >
       <a
@@ -34,29 +43,40 @@ export function TeamCard({ member, active, dimmed, onActivate, onDeactivate }: T
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Open ${member.name}'s LinkedIn profile`}
-        className="relative block h-72 w-full overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 lg:h-80"
+        className={`relative block overflow-hidden bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
+          expanded ? "min-h-[24rem] md:h-full" : "h-72 lg:h-80"
+        }`}
       >
         <motion.img
           src={member.photo}
           alt={`Portrait of ${member.name}, ${member.role}`}
           loading="lazy"
-          className="h-full w-full object-cover"
-          animate={{ scale: active ? 1.045 : 1 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          className="h-full w-full object-contain"
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         />
         <div
           aria-hidden
-          className={`pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent transition-opacity duration-500 ${
-            active ? "opacity-100" : "opacity-0"
-          }`}
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy/35 via-navy/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
         />
       </a>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className={`flex flex-1 flex-col ${expanded ? "justify-center p-8 md:p-10" : "p-6"}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <h3 className="text-lg font-semibold text-navy">{member.name}</h3>
-            <p className="mt-1 text-sm font-medium leading-snug text-royal">{member.role}</p>
+            <h3
+              className={`font-semibold text-navy ${
+                expanded ? "text-3xl tracking-tight md:text-4xl" : "text-lg"
+              }`}
+            >
+              {member.name}
+            </h3>
+            <p
+              className={`mt-2 font-medium leading-snug text-royal ${
+                expanded ? "text-base md:text-lg" : "text-sm"
+              }`}
+            >
+              {member.role}
+            </p>
           </div>
           <a
             href={member.linkedin}
@@ -68,24 +88,21 @@ export function TeamCard({ member, active, dimmed, onActivate, onDeactivate }: T
             <Linkedin className="h-4 w-4" aria-hidden />
           </a>
         </div>
-        <p className="mt-2 text-xs uppercase leading-relaxed tracking-wider text-muted-foreground">
-          {member.credentials}
-        </p>
 
-        <AnimatePresence initial={false}>
-          {active && (
-            <motion.p
-              key="bio"
-              initial={{ opacity: 0, y: 14, height: 0 }}
-              animate={{ opacity: 1, y: 0, height: "auto" }}
-              exit={{ opacity: 0, y: 8, height: 0 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="mt-5 overflow-hidden text-sm leading-relaxed text-muted-foreground"
-            >
-              {member.bio}
-            </motion.p>
-          )}
-        </AnimatePresence>
+        <QualificationLines credentials={member.credentials} />
+
+        {expanded && (
+          <motion.p
+            key="bio"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-8 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg"
+          >
+            {member.bio}
+          </motion.p>
+        )}
       </div>
     </motion.article>
   );

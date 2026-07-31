@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 import { MotionReveal } from "@/components/MotionReveal";
@@ -45,32 +45,46 @@ function Team() {
         </p>
       </MotionReveal>
 
-      <motion.div
-        className="mt-16 grid gap-6 sm:grid-cols-2 lg:flex lg:items-stretch"
-        onMouseLeave={() => setActiveMember(null)}
-      >
-        {team.map((m, i) => (
-          <motion.div
-            key={m.name}
-            layout
-            className="min-w-0 lg:basis-0"
-            animate={{
-              flexGrow: activeMember === m.name ? 2.45 : 1,
-              flexShrink: activeMember && activeMember !== m.name ? 1.2 : 1,
-            }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <MotionReveal delay={i * 0.08}>
+      <motion.div layout className="mt-16" onMouseLeave={() => setActiveMember(null)}>
+        <AnimatePresence mode="wait">
+          {activeMember ? (
+            <motion.div
+              key={activeMember}
+              layout
+              initial={{ opacity: 0, y: 18, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 12, scale: 0.985 }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            >
               <TeamCard
-                member={m}
-                active={activeMember === m.name}
-                dimmed={activeMember !== null && activeMember !== m.name}
-                onActivate={() => setActiveMember(m.name)}
+                member={team.find((m) => m.name === activeMember) ?? team[0]}
+                variant="expanded"
+                onActivate={() => setActiveMember(activeMember)}
                 onDeactivate={() => setActiveMember(null)}
               />
-            </MotionReveal>
-          </motion.div>
-        ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="compact-grid"
+              layout
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+            >
+              {team.map((m, i) => (
+                <MotionReveal key={m.name} delay={i * 0.08}>
+                  <TeamCard
+                    member={m}
+                    onActivate={() => setActiveMember(m.name)}
+                    onDeactivate={() => setActiveMember(null)}
+                  />
+                </MotionReveal>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </section>
   );
