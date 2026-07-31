@@ -94,14 +94,14 @@ function About() {
 
       <section className="border-y border-border bg-surface">
         <div className="container-page py-20">
-          <MotionReveal className="mx-auto mb-16 max-w-4xl text-center">
+          <MotionReveal className="mx-auto mb-16 max-w-4xl text-left">
             <div>
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Transforming Projects with{" "}
                 <span className="text-royal">Intelligent Technology</span>
               </h2>
             </div>
-            <div className="mx-auto mt-7 max-w-3xl space-y-5">
+            <div className="mt-7 max-w-3xl space-y-5">
               <p className="text-lg leading-relaxed text-muted-foreground">
                 We integrate advanced BIM technologies, AI powered automation, digital engineering
                 workflows, and intelligent collaboration tools to deliver faster, smarter, and more
