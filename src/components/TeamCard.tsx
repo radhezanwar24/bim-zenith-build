@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 type TeamCardProps = {
   member: Member;
   expanded: boolean;
+  variant?: "compact" | "expanded";
   onToggle: () => void;
   onClose: () => void;
 };
@@ -22,9 +23,16 @@ function QualificationLines({ credentials }: { credentials: string }) {
   );
 }
 
-export function TeamCard({ member, expanded, onToggle, onClose }: TeamCardProps) {
+export function TeamCard({
+  member,
+  expanded,
+  variant = "compact",
+  onToggle,
+  onClose,
+}: TeamCardProps) {
   const imageRef = useRef<HTMLImageElement>(null);
   const [imageReady, setImageReady] = useState(false);
+  const isWide = variant === "expanded";
 
   useEffect(() => {
     setImageReady(false);
@@ -38,7 +46,11 @@ export function TeamCard({ member, expanded, onToggle, onClose }: TeamCardProps)
     <motion.article
       layout
       transition={{ duration: 0.45, ease: premiumEase }}
-      className="group relative flex h-full min-h-[33rem] flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
+      className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
+        isWide
+          ? "grid min-h-[31rem] grid-cols-1 md:grid-cols-[minmax(18rem,0.85fr)_minmax(0,1.15fr)]"
+          : "flex h-[34rem] flex-col"
+      }`}
     >
       {expanded && (
         <button
@@ -56,7 +68,9 @@ export function TeamCard({ member, expanded, onToggle, onClose }: TeamCardProps)
         onClick={onToggle}
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
-        className="relative block h-80 overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2"
+        className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
+          isWide ? "min-h-[24rem] md:h-full" : "h-80"
+        }`}
       >
         <motion.div
           aria-hidden
@@ -79,19 +93,27 @@ export function TeamCard({ member, expanded, onToggle, onClose }: TeamCardProps)
         />
       </button>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className={`flex flex-1 flex-col ${isWide ? "justify-center p-8 md:p-10" : "p-6"}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-lg font-semibold text-navy transition-colors hover:text-royal"
+              className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
+                isWide ? "text-3xl tracking-tight md:text-4xl" : "text-lg"
+              }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
             >
               {member.name}
             </a>
-            <p className="mt-2 text-sm font-medium leading-snug text-royal">{member.role}</p>
+            <p
+              className={`mt-2 font-medium leading-snug text-royal ${
+                isWide ? "text-base md:text-lg" : "text-sm"
+              }`}
+            >
+              {member.role}
+            </p>
           </div>
           <a
             href={member.linkedin}
@@ -114,7 +136,9 @@ export function TeamCard({ member, expanded, onToggle, onClose }: TeamCardProps)
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: 6 }}
               transition={{ duration: 0.42, ease: premiumEase }}
-              className="mt-5 overflow-hidden text-sm leading-relaxed text-muted-foreground"
+              className={`overflow-hidden leading-relaxed text-muted-foreground ${
+                isWide ? "mt-8 text-base md:text-lg" : "mt-5 text-sm"
+              }`}
             >
               {member.bio}
             </motion.p>
