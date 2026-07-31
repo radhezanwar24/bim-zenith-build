@@ -15,8 +15,11 @@ export function TeamCard({ member, active, dimmed, onActivate, onDeactivate }: T
     <motion.article
       layout
       onMouseEnter={onActivate}
+      onPointerEnter={onActivate}
       onFocus={onActivate}
       onMouseLeave={onDeactivate}
+      onPointerLeave={onDeactivate}
+      onBlur={onDeactivate}
       animate={{
         opacity: dimmed ? 0.18 : 1,
         filter: dimmed ? "grayscale(0.65)" : "grayscale(0)",
