@@ -1,5 +1,56 @@
 import { useEffect } from "react";
 
+const AUTO_REVEAL_SELECTOR = [
+  "main section",
+  "main h1",
+  "main h2",
+  "main h3",
+  "main p",
+  "main img",
+  "main article",
+  "main li",
+  "main a[class*='rounded']",
+  "main button",
+  "main svg",
+  "footer img",
+  "footer p",
+  "footer h3",
+  "footer li",
+  "footer a",
+].join(",");
+
+function prepareRevealElements() {
+  const candidates = document.querySelectorAll<HTMLElement>(AUTO_REVEAL_SELECTOR);
+  let groupIndex = 0;
+
+  candidates.forEach((el) => {
+    if (
+      el.closest("[data-no-reveal]") ||
+      el.closest(".fixed") ||
+      el.classList.contains("reveal") ||
+      el.classList.contains("reveal-auto")
+    ) {
+      return;
+    }
+
+    el.classList.add("reveal-auto");
+
+    const parent = el.parentElement;
+    const siblingIndex = parent
+      ? Array.from(parent.children)
+          .filter((child) => (child as HTMLElement).matches?.("article, li, a, button"))
+          .indexOf(el)
+      : -1;
+    const delayIndex = siblingIndex >= 0 ? siblingIndex % 6 : groupIndex++ % 4;
+
+    el.style.setProperty("--reveal-delay", `${Math.min(delayIndex * 70, 360)}ms`);
+
+    if (el.matches("img, svg")) {
+      el.classList.add("reveal-soft-scale");
+    }
+  });
+}
+
 /**
  * Adds an IntersectionObserver that toggles a `is-visible` class on any element
  * carrying the `.reveal` class the first time it enters the viewport.
@@ -10,7 +61,11 @@ export function useReveal(key?: unknown) {
     if (typeof window === "undefined") return;
 
     const run = () => {
-      const els = document.querySelectorAll<HTMLElement>(".reveal:not(.is-visible)");
+      prepareRevealElements();
+
+      const els = document.querySelectorAll<HTMLElement>(
+        ".reveal:not(.is-visible), .reveal-auto:not(.is-visible)",
+      );
       if (!els.length) return () => {};
 
       if (!("IntersectionObserver" in window)) {
@@ -36,7 +91,7 @@ export function useReveal(key?: unknown) {
       // Some mobile browsers can delay observer callbacks during first paint.
       const timeout = window.setTimeout(() => {
         document
-          .querySelectorAll<HTMLElement>(".reveal:not(.is-visible)")
+          .querySelectorAll<HTMLElement>(".reveal:not(.is-visible), .reveal-auto:not(.is-visible)")
           .forEach((el) => el.classList.add("is-visible"));
       }, 700);
 

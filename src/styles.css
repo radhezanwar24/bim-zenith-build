@@ -132,17 +132,30 @@
 
 /* Scroll-triggered reveal — attach `.reveal` to any element; the
    useReveal() hook toggles `.is-visible` once it enters the viewport. */
-.reveal {
+.reveal,
+.reveal-auto {
   opacity: 0;
   transform: translateY(22px);
   transition:
-    opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  filter: blur(4px);
   will-change: opacity, transform;
 }
-.reveal.is-visible {
+.reveal.is-visible,
+.reveal-auto.is-visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-soft-scale {
+  transform: translateY(18px) scale(0.985);
+}
+
+.reveal-soft-scale.is-visible {
+  transform: translateY(0) scale(1);
 }
 
 /* Smooth cross-route fade */
@@ -200,6 +213,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal,
+  .reveal-auto,
   .page-transition,
   .fade-up,
   .animate-float-slow {
@@ -212,16 +226,28 @@
 
 @media (max-width: 767px) {
   .reveal,
+  .reveal-auto,
   .reveal-left,
   .reveal-right,
   .reveal-scale {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    transform: translateY(14px);
+    transition:
+      opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      filter 0.65s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
   }
 
-  .page-transition,
-  .fade-up {
+  .reveal.is-visible,
+  .reveal-auto.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible,
+  .reveal-scale.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: blur(0) !important;
+  }
+
+  .page-transition {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;

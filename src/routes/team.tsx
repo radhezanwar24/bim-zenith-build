@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import { useState } from "react";
 
 import { MotionReveal } from "@/components/MotionReveal";
@@ -45,47 +45,62 @@ function Team() {
         </p>
       </MotionReveal>
 
-      <motion.div layout className="mt-16" onMouseLeave={() => setActiveMember(null)}>
-        <AnimatePresence mode="wait">
-          {activeMember ? (
-            <motion.div
-              key={activeMember}
-              layout
-              initial={{ opacity: 0, y: 18, scale: 0.985 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 12, scale: 0.985 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <TeamCard
-                member={team.find((m) => m.name === activeMember) ?? team[0]}
-                variant="expanded"
-                onActivate={() => setActiveMember(activeMember)}
-                onDeactivate={() => setActiveMember(null)}
-              />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="compact-grid"
-              layout
-              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 12 }}
-              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            >
-              {team.map((m, i) => (
-                <MotionReveal key={m.name} delay={i * 0.08}>
-                  <TeamCard
-                    member={m}
-                    onActivate={() => setActiveMember(m.name)}
-                    onDeactivate={() => setActiveMember(null)}
-                  />
-                </MotionReveal>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+      <LayoutGroup id="team-cards">
+        <motion.div layout className="mt-16" onMouseLeave={() => setActiveMember(null)}>
+          <AnimatePresence mode="sync">
+            {activeMember ? (
+              <motion.div
+                key={activeMember}
+                layout
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <TeamCard
+                  member={team.find((m) => m.name === activeMember) ?? team[0]}
+                  variant="expanded"
+                  layoutId={`team-card-${activeMember}`}
+                  onActivate={() => setActiveMember(activeMember)}
+                  onDeactivate={() => setActiveMember(null)}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="compact-grid"
+                layout
+                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 18, scale: 0.98 }}
+                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {team.map((m, i) => (
+                  <motion.div
+                    key={m.name}
+                    layout
+                    exit={{
+                      opacity: activeMember === m.name ? 1 : 0,
+                      scale: activeMember === m.name ? 1 : 0.94,
+                      y: activeMember === m.name ? 0 : 14,
+                    }}
+                    transition={{ duration: 0.72, delay: activeMember === m.name ? 0 : i * 0.04 }}
+                  >
+                    <MotionReveal delay={i * 0.08}>
+                      <TeamCard
+                        member={m}
+                        layoutId={`team-card-${m.name}`}
+                        onActivate={() => setActiveMember(m.name)}
+                        onDeactivate={() => setActiveMember(null)}
+                      />
+                    </MotionReveal>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </LayoutGroup>
     </section>
   );
 }
