@@ -30,6 +30,7 @@ export const Route = createFileRoute("/team")({
 
 function Team() {
   const [activeMember, setActiveMember] = useState<string | null>(null);
+  const activeProfile = team.find((m) => m.name === activeMember) ?? null;
 
   return (
     <section className="container-page py-20 md:py-28">
@@ -46,11 +47,11 @@ function Team() {
       </MotionReveal>
 
       <LayoutGroup id="team-cards">
-        <motion.div layout className="mt-16" onMouseLeave={() => setActiveMember(null)}>
+        <motion.div layout className="mt-16">
           <AnimatePresence mode="sync">
-            {activeMember ? (
+            {activeProfile ? (
               <motion.div
-                key={activeMember}
+                key={activeProfile.name}
                 layout
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -58,11 +59,11 @@ function Team() {
                 transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
               >
                 <TeamCard
-                  member={team.find((m) => m.name === activeMember) ?? team[0]}
+                  member={activeProfile}
                   variant="expanded"
-                  layoutId={`team-card-${activeMember}`}
-                  onActivate={() => setActiveMember(activeMember)}
-                  onDeactivate={() => setActiveMember(null)}
+                  layoutId={`team-card-${activeProfile.name}`}
+                  onToggle={() => setActiveMember(null)}
+                  onClose={() => setActiveMember(null)}
                 />
               </motion.div>
             ) : (
@@ -90,8 +91,8 @@ function Team() {
                       <TeamCard
                         member={m}
                         layoutId={`team-card-${m.name}`}
-                        onActivate={() => setActiveMember(m.name)}
-                        onDeactivate={() => setActiveMember(null)}
+                        onToggle={() => setActiveMember(m.name)}
+                        onClose={() => setActiveMember(null)}
                       />
                     </MotionReveal>
                   </motion.div>
