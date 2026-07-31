@@ -22,7 +22,12 @@ export function Footer() {
 
       <div className="container-page relative grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src={logo} alt="Infinity BIM" className="h-20 w-auto brightness-0 invert" />
+          <img
+            src={logo}
+            alt="Infinity BIM"
+            className="h-20 w-auto opacity-95"
+            style={{ filter: "brightness(0) invert(1)" }}
+          />
           <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
             Infinity BIM is a global Digital Engineering and BIM consultancy delivering intelligent,
             coordinated, and automation-driven solutions for architects, consultants, contractors,
