@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 
 import { MotionReveal } from "@/components/MotionReveal";
@@ -30,7 +30,6 @@ export const Route = createFileRoute("/team")({
 
 function Team() {
   const [activeMember, setActiveMember] = useState<string | null>(null);
-  const activeProfile = team.find((m) => m.name === activeMember) ?? null;
 
   return (
     <section className="container-page py-20 md:py-28">
@@ -46,62 +45,26 @@ function Team() {
         </p>
       </MotionReveal>
 
-      <LayoutGroup id="team-cards">
-        <motion.div layout className="mt-16">
-          <AnimatePresence mode="sync">
-            {activeProfile ? (
-              <motion.div
-                key={activeProfile.name}
-                layout
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <TeamCard
-                  member={activeProfile}
-                  variant="expanded"
-                  layoutId={`team-card-${activeProfile.name}`}
-                  onToggle={() => setActiveMember(null)}
-                  onClose={() => setActiveMember(null)}
-                />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="compact-grid"
-                layout
-                className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 18, scale: 0.98 }}
-                transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {team.map((m, i) => (
-                  <motion.div
-                    key={m.name}
-                    layout
-                    exit={{
-                      opacity: activeMember === m.name ? 1 : 0,
-                      scale: activeMember === m.name ? 1 : 0.94,
-                      y: activeMember === m.name ? 0 : 14,
-                    }}
-                    transition={{ duration: 0.72, delay: activeMember === m.name ? 0 : i * 0.04 }}
-                  >
-                    <MotionReveal delay={i * 0.08}>
-                      <TeamCard
-                        member={m}
-                        layoutId={`team-card-${m.name}`}
-                        onToggle={() => setActiveMember(m.name)}
-                        onClose={() => setActiveMember(null)}
-                      />
-                    </MotionReveal>
-                  </motion.div>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </LayoutGroup>
+      <motion.div
+        layout
+        className="mt-32 grid items-start gap-6 sm:grid-cols-2 md:mt-40 lg:grid-cols-4"
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {team.map((member, index) => {
+          const expanded = activeMember === member.name;
+
+          return (
+            <MotionReveal key={member.name} delay={index * 0.08}>
+              <TeamCard
+                member={member}
+                expanded={expanded}
+                onToggle={() => setActiveMember(expanded ? null : member.name)}
+                onClose={() => setActiveMember(null)}
+              />
+            </MotionReveal>
+          );
+        })}
+      </motion.div>
     </section>
   );
 }
