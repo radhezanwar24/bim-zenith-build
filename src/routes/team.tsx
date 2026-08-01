@@ -35,15 +35,19 @@ function Team() {
     <>
       <section className="relative isolate overflow-hidden bg-transparent text-primary-foreground">
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,oklch(0.12_0.055_260/.9),oklch(0.18_0.07_258/.72)_52%,oklch(1_0_0/.96)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#061329_0%,#10294d_58%,#dcecff_92%,#ffffff_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(70rem_34rem_at_50%_34%,oklch(0.52_0.19_260/.28),transparent_64%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(48rem_26rem_at_50%_50%,rgba(91,182,255,0.2),transparent_70%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(72rem_36rem_at_50%_-12%,rgba(255,255,255,0.12),transparent_62%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-background/70 to-background"
           aria-hidden
         />
         <div className="container-page relative flex min-h-[calc(100vh-5rem)] items-center justify-center py-20 md:py-28">
