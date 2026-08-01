@@ -49,8 +49,8 @@ export function TeamCard({
       transition={{ duration: 0.45, ease: premiumEase }}
       className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
         isWide
-          ? "grid min-h-[31rem] grid-cols-1 md:grid-cols-[minmax(18rem,0.85fr)_minmax(0,1.15fr)]"
-          : "flex h-[34rem] flex-col"
+          ? "mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)]"
+          : "flex h-full flex-col"
       }`}
     >
       {expanded && (
