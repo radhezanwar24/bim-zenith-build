@@ -23,7 +23,7 @@ export function ClientLogosRow() {
       {clients.map((c) => (
         <li key={c.name} className="flex items-center justify-center">
           <div
-            className="group flex items-center justify-center h-12 w-full sm:h-16 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+            className="group flex h-12 w-full items-center justify-center opacity-100 transition-all duration-500 hover:opacity-100 hover:grayscale-0 sm:h-16 sm:opacity-60 sm:grayscale"
             title={c.name}
           >
             <img
@@ -37,4 +37,3 @@ export function ClientLogosRow() {
     </ul>
   );
 }
-
