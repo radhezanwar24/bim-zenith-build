@@ -39,19 +39,19 @@ function Team() {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[82%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_52%,#174c81_100%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[90%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_54%,#174c81_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[82%] bg-[radial-gradient(52rem_28rem_at_50%_50%,rgba(111,195,255,0.22),transparent_72%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[90%] bg-[radial-gradient(52rem_28rem_at_50%_47%,rgba(111,195,255,0.2),transparent_72%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-[70%] h-48 bg-gradient-to-b from-transparent via-background/84 to-background"
+          className="pointer-events-none absolute inset-x-0 top-[78%] h-40 bg-gradient-to-b from-transparent via-background/72 to-background"
           aria-hidden
         />
-        <div className="container-page relative flex min-h-[calc(100vh-5rem)] items-center justify-center py-20 md:py-28">
-          <MotionReveal className="mx-auto max-w-4xl -translate-y-8 text-center md:-translate-y-12">
+        <div className="container-page relative flex min-h-[min(760px,calc(100vh-5rem))] items-center justify-center py-20 md:py-24">
+          <MotionReveal className="mx-auto max-w-4xl -translate-y-12 text-center md:-translate-y-16">
             <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
               Meet Our Team
             </span>
