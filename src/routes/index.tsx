@@ -340,15 +340,14 @@ function Home() {
             </h2>
             <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-primary-foreground/75">
               Delivering BIM and Digital Engineering excellence across multiple industries and
-              international markets.
+              international markets, backed by 10+ years of combined team experience.
             </p>
           </div>
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-4">
             <StatCounter value={30} label="Projects Delivered" />
             <StatCounter value={5} label="Industry Sectors" />
             <StatCounter value={6} label="Countries Served" />
             <StatCounter value={25} label="BIM Professionals" />
-            <StatCounter value={10} label="Years Combined Experience" />
           </div>
         </div>
       </section>
