@@ -18,18 +18,18 @@ export function ClientLogosRow() {
   return (
     <ul
       role="list"
-      className="mt-12 grid grid-cols-2 items-center gap-x-6 gap-y-8 sm:grid-cols-3 md:grid-cols-6"
+      className="mt-8 grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:mt-12 sm:gap-x-6 sm:gap-y-8 sm:grid-cols-3 md:grid-cols-6"
     >
       {clients.map((c) => (
         <li key={c.name} className="flex items-center justify-center">
           <div
-            className="group flex items-center justify-center h-16 w-full opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
+            className="group flex items-center justify-center h-12 w-full sm:h-16 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0"
             title={c.name}
           >
             <img
               src={c.logo}
               alt={`${c.name} logo`}
-              className="max-h-12 max-w-[140px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="max-h-9 max-w-[110px] sm:max-h-12 sm:max-w-[140px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </div>
         </li>

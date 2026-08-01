@@ -34,7 +34,7 @@ function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section className="container-page py-20 md:py-28">
+    <section className="container-page py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center fade-up">
         <SectionEyebrow>Connect with us</SectionEyebrow>
         <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
@@ -45,7 +45,7 @@ function Contact() {
         </p>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-6xl gap-10 lg:grid-cols-5">
+      <div className="mx-auto mt-10 sm:mt-14 grid max-w-6xl gap-10 lg:grid-cols-5">
         <aside className="space-y-6 lg:col-span-2">
           <ContactItem icon={Mail} label="Email">
             <a href={`mailto:${contactEmail}`} className="text-navy hover:text-royal">

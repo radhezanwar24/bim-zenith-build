@@ -20,7 +20,7 @@ export function Footer() {
         />
       </div>
 
-      <div className="container-page relative grid gap-12 py-20 md:grid-cols-12">
+      <div className="container-page relative grid gap-10 py-14 sm:py-16 md:gap-12 md:py-20 md:grid-cols-12">
         <div className="md:col-span-5">
           <img
             src={logo}

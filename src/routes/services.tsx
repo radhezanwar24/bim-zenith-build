@@ -103,7 +103,7 @@ function Services() {
           }}
           aria-hidden
         />
-        <div className="container-page relative flex min-h-[58vh] items-center pt-32 pb-20 md:pt-40 md:pb-28">
+        <div className="container-page relative flex min-h-[52vh] items-center pt-28 pb-14 sm:pt-32 sm:pb-20 md:pt-40 md:pb-28">
           <div className="max-w-4xl fade-up">
             <SectionEyebrow>
               <span className="text-sky">Our Services</span>
@@ -123,7 +123,7 @@ function Services() {
         />
       </section>
 
-      <section className="container-page py-20 md:py-28">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <MotionReveal className="mx-auto mb-16 max-w-4xl text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[2px] w-12 bg-royal/40 rounded-full" />

@@ -66,7 +66,7 @@ function Home() {
           <div className="absolute inset-0 bg-blueprint opacity-30" />
         </div>
 
-        <div className="container-page relative flex min-h-[92vh] items-center pt-32 pb-24 md:min-h-[95vh] md:pt-40 md:pb-32">
+        <div className="container-page relative flex min-h-[88vh] items-center pt-28 pb-16 sm:pt-32 sm:pb-20 md:min-h-[95vh] md:pt-40 md:pb-32">
           <div className="max-w-3xl fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Digital Engineering · BIM ·
@@ -79,7 +79,7 @@ function Home() {
               </span>{" "}
               & Digital Engineering
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
+            <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-white/80 md:text-xl">
               Delivering BIM, Digital Engineering, CAD Automation, Scan-to-BIM, and Construction
               Technology solutions across global markets with precision and innovation.
             </p>
@@ -112,8 +112,8 @@ function Home() {
       </section>
 
       {/* ========== COMPANY PREVIEW ========== */}
-      <section className="container-page py-24 md:py-32">
-        <div className="grid gap-12 md:grid-cols-12 md:items-center">
+      <section className="container-page py-14 sm:py-20 md:py-28">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-12 md:items-center">
           <div className="reveal reveal-left md:col-span-6">
             <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]">
               <img
@@ -142,7 +142,7 @@ function Home() {
             <p className="mt-3 text-sm font-medium uppercase tracking-[0.22em] text-royal">
               Established in 2022
             </p>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-muted-foreground">
               Infinity BIM delivers intelligent Building Information Modeling (BIM), Digital
               Engineering, CAD, and Automation solutions for architects, engineers, contractors, and
               infrastructure professionals worldwide. We combine engineering expertise with
@@ -163,13 +163,13 @@ function Home() {
       </section>
 
       {/* ========== KEY MILESTONES ========== */}
-      <section className="relative overflow-hidden border-y border-border bg-surface py-24 md:py-32">
+      <section className="relative overflow-hidden border-y border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-35" aria-hidden />
         <div className="container-page grid gap-8 md:grid-cols-2">
           {/* Left dark card */}
           <MotionReveal
             direction="left"
-            className="relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
+            className="relative overflow-hidden rounded-3xl bg-navy p-6 sm:p-8 md:p-12 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
           >
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
@@ -187,7 +187,7 @@ function Home() {
               <SectionEyebrow>
                 <span className="text-sky">Milestones</span>
               </SectionEyebrow>
-              <h3 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+              <h3 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
                 Key Milestones
               </h3>
               <ul className="mt-8 space-y-4">
@@ -219,7 +219,7 @@ function Home() {
           {/* Right light card */}
           <MotionReveal
             direction="right"
-            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12"
+            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 md:p-12 shadow-[var(--shadow-card)]"
           >
             <div
               className="bg-blueprint pointer-events-none absolute inset-0 opacity-40"
@@ -227,7 +227,7 @@ function Home() {
             />
             <div className="relative">
               <SectionEyebrow>Our Services</SectionEyebrow>
-              <h3 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+              <h3 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl">
                 Delivering Excellence Through Intelligent BIM
               </h3>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -271,13 +271,13 @@ function Home() {
       </section>
 
       {/* ========== SERVICES OVERVIEW ========== */}
-      <section className="container-page py-24 md:py-32">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Services</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             End-to-End <span className="text-royal">BIM & Digital Engineering</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             A complete suite of intelligent modeling, coordination, and automation services —
             delivered by seasoned BIM specialists.
           </p>
@@ -286,14 +286,14 @@ function Home() {
       </section>
 
       {/* ========== GLOBAL PROJECT EXPERIENCE ========== */}
-      <section className="border-y border-border bg-surface py-24 md:py-32">
+      <section className="border-y border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Global Project Experience</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               Trusted by Global AEC Leaders
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
               Delivering BIM and Digital Engineering solutions using industry-leading construction
               technology trusted by global AEC professionals.
             </p>
@@ -305,7 +305,7 @@ function Home() {
       </section>
 
       {/* ========== TRACK RECORD ========== */}
-      <section className="relative overflow-hidden bg-navy py-24 text-primary-foreground md:py-32">
+      <section className="relative overflow-hidden bg-navy py-14 sm:py-20 md:py-28 text-primary-foreground">
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <img
             src={trackBg}
@@ -333,15 +333,15 @@ function Home() {
             <SectionEyebrow>
               <span className="text-sky">Our Track Record</span>
             </SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
               Excellence, Measured in Numbers
             </h2>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/75">
+            <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-primary-foreground/75">
               Delivering BIM and Digital Engineering excellence across multiple industries and
               international markets.
             </p>
           </div>
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-5">
             <StatCounter value={30} label="Projects Delivered" />
             <StatCounter value={5} label="Industry Sectors" />
             <StatCounter value={6} label="Countries Served" />
@@ -352,13 +352,13 @@ function Home() {
       </section>
 
       {/* ========== INDUSTRIES ========== */}
-      <section className="container-page py-24 md:py-32">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Industries Served</SectionEyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             Sectors We <span className="text-royal">Power</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             From healthcare to hyperscale data centers — Infinity BIM delivers coordinated
             engineering across every major built environment.
           </p>
@@ -367,15 +367,15 @@ function Home() {
       </section>
 
       {/* ========== WHY CHOOSE ========== */}
-      <section className="border-t border-border bg-surface py-24 md:py-32">
+      <section className="border-t border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Why Infinity BIM</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               A Partner Built for <span className="text-royal">Complex Delivery</span>
             </h2>
           </div>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 sm:mt-14 grid gap-6 md:grid-cols-3">
             {[
               {
                 icon: Cpu,
@@ -425,8 +425,8 @@ function Home() {
       </section>
 
       {/* ========== CTA ========== */}
-      <section className="container-page py-24">
-        <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
+      <section className="container-page py-14 sm:py-20 md:py-24">
+        <div className="relative overflow-hidden rounded-3xl bg-navy px-5 py-12 text-center sm:px-8 sm:py-16 text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
           <div
             className="pointer-events-none absolute inset-0 bg-blueprint opacity-30"
             aria-hidden

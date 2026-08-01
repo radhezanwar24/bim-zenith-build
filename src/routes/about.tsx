@@ -54,7 +54,7 @@ function About() {
           />
           <div className="absolute inset-0 bg-blueprint opacity-25" />
         </div>
-        <div className="container-page relative flex min-h-[70vh] items-center pt-32 pb-24 md:pt-40 md:pb-32">
+        <div className="container-page relative flex min-h-[62vh] items-center pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-40 md:pb-32">
           <div className="max-w-3xl fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Innovation in Progress
@@ -65,7 +65,7 @@ function About() {
                 Successfully Completed
               </span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+            <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-white/85 md:text-xl">
               Now integrating AI-powered BIM technologies for smarter digital engineering.
             </p>
           </div>
@@ -77,7 +77,7 @@ function About() {
           <h2 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
             Delivering Excellence Through <span className="text-royal">Intelligent BIM</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             Infinity BIM delivers intelligent Building Information Modeling (BIM) solutions that
             enhance collaboration, improve project certainty, and optimize delivery across the
             entire project lifecycle. We help clients make informed decisions, minimize risks, and
@@ -121,7 +121,7 @@ function About() {
           </MotionReveal>
 
           {/* Core Values / Capability Grid */}
-          <div className="bg-navy text-white rounded-3xl p-8 md:p-12 relative overflow-hidden shadow-[var(--shadow-elevated)] border border-white/10">
+          <div className="bg-navy text-white rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden shadow-[var(--shadow-elevated)] border border-white/10">
             {/* Blueprint Grid Overlay */}
             <div
               className="pointer-events-none absolute inset-0 bg-blueprint opacity-10"
@@ -209,14 +209,14 @@ function About() {
       </section>
 
       {/* GLOBAL PROJECT EXPERIENCE */}
-      <section className="container-page py-20 md:py-28 border-b border-border">
+      <section className="container-page py-14 sm:py-20 md:py-28 border-b border-border">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Global Project Experience
           </h2>
           <div className="hidden">{/* removed eyebrow */}</div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             Delivering projects using industry-leading BIM, digital engineering, and construction
             technology platforms trusted by global AEC professionals.
           </p>
@@ -228,7 +228,7 @@ function About() {
       </section>
 
       {/* CLIENT TESTIMONIALS */}
-      <section className="border-b border-border bg-surface py-20 md:py-28">
+      <section className="border-b border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -239,7 +239,7 @@ function About() {
             </p>
           </div>
 
-          <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-dashed border-border bg-background px-8 py-16 text-center shadow-[var(--shadow-card)]">
+          <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-dashed border-border bg-background px-5 py-12 text-center sm:px-8 sm:py-16 shadow-[var(--shadow-card)]">
             <p className="text-lg font-medium text-navy">Client feedback is being collected.</p>
             <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
               We partner with global teams to deliver exceptional digital delivery results. Verified
@@ -250,7 +250,7 @@ function About() {
       </section>
 
       {/* COMPANY VISION */}
-      <section className="relative overflow-hidden bg-navy py-20 text-primary-foreground md:py-28">
+      <section className="relative overflow-hidden bg-navy py-14 sm:py-20 md:py-28 text-primary-foreground">
         <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
         <div
           className="pointer-events-none absolute inset-0 opacity-70"
@@ -264,7 +264,7 @@ function About() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-sky">
             Our Vision
           </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
             Building the Future of{" "}
             <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
               Digital Engineering
@@ -292,7 +292,7 @@ function About() {
 
       {/* FREQUENTLY ASKED QUESTIONS */}
 
-      <section className="bg-background py-20 md:py-28">
+      <section className="bg-background py-14 sm:py-20 md:py-28">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
