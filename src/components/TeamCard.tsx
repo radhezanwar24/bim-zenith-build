@@ -15,7 +15,7 @@ const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
-    <div className="mt-3 space-y-1.5 text-xs uppercase leading-relaxed tracking-wider text-muted-foreground">
+    <div className="mt-3 space-y-1.5 text-[0.68rem] uppercase leading-relaxed tracking-[0.13em] text-muted-foreground">
       {credentials.split("|").map((item) => (
         <p key={item.trim()}>{item.trim()}</p>
       ))}
@@ -33,6 +33,7 @@ export function TeamCard({
   const imageRef = useRef<HTMLImageElement>(null);
   const [imageReady, setImageReady] = useState(false);
   const isWide = variant === "expanded";
+  const compactObjectPosition = member.compactObjectPosition ?? "center 12%";
 
   useEffect(() => {
     setImageReady(false);
@@ -86,9 +87,8 @@ export function TeamCard({
           loading="lazy"
           decoding="async"
           onLoad={() => setImageReady(true)}
-          className={`block h-full w-full ${
-            isWide ? "object-contain" : "object-cover object-[center_12%]"
-          }`}
+          className={`block h-full w-full ${isWide ? "object-contain" : "object-cover"}`}
+          style={isWide ? undefined : { objectPosition: compactObjectPosition }}
           initial={false}
           animate={{ opacity: imageReady ? 1 : 0 }}
           transition={{ duration: 0.45, ease: premiumEase }}

@@ -10,6 +10,7 @@ export type Member = {
   bio: string;
   photo: string;
   linkedin: string;
+  compactObjectPosition?: string;
 };
 
 export const team: Member[] = [
@@ -37,6 +38,7 @@ export const team: Member[] = [
     bio: "As Chief Business Development Officer, Yash leads global business development, strategic partnerships, and client engagement at Infinity BIM. He drives market expansion, identifies growth opportunities, and builds long-term relationships while delivering value-driven AEC, BIM, VDC, and digital engineering solutions.",
     photo: yash,
     linkedin: "https://www.linkedin.com/in/yash-zanwar-5312b1199",
+    compactObjectPosition: "center 20%",
   },
   {
     name: "Sahil Ahmed Khan",
