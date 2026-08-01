@@ -70,7 +70,7 @@ export function TeamCard({
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
         className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
           isWide ? "min-h-[24rem] md:h-full" : "h-80"
-        }`}
+        } ${isWide ? "" : "shrink-0"}`}
       >
         <motion.div
           aria-hidden
@@ -86,7 +86,9 @@ export function TeamCard({
           loading="lazy"
           decoding="async"
           onLoad={() => setImageReady(true)}
-          className={`h-full w-full ${isWide ? "object-contain" : "object-cover object-top"}`}
+          className={`block h-full w-full ${
+            isWide ? "object-contain" : "object-cover object-[center_12%]"
+          }`}
           initial={false}
           animate={{ opacity: imageReady ? 1 : 0 }}
           transition={{ duration: 0.45, ease: premiumEase }}
