@@ -50,7 +50,7 @@ function Team() {
           className="pointer-events-none absolute inset-x-0 top-[78%] h-40 bg-gradient-to-b from-transparent via-background/72 to-background"
           aria-hidden
         />
-        <div className="container-page relative flex min-h-[min(760px,calc(100vh-5rem))] items-center justify-center py-20 md:py-24">
+        <div className="container-page relative flex min-h-[min(760px,calc(100vh-5rem))] items-center justify-center py-14 sm:py-20 md:py-24">
           <MotionReveal className="mx-auto max-w-4xl -translate-y-12 text-center md:-translate-y-16">
             <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
               Meet Our Team

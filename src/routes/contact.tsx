@@ -34,7 +34,7 @@ function Contact() {
   const [sent, setSent] = useState(false);
 
   return (
-    <section className="container-page py-14 sm:py-18 md:py-24">
+    <section className="container-page py-14 sm:py-20 md:py-28">
       <div className="mx-auto max-w-2xl text-center fade-up">
         <SectionEyebrow>Connect with us</SectionEyebrow>
         <h1 className="mt-5 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">

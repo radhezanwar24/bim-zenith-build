@@ -66,7 +66,7 @@ function Home() {
           <div className="absolute inset-0 bg-blueprint opacity-30" />
         </div>
 
-        <div className="container-page relative flex min-h-[92vh] items-center pt-32 pb-24 md:min-h-[95vh] md:pt-40 md:pb-32">
+        <div className="container-page relative flex min-h-[88vh] items-center pt-28 pb-16 sm:pt-32 sm:pb-20 md:min-h-[95vh] md:pt-40 md:pb-32">
           <div className="max-w-3xl fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Digital Engineering · BIM ·
@@ -112,7 +112,7 @@ function Home() {
       </section>
 
       {/* ========== COMPANY PREVIEW ========== */}
-      <section className="container-page py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="grid gap-8 md:gap-12 md:grid-cols-12 md:items-center">
           <div className="reveal reveal-left md:col-span-6">
             <div className="relative overflow-hidden rounded-3xl shadow-[var(--shadow-elevated)]">
@@ -163,13 +163,13 @@ function Home() {
       </section>
 
       {/* ========== KEY MILESTONES ========== */}
-      <section className="relative overflow-hidden border-y border-border bg-surface py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="relative overflow-hidden border-y border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-35" aria-hidden />
         <div className="container-page grid gap-8 md:grid-cols-2">
           {/* Left dark card */}
           <MotionReveal
             direction="left"
-            className="relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
+            className="relative overflow-hidden rounded-3xl bg-navy p-6 sm:p-8 md:p-12 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
           >
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
@@ -219,7 +219,7 @@ function Home() {
           {/* Right light card */}
           <MotionReveal
             direction="right"
-            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-10 shadow-[var(--shadow-card)] md:p-12"
+            className="relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-8 md:p-12 shadow-[var(--shadow-card)]"
           >
             <div
               className="bg-blueprint pointer-events-none absolute inset-0 opacity-40"
@@ -271,7 +271,7 @@ function Home() {
       </section>
 
       {/* ========== SERVICES OVERVIEW ========== */}
-      <section className="container-page py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Services</SectionEyebrow>
           <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
@@ -286,7 +286,7 @@ function Home() {
       </section>
 
       {/* ========== GLOBAL PROJECT EXPERIENCE ========== */}
-      <section className="border-y border-border bg-surface py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="border-y border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Global Project Experience</SectionEyebrow>
@@ -305,7 +305,7 @@ function Home() {
       </section>
 
       {/* ========== TRACK RECORD ========== */}
-      <section className="relative overflow-hidden bg-navy py-24 text-primary-foreground md:py-32">
+      <section className="relative overflow-hidden bg-navy py-14 sm:py-20 md:py-28 text-primary-foreground">
         <div className="pointer-events-none absolute inset-0" aria-hidden>
           <img
             src={trackBg}
@@ -352,7 +352,7 @@ function Home() {
       </section>
 
       {/* ========== INDUSTRIES ========== */}
-      <section className="container-page py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Industries Served</SectionEyebrow>
           <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
@@ -367,7 +367,7 @@ function Home() {
       </section>
 
       {/* ========== WHY CHOOSE ========== */}
-      <section className="border-t border-border bg-surface py-16 sm:py-14 sm:py-18 md:py-24">
+      <section className="border-t border-border bg-surface py-14 sm:py-20 md:py-28">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Why Infinity BIM</SectionEyebrow>
@@ -425,8 +425,8 @@ function Home() {
       </section>
 
       {/* ========== CTA ========== */}
-      <section className="container-page py-24">
-        <div className="relative overflow-hidden rounded-3xl bg-navy px-8 py-16 text-center text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
+      <section className="container-page py-14 sm:py-20 md:py-24">
+        <div className="relative overflow-hidden rounded-3xl bg-navy px-5 py-12 text-center sm:px-8 sm:py-16 text-primary-foreground shadow-[var(--shadow-elevated)] md:px-16 md:py-24 reveal reveal-scale">
           <div
             className="pointer-events-none absolute inset-0 bg-blueprint opacity-30"
             aria-hidden
