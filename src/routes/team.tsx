@@ -35,19 +35,19 @@ function Team() {
     <>
       <section className="relative isolate overflow-hidden bg-transparent text-primary-foreground">
         <div
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#061329_0%,#10294d_58%,#dcecff_92%,#ffffff_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#f8fbff_0%,#eef6ff_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(48rem_26rem_at_50%_50%,rgba(91,182,255,0.2),transparent_70%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[82%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_52%,#174c81_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(72rem_36rem_at_50%_-12%,rgba(255,255,255,0.12),transparent_62%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[82%] bg-[radial-gradient(52rem_28rem_at_50%_50%,rgba(111,195,255,0.22),transparent_72%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-background/70 to-background"
+          className="pointer-events-none absolute inset-x-0 top-[70%] h-48 bg-gradient-to-b from-transparent via-background/84 to-background"
           aria-hidden
         />
         <div className="container-page relative flex min-h-[calc(100vh-5rem)] items-center justify-center py-20 md:py-28">
@@ -55,8 +55,8 @@ function Team() {
             <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
               Meet Our Team
             </span>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
-              Meet the Leadership Behind <span className="text-sky">Infinity BIM</span>
+            <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl md:text-6xl">
+              Meet the Leadership Behind <span className="text-sky-200">Infinity BIM</span>
             </h1>
           </MotionReveal>
         </div>
