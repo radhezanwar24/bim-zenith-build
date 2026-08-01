@@ -356,7 +356,7 @@ function Home() {
       <section className="container-page py-14 sm:py-20 md:py-28">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Industries Served</SectionEyebrow>
-          <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-[1.65rem] font-bold leading-tight tracking-tight text-navy sm:text-4xl md:text-5xl">
             Sectors We <span className="text-royal">Power</span>
           </h2>
           <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">

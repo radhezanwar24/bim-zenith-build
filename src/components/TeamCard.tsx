@@ -17,7 +17,7 @@ const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
-    <div className="mt-3 space-y-1 text-[0.6rem] uppercase leading-relaxed tracking-[0.08em] sm:space-y-1.5 sm:text-[0.68rem] sm:tracking-[0.13em] text-muted-foreground">
+    <div className="mt-3 space-y-1 text-[0.6rem] uppercase leading-relaxed tracking-[0.08em] text-muted-foreground sm:space-y-1.5 sm:text-[0.68rem] sm:tracking-[0.13em]">
       {credentials.split("|").map((item) => (
         <p key={item.trim()}>{item.trim()}</p>
       ))}
@@ -52,7 +52,7 @@ export function TeamCard({
       className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
         isWide
           ? "mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)]"
-          : "flex h-full flex-col"
+          : "flex h-[29rem] flex-col sm:h-full"
       }`}
     >
       {expanded && (
@@ -72,7 +72,9 @@ export function TeamCard({
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
         className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
-          isWide ? "h-56 sm:h-72 md:h-full md:min-h-[22rem]" : "aspect-[4/5] w-full shrink-0"
+          isWide
+            ? "h-64 sm:h-72 md:h-full md:min-h-[22rem]"
+            : "h-64 w-full shrink-0 sm:aspect-[4/5] sm:h-auto"
         }`}
       >
         <motion.div
@@ -89,7 +91,7 @@ export function TeamCard({
           loading="lazy"
           decoding="async"
           onLoad={() => setImageReady(true)}
-          className={`block h-full w-full ${isWide ? "object-cover md:object-contain" : "object-cover"}`}
+          className={`block h-full w-full ${isWide ? "object-cover md:object-contain" : "scale-[1.08] object-cover"}`}
           style={
             isWide ? { objectPosition: "center 14%" } : { objectPosition: compactObjectPosition }
           }
@@ -128,9 +130,9 @@ export function TeamCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${member.name}'s LinkedIn profile`}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent"
+            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent sm:h-9 sm:w-9"
           >
-            <img src={linkedinLogo} alt="" className="h-5 w-5" aria-hidden />
+            <img src={linkedinLogo} alt="" className="h-7 w-7 sm:h-5 sm:w-5" aria-hidden />
           </a>
         </div>
 

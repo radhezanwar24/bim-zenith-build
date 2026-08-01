@@ -73,11 +73,11 @@ export function IndustriesGrid() {
           </div>
 
           {/* Card Details */}
-          <div className="flex items-center gap-3 p-4 sm:gap-4 sm:p-5">
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent text-royal transition-all duration-500 group-hover:bg-royal group-hover:text-primary-foreground sm:h-12 sm:w-12">
-              <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
+          <div className="flex items-center gap-2.5 p-3 sm:gap-4 sm:p-5">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-accent text-royal transition-all duration-500 group-hover:bg-royal group-hover:text-primary-foreground sm:h-12 sm:w-12">
+              <Icon className="h-4.5 w-4.5 sm:h-6 sm:w-6" aria-hidden />
             </span>
-            <span className="min-w-0 break-words text-sm font-semibold leading-snug text-navy transition-colors duration-300 group-hover:text-royal sm:text-base">
+            <span className="min-w-0 text-[0.82rem] font-semibold leading-snug tracking-tight text-navy transition-colors duration-300 group-hover:text-royal sm:text-base sm:tracking-normal">
               {label}
             </span>
           </div>
