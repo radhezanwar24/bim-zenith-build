@@ -15,7 +15,7 @@ const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
-    <div className="mt-3 space-y-1.5 text-[0.68rem] uppercase leading-relaxed tracking-[0.13em] text-muted-foreground">
+    <div className="mt-3 space-y-1 text-[0.6rem] uppercase leading-relaxed tracking-[0.08em] sm:space-y-1.5 sm:text-[0.68rem] sm:tracking-[0.13em] text-muted-foreground">
       {credentials.split("|").map((item) => (
         <p key={item.trim()}>{item.trim()}</p>
       ))}
@@ -122,7 +122,7 @@ export function TeamCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${member.name}'s LinkedIn profile`}
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-royal transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent"
+            className="hidden h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-royal sm:grid transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent"
           >
             <Linkedin className="h-4 w-4" aria-hidden />
           </a>
