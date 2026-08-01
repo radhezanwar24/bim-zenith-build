@@ -103,7 +103,7 @@ export function TeamCard({
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
-                isWide ? "text-3xl tracking-tight md:text-4xl" : "text-lg"
+                isWide ? "text-2xl tracking-tight sm:text-3xl" : "text-base sm:text-lg"
               }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
             >
@@ -111,7 +111,7 @@ export function TeamCard({
             </a>
             <p
               className={`mt-2 font-medium leading-snug text-royal ${
-                isWide ? "text-base md:text-lg" : "text-sm"
+                isWide ? "text-sm sm:text-base" : "text-[0.8rem] sm:text-sm"
               }`}
             >
               {member.role}
@@ -139,7 +139,7 @@ export function TeamCard({
               exit={{ opacity: 0, height: 0, y: 6 }}
               transition={{ duration: 0.42, ease: premiumEase }}
               className={`overflow-hidden leading-relaxed text-muted-foreground ${
-                isWide ? "mt-8 text-base md:text-lg" : "mt-5 text-sm"
+                isWide ? "mt-5 text-sm sm:text-base" : "mt-4 text-sm"
               }`}
             >
               {member.bio}
