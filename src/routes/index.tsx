@@ -341,7 +341,7 @@ function Home() {
               international markets.
             </p>
           </div>
-          <div className="mt-10 sm:mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-5">
             <StatCounter value={30} label="Projects Delivered" />
             <StatCounter value={5} label="Industry Sectors" />
             <StatCounter value={6} label="Countries Served" />
