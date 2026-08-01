@@ -1,7 +1,7 @@
-import malik from "@/assets/malik.webp";
-import avinash from "@/assets/avinash.webp";
-import yash from "@/assets/yash.webp";
-import sahil from "@/assets/sahil.webp";
+import malik from "@/assets/malik.jpg";
+import avinash from "@/assets/avinash.jpg";
+import yash from "@/assets/yash.jpg";
+import sahil from "@/assets/sahil.jpg";
 
 export type Member = {
   name: string;
