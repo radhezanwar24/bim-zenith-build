@@ -50,19 +50,19 @@ function Team() {
           className="pointer-events-none absolute inset-x-0 top-[78%] h-40 bg-gradient-to-b from-transparent via-background/72 to-background"
           aria-hidden
         />
-        <div className="container-page relative flex min-h-[min(760px,calc(100vh-5rem))] items-center justify-center py-20 md:py-24">
-          <MotionReveal className="mx-auto max-w-4xl -translate-y-12 text-center md:-translate-y-16">
-            <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
+        <div className="container-page relative flex min-h-[58vh] items-center justify-center py-14 sm:min-h-[70vh] sm:py-20 md:min-h-[min(720px,calc(100vh-5rem))] md:py-24">
+          <MotionReveal className="mx-auto max-w-4xl -translate-y-6 text-center md:-translate-y-16">
+            <span className="mb-5 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:px-4 sm:text-xs">
               Meet Our Team
             </span>
-            <h1 className="text-4xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl md:text-6xl">
+            <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl md:text-6xl">
               Meet the Leadership Behind <span className="text-sky-200">Infinity BIM</span>
             </h1>
           </MotionReveal>
         </div>
       </section>
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page pb-16 sm:pb-20 md:pb-28">
         <AnimatePresence mode="wait">
           {activeMember ? (
             <motion.div
@@ -85,7 +85,7 @@ function Team() {
             <motion.div
               key="team-grid"
               layout
-              className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-4"
+              className="grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:grid-cols-4"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 18 }}

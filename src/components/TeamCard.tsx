@@ -17,7 +17,7 @@ const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
-    <div className="mt-3 space-y-1.5 text-[0.68rem] uppercase leading-relaxed tracking-[0.13em] text-muted-foreground">
+    <div className="mt-3 space-y-1 text-[0.6rem] uppercase leading-relaxed tracking-[0.08em] sm:space-y-1.5 sm:text-[0.68rem] sm:tracking-[0.13em] text-muted-foreground">
       {credentials.split("|").map((item) => (
         <p key={item.trim()}>{item.trim()}</p>
       ))}
@@ -51,8 +51,8 @@ export function TeamCard({
       transition={{ duration: 0.45, ease: premiumEase }}
       className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
         isWide
-          ? "grid min-h-[unset] grid-cols-1 md:min-h-[31rem] md:grid-cols-[minmax(18rem,0.85fr)_minmax(0,1.15fr)]"
-          : "flex h-[34rem] flex-col"
+          ? "mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)]"
+          : "flex h-full flex-col"
       }`}
     >
       {expanded && (
@@ -72,8 +72,8 @@ export function TeamCard({
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
         className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
-          isWide ? "h-80 md:h-full md:min-h-[24rem]" : "h-80"
-        } ${isWide ? "" : "shrink-0"}`}
+          isWide ? "h-56 sm:h-72 md:h-full md:min-h-[22rem]" : "aspect-[4/5] w-full shrink-0"
+        }`}
       >
         <motion.div
           aria-hidden
@@ -99,7 +99,9 @@ export function TeamCard({
         />
       </button>
 
-      <div className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 md:p-10" : "p-6"}`}>
+      <div
+        className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 sm:p-7 md:p-8" : "p-4 sm:p-5"}`}
+      >
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <a
@@ -107,7 +109,7 @@ export function TeamCard({
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
-                isWide ? "text-3xl tracking-tight md:text-4xl" : "text-lg"
+                isWide ? "text-2xl tracking-tight sm:text-3xl" : "text-base sm:text-lg"
               }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
             >
@@ -115,7 +117,7 @@ export function TeamCard({
             </a>
             <p
               className={`mt-2 font-medium leading-snug text-royal ${
-                isWide ? "text-base md:text-lg" : "text-sm"
+                isWide ? "text-sm sm:text-base" : "text-[0.8rem] sm:text-sm"
               }`}
             >
               {member.role}
@@ -143,7 +145,7 @@ export function TeamCard({
               exit={{ opacity: 0, height: 0, y: 6 }}
               transition={{ duration: 0.42, ease: premiumEase }}
               className={`overflow-hidden leading-relaxed text-muted-foreground ${
-                isWide ? "mt-8 text-base md:text-lg" : "mt-5 text-sm"
+                isWide ? "mt-5 text-sm sm:text-base" : "mt-4 text-sm"
               }`}
             >
               {member.bio}

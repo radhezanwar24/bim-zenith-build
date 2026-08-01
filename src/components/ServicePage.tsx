@@ -26,7 +26,7 @@ export function ServicePage({ service }: { service: Service }) {
           }}
           aria-hidden
         />
-        <div className="container-page relative grid min-h-[66vh] gap-10 pt-32 pb-20 md:grid-cols-12 md:items-center md:pt-40 md:pb-28">
+        <div className="container-page relative grid min-h-[58vh] gap-8 pt-28 pb-14 sm:gap-10 sm:pt-32 sm:pb-20 md:grid-cols-12 md:items-center md:pt-40 md:pb-28">
           <div className="fade-up md:col-span-8">
             <SectionEyebrow>
               <span className="text-sky">Infinity BIM Services</span>
@@ -61,11 +61,11 @@ export function ServicePage({ service }: { service: Service }) {
         />
       </section>
 
-      <section className="container-page py-20 md:py-24">
+      <section className="container-page py-14 sm:py-20 md:py-24">
         <div className="grid gap-10 md:grid-cols-12 md:items-start">
           <div className="reveal md:col-span-5">
             <SectionEyebrow>Introduction</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl">
               Coordinated BIM support from early design to handover.
             </h2>
           </div>
@@ -80,11 +80,11 @@ export function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
-      <section className="border-y border-border bg-surface py-20 md:py-24">
+      <section className="border-y border-border bg-surface py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Service Scope</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               Explore the Details
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground">
@@ -128,7 +128,7 @@ export function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
-      <section className="container-page py-20 md:py-24">
+      <section className="container-page py-14 sm:py-20 md:py-24">
         <div className="reveal relative overflow-hidden rounded-3xl bg-navy px-7 py-12 text-center text-primary-foreground shadow-[var(--shadow-elevated)] md:px-14 md:py-16">
           <div
             className="pointer-events-none absolute inset-0 bg-blueprint opacity-25"
@@ -164,11 +164,11 @@ export function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
-      <section className="border-t border-border bg-surface py-20 md:py-24">
+      <section className="border-t border-border bg-surface py-14 sm:py-20 md:py-24">
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Contact</SectionEyebrow>
-            <h2 className="mt-5 text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl">
               Discuss your BIM requirements.
             </h2>
             <p className="mt-4 text-base text-muted-foreground">
