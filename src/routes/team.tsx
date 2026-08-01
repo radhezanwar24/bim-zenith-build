@@ -51,7 +51,7 @@ function Team() {
           aria-hidden
         />
         <div className="container-page relative flex min-h-[calc(100vh-5rem)] items-center justify-center py-20 md:py-28">
-          <MotionReveal className="mx-auto max-w-4xl text-center">
+          <MotionReveal className="mx-auto max-w-4xl -translate-y-8 text-center md:-translate-y-12">
             <span className="mb-6 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur">
               Meet Our Team
             </span>
