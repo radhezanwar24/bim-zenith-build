@@ -2,7 +2,71 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { MotionReveal } from "@/components/MotionReveal";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
-import { serviceShowcase } from "@/lib/serviceShowcase";
+import {
+  Building2,
+  GitMerge,
+  DraftingCompass,
+  ClipboardCheck,
+  Calculator,
+  Box,
+  ScanLine,
+  Clock,
+  Coins,
+  Cog,
+} from "lucide-react";
+
+const coreServices = [
+  {
+    name: "Architectural, Structural & MEP BIM Modeling",
+    description: "LOD 100 - 500",
+    icon: Building2,
+  },
+  {
+    name: "Clash Detection & Multidisciplinary Coordination",
+    description: "Identify clashes early, reduce rework",
+    icon: GitMerge,
+  },
+  {
+    name: "Construction Documentation & Shop Drawings",
+    description: "Accurate, coordinated & construction-ready drawings",
+    icon: DraftingCompass,
+  },
+  {
+    name: "Permit Sets & GFC Documentation",
+    description: "Code-compliant drawings for approvals and submissions",
+    icon: ClipboardCheck,
+  },
+  {
+    name: "Quantity Take-Offs (BOQ) & Cost Estimation",
+    description: "Accurate quantities for better planning and budgeting",
+    icon: Calculator,
+  },
+  {
+    name: "Revit Family Creation & Parametric Content",
+    description: "Smart, parametric & industry-standard components",
+    icon: Box,
+  },
+  {
+    name: "Scan to BIM",
+    description: "Point Cloud to Intelligent BIM Models",
+    icon: ScanLine,
+  },
+  {
+    name: "4D BIM Scheduling",
+    description: "Time-based simulation for better planning and sequencing",
+    icon: Clock,
+  },
+  {
+    name: "5D BIM Cost Integration",
+    description: "Cost-aware models for better decision-making and control",
+    icon: Coins,
+  },
+  {
+    name: "BIM Coordination & Digital Project Management",
+    description: "End-to-end coordination and BIM project management support",
+    icon: Cog,
+  },
+];
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -80,53 +144,32 @@ function Services() {
           </p>
         </MotionReveal>
 
-        <div className="grid grid-cols-1 gap-7 lg:grid-cols-2 lg:auto-rows-fr">
-          {serviceShowcase.map((service, index) => {
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+          {coreServices.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.article
-                key={service.title}
+                key={service.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.16 }}
-                transition={{ duration: 0.75, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.75, delay: (index % 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8 }}
-                className="group relative grid h-full min-h-[28rem] overflow-hidden rounded-3xl border border-white/10 bg-navy text-white shadow-[var(--shadow-elevated)] transition-colors duration-500 hover:border-sky/35 md:grid-cols-[0.95fr_1.05fr]"
+                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border border-border bg-card p-6 text-center shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)]"
               >
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[radial-gradient(32rem_18rem_at_88%_12%,rgba(115,195,255,0.18),transparent_58%)] opacity-80"
+                  className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-sky/10 to-royal/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="relative min-h-64 overflow-hidden bg-surface md:min-h-full">
-                  <img
-                    src={service.graphic}
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    style={{ objectPosition: service.focus }}
-                    loading="lazy"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-navy/45 via-transparent to-white/5 md:bg-gradient-to-r md:from-transparent md:to-navy/35"
-                  />
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface text-royal transition-all duration-500 group-hover:bg-royal group-hover:text-white group-hover:scale-110 shadow-sm border border-border group-hover:border-transparent">
+                  <Icon className="h-6 w-6" aria-hidden />
                 </div>
-                <div className="relative flex flex-col justify-between p-7 md:p-8">
-                  <div>
-                    <span className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/10 text-sky shadow-sm backdrop-blur transition-all duration-500 group-hover:bg-sky group-hover:text-navy">
-                      <Icon className="h-6 w-6" aria-hidden />
-                    </span>
-                    <h3 className="max-w-md text-2xl font-bold tracking-tight text-white md:text-3xl">
-                      {service.title}
-                    </h3>
-                    <p className="mt-4 max-w-md text-sm leading-relaxed text-white/72 md:text-base">
-                      {service.desc}
-                    </p>
-                  </div>
-                  <div className="mt-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-sky/90">
-                    <span className="h-px w-10 bg-sky/40" />
-                    Digital Delivery
-                  </div>
-                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-navy mb-3 line-clamp-2 min-h-[40px] flex items-center justify-center font-display">
+                  {service.name}
+                </h3>
+                <p className="text-xs leading-relaxed text-muted-foreground max-w-[200px] flex-1">
+                  {service.description}
+                </p>
               </motion.article>
             );
           })}
