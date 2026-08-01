@@ -12,21 +12,31 @@ import {
 import { motion } from "framer-motion";
 
 const industries = [
-  { icon: HeartPulse, label: "Healthcare", image: "/sectors/healthcare.jpg" },
-  { icon: Building, label: "Commercial", image: "/sectors/commercial.jpg" },
-  { icon: Home, label: "Residential", image: "/sectors/residential.jpg" },
-  { icon: Factory, label: "Industrial", image: "/sectors/industrial.jpg" },
-  { icon: TrainFront, label: "Infrastructure", image: "/sectors/infrastructure.jpg" },
-  { icon: Hotel, label: "Hospitality", image: "/sectors/hospitality.jpg" },
-  { icon: GraduationCap, label: "Institutional", image: "/sectors/institutional.jpg" },
-  { icon: Server, label: "Data Centers", image: "/sectors/datacentre.jpg" },
-  { icon: Landmark, label: "Government", image: "/sectors/government.jpg" },
+  { icon: HeartPulse, label: "Healthcare", image: "/sectors/healthcare.jpg", position: "50% 16%" },
+  { icon: Building, label: "Commercial", image: "/sectors/commercial.jpg", position: "63% 46%" },
+  { icon: Home, label: "Residential", image: "/sectors/residential.jpg", position: "50% 62%" },
+  { icon: Factory, label: "Industrial", image: "/sectors/industrial.jpg", position: "50% 50%" },
+  {
+    icon: TrainFront,
+    label: "Infrastructure",
+    image: "/sectors/infrastructure.jpg",
+    position: "50% 50%",
+  },
+  { icon: Hotel, label: "Hospitality", image: "/sectors/hospitality.jpg", position: "50% 50%" },
+  {
+    icon: GraduationCap,
+    label: "Institutional",
+    image: "/sectors/institutional.jpg",
+    position: "48% 22%",
+  },
+  { icon: Server, label: "Data Centers", image: "/sectors/datacentre.jpg", position: "50% 50%" },
+  { icon: Landmark, label: "Government", image: "/sectors/government.jpg", position: "50% 50%" },
 ];
 
 export function IndustriesGrid() {
   return (
     <ul role="list" className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {industries.map(({ icon: Icon, label, image }, i) => (
+      {industries.map(({ icon: Icon, label, image, position }, i) => (
         <motion.li
           key={label}
           initial={{ opacity: 0, y: 30 }}
@@ -37,11 +47,12 @@ export function IndustriesGrid() {
           className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
         >
           {/* Sector Image */}
-          <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+          <div className="relative aspect-[16/11] w-full overflow-hidden bg-muted">
             <img
               src={image}
               alt={label}
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              style={{ objectPosition: position }}
               loading="lazy"
             />
             {/* Subtle Overlay */}
