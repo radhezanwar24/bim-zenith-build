@@ -169,7 +169,7 @@ function Home() {
           {/* Left dark card */}
           <MotionReveal
             direction="left"
-            className="relative overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
+            className="relative flex overflow-hidden rounded-3xl bg-navy p-10 text-primary-foreground shadow-[var(--shadow-elevated)] md:p-12"
           >
             <div
               className="pointer-events-none absolute inset-0 opacity-40"
@@ -183,14 +183,14 @@ function Home() {
               className="pointer-events-none absolute inset-0 bg-blueprint opacity-20"
               aria-hidden
             />
-            <div className="relative">
+            <div className="relative flex w-full flex-col justify-center">
               <SectionEyebrow>
                 <span className="text-sky">Milestones</span>
               </SectionEyebrow>
               <h3 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
                 Key Milestones
               </h3>
-              <ul className="mt-8 space-y-4">
+              <ul className="mt-10 space-y-6">
                 {[
                   "Global Project Delivery",
                   "Multi-Sector Engineering Expertise",
@@ -199,17 +199,19 @@ function Home() {
                   "Dedicated BIM Specialists",
                   "Automation-Driven Workflows",
                 ].map((item, index) => (
-                  <li key={item} className="relative flex items-start gap-4">
+                  <li key={item} className="relative flex items-center gap-5">
                     {index < 5 && (
                       <span
-                        className="absolute left-[9px] top-7 h-[calc(100%+0.65rem)] w-px bg-gradient-to-b from-sky/45 to-white/10"
+                        className="absolute left-[9px] top-8 h-[calc(100%+1rem)] w-px bg-gradient-to-b from-sky/45 to-white/10"
                         aria-hidden
                       />
                     )}
                     <span className="relative z-10 grid h-5 w-5 shrink-0 place-items-center rounded-full border border-sky/50 bg-navy shadow-[0_0_0_5px_rgba(255,255,255,0.04)]">
                       <CheckCircle2 className="h-4 w-4 text-sky" aria-hidden />
                     </span>
-                    <span className="text-base text-primary-foreground/90">{item}</span>
+                    <span className="text-lg leading-relaxed text-primary-foreground/90">
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>

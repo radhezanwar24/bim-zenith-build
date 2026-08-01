@@ -67,6 +67,7 @@ function Team() {
           {activeMember ? (
             <motion.div
               key={activeMember}
+              className="-mx-4 sm:mx-0"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 16 }}

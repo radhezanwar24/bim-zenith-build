@@ -22,19 +22,16 @@ export function Footer() {
 
       <div className="container-page relative grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img
-            src={logo}
-            alt="Infinity BIM"
-            className="h-20 w-auto opacity-95"
-            style={{ filter: "brightness(0) invert(1)" }}
-          />
-          <p className="mt-6 max-w-md text-sm leading-relaxed text-primary-foreground/75">
-            Infinity BIM is a global Digital Engineering and BIM consultancy delivering intelligent,
-            coordinated, and automation-driven solutions for architects, consultants, contractors,
-            and developers.
-          </p>
-          <div className="mt-6">
-            <SocialIcons />
+          <div className="max-w-lg rounded-3xl border border-white/15 bg-white p-6 text-navy shadow-[0_24px_70px_-35px_rgba(0,0,0,0.45)] sm:p-7">
+            <img src={logo} alt="Infinity BIM" className="h-20 w-auto" />
+            <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+              Infinity BIM is a global Digital Engineering and BIM consultancy delivering
+              intelligent, coordinated, and automation-driven solutions for architects, consultants,
+              contractors, and developers.
+            </p>
+            <div className="mt-6">
+              <SocialIcons />
+            </div>
           </div>
         </div>
 

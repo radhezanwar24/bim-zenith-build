@@ -18,9 +18,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const isHome = pathname === "/";
-  const transparent = isHome && !scrolled;
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -45,11 +42,9 @@ export function Navbar() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-500 ${
-        transparent
-          ? "border-b border-transparent bg-transparent"
-          : scrolled
-            ? "border-b border-border/70 bg-background/90 shadow-[0_4px_20px_-12px_rgba(11,28,58,0.15)] backdrop-blur-md"
-            : "border-b border-border/40 bg-background/80 backdrop-blur-md"
+        scrolled
+          ? "border-b border-border/70 bg-white shadow-[0_4px_20px_-12px_rgba(11,28,58,0.15)]"
+          : "border-b border-border/40 bg-white"
       }`}
     >
       <div className="container-page flex h-20 items-center justify-between gap-4">
@@ -69,9 +64,7 @@ export function Navbar() {
           <img
             src={logo}
             alt="Infinity BIM"
-            className={`h-14 w-auto transition-all duration-500 sm:h-16 ${
-              transparent ? "brightness-0 invert" : ""
-            }`}
+            className="h-14 w-auto transition-all duration-500 sm:h-16"
           />
         </a>
 
@@ -83,11 +76,7 @@ export function Navbar() {
               onClick={handleNavClick(n.to)}
               activeOptions={{ exact: n.to === "/" }}
               activeProps={{ className: "after:scale-x-100" }}
-              className={`${linkBase} ${
-                transparent
-                  ? "text-white/85 hover:text-white after:bg-white"
-                  : "text-muted-foreground hover:text-navy after:bg-royal"
-              }`}
+              className={`${linkBase} text-muted-foreground hover:text-navy after:bg-royal`}
             >
               {n.label}
             </Link>
@@ -95,11 +84,7 @@ export function Navbar() {
           <Link
             to="/contact"
             onClick={handleNavClick("/contact")}
-            className={`ml-3 inline-flex items-center rounded-full px-5 py-2.5 text-sm font-medium shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md ${
-              transparent
-                ? "bg-white text-navy hover:bg-sky/90"
-                : "bg-navy text-primary-foreground hover:bg-royal"
-            }`}
+            className="ml-3 inline-flex items-center rounded-full bg-navy px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-royal hover:shadow-md"
           >
             Reach out to us
           </Link>
@@ -108,9 +93,7 @@ export function Navbar() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className={`relative inline-flex h-10 w-10 items-center justify-center rounded-lg transition-colors md:hidden ${
-            transparent ? "text-white hover:bg-white/10" : "text-navy hover:bg-muted"
-          }`}
+          className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg text-navy transition-colors hover:bg-muted md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
         >
