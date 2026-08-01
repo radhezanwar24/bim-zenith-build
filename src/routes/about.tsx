@@ -65,7 +65,7 @@ function About() {
                 Successfully Completed
               </span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/85 md:text-xl">
+            <p className="mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-white/85 md:text-xl">
               Now integrating AI-powered BIM technologies for smarter digital engineering.
             </p>
           </div>
@@ -77,7 +77,7 @@ function About() {
           <h2 className="text-4xl font-bold tracking-tight text-navy sm:text-5xl md:text-6xl">
             Delivering Excellence Through <span className="text-royal">Intelligent BIM</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             Infinity BIM delivers intelligent Building Information Modeling (BIM) solutions that
             enhance collaboration, improve project certainty, and optimize delivery across the
             entire project lifecycle. We help clients make informed decisions, minimize risks, and
@@ -209,14 +209,14 @@ function About() {
       </section>
 
       {/* GLOBAL PROJECT EXPERIENCE */}
-      <section className="container-page py-20 md:py-28 border-b border-border">
+      <section className="container-page py-14 sm:py-18 md:py-24 border-b border-border">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Global Project Experience
           </h2>
           <div className="hidden">{/* removed eyebrow */}</div>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
             Delivering projects using industry-leading BIM, digital engineering, and construction
             technology platforms trusted by global AEC professionals.
           </p>
@@ -228,7 +228,7 @@ function About() {
       </section>
 
       {/* CLIENT TESTIMONIALS */}
-      <section className="border-b border-border bg-surface py-20 md:py-28">
+      <section className="border-b border-border bg-surface py-14 sm:py-18 md:py-24">
         <div className="container-page">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
@@ -264,7 +264,7 @@ function About() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-sky">
             Our Vision
           </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
             Building the Future of{" "}
             <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
               Digital Engineering
@@ -292,7 +292,7 @@ function About() {
 
       {/* FREQUENTLY ASKED QUESTIONS */}
 
-      <section className="bg-background py-20 md:py-28">
+      <section className="bg-background py-14 sm:py-18 md:py-24">
         <div className="container-page max-w-4xl">
           <div className="text-center mb-14">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">

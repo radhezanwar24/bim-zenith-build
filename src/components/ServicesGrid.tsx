@@ -43,7 +43,7 @@ const services = [
 
 export function ServicesGrid() {
   return (
-    <ul role="list" className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" className="mt-10 sm:mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {services.map(({ icon: Icon, title, desc }, i) => (
         <motion.li
           key={title}

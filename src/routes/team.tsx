@@ -62,7 +62,7 @@ function Team() {
         </div>
       </section>
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page pb-16 sm:pb-20 md:pb-28">
         <AnimatePresence mode="wait">
           {activeMember ? (
             <motion.div

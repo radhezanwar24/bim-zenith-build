@@ -123,7 +123,7 @@ function Services() {
         />
       </section>
 
-      <section className="container-page py-20 md:py-28">
+      <section className="container-page py-14 sm:py-18 md:py-24">
         <MotionReveal className="mx-auto mb-16 max-w-4xl text-center">
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[2px] w-12 bg-royal/40 rounded-full" />

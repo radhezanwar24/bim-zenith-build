@@ -45,7 +45,7 @@ const industries = [
 
 export function IndustriesGrid() {
   return (
-    <ul role="list" className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {industries.map(({ icon: Icon, label, image, position }, i) => (
         <motion.li
           key={label}
