@@ -70,8 +70,8 @@ export function TeamCard({
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
         className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
-          isWide ? "min-h-[24rem] md:h-full" : "h-80"
-        } ${isWide ? "" : "shrink-0"}`}
+          isWide ? "h-56 sm:h-72 md:h-full md:min-h-[22rem]" : "aspect-[4/5] w-full shrink-0"
+        }`}
       >
         <motion.div
           aria-hidden
@@ -95,7 +95,7 @@ export function TeamCard({
         />
       </button>
 
-      <div className={`flex flex-1 flex-col ${isWide ? "justify-center p-8 md:p-10" : "p-6"}`}>
+      <div className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 sm:p-7 md:p-8" : "p-4 sm:p-5"}`}>
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <a
