@@ -264,7 +264,7 @@ function About() {
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.22em] text-sky">
             Our Vision
           </span>
-          <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
             Building the Future of{" "}
             <span className="bg-gradient-to-r from-sky via-white to-sky bg-clip-text text-transparent">
               Digital Engineering

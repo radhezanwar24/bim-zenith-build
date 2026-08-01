@@ -187,7 +187,7 @@ function Home() {
               <SectionEyebrow>
                 <span className="text-sky">Milestones</span>
               </SectionEyebrow>
-              <h3 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
+              <h3 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl">
                 Key Milestones
               </h3>
               <ul className="mt-8 space-y-4">
@@ -227,7 +227,7 @@ function Home() {
             />
             <div className="relative">
               <SectionEyebrow>Our Services</SectionEyebrow>
-              <h3 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+              <h3 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl">
                 Delivering Excellence Through Intelligent BIM
               </h3>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -274,7 +274,7 @@ function Home() {
       <section className="container-page py-16 sm:py-14 sm:py-18 md:py-24">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Services</SectionEyebrow>
-          <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             End-to-End <span className="text-royal">BIM & Digital Engineering</span>
           </h2>
           <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
@@ -290,7 +290,7 @@ function Home() {
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Global Project Experience</SectionEyebrow>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               Trusted by Global AEC Leaders
             </h2>
             <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
@@ -333,7 +333,7 @@ function Home() {
             <SectionEyebrow>
               <span className="text-sky">Our Track Record</span>
             </SectionEyebrow>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
               Excellence, Measured in Numbers
             </h2>
             <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-primary-foreground/75">
@@ -355,7 +355,7 @@ function Home() {
       <section className="container-page py-16 sm:py-14 sm:py-18 md:py-24">
         <div className="mx-auto max-w-3xl text-center reveal">
           <SectionEyebrow>Industries Served</SectionEyebrow>
-          <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             Sectors We <span className="text-royal">Power</span>
           </h2>
           <p className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-relaxed text-muted-foreground">
@@ -371,7 +371,7 @@ function Home() {
         <div className="container-page">
           <div className="mx-auto max-w-3xl text-center reveal">
             <SectionEyebrow>Why Infinity BIM</SectionEyebrow>
-            <h2 className="mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
               A Partner Built for <span className="text-royal">Complex Delivery</span>
             </h2>
           </div>
