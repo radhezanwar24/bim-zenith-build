@@ -43,7 +43,7 @@ const services = [
 
 export function ServicesGrid() {
   return (
-    <ul role="list" className="mt-10 sm:mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <ul role="list" className="mt-8 grid gap-4 sm:mt-12 sm:grid-cols-2 sm:gap-5 lg:mt-14 lg:grid-cols-3">
       {services.map(({ icon: Icon, title, desc }, i) => (
         <motion.li
           key={title}
@@ -52,16 +52,16 @@ export function ServicesGrid() {
           viewport={{ once: true, amount: 0.18 }}
           transition={{ duration: 0.75, delay: (i % 3) * 0.07, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -6 }}
-          className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
+          className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] sm:p-6 transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
         >
           <div
             aria-hidden
             className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-sky/20 to-royal/20 opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
           />
-          <span className="relative grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-royal to-navy text-primary-foreground shadow-sm">
-            <Icon className="h-6 w-6" aria-hidden />
+          <span className="relative grid h-11 w-11 place-items-center rounded-xl sm:h-12 sm:w-12 bg-gradient-to-br from-royal to-navy text-primary-foreground shadow-sm">
+            <Icon className="h-5 w-5 transition-transform duration-500 group-hover:scale-110 sm:h-6 sm:w-6" aria-hidden />
           </span>
-          <h3 className="relative mt-5 text-lg font-semibold text-navy">{title}</h3>
+          <h3 className="relative mt-4 text-base font-semibold sm:mt-5 sm:text-lg text-navy">{title}</h3>
           <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
         </motion.li>
       ))}
