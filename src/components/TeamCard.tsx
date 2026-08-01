@@ -86,7 +86,7 @@ export function TeamCard({
           loading="lazy"
           decoding="async"
           onLoad={() => setImageReady(true)}
-          className="h-full w-full object-contain"
+          className={`h-full w-full ${isWide ? "object-contain" : "object-cover object-top"}`}
           initial={false}
           animate={{ opacity: imageReady ? 1 : 0 }}
           transition={{ duration: 0.45, ease: premiumEase }}
