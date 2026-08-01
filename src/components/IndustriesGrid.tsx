@@ -12,8 +12,18 @@ import {
 import { motion } from "framer-motion";
 
 const industries = [
-  { icon: HeartPulse, label: "Healthcare", image: "/sectors/healthcare.jpg", position: "50% 16%" },
-  { icon: Building, label: "Commercial", image: "/sectors/commercial.jpg", position: "63% 46%" },
+  {
+    icon: HeartPulse,
+    label: "Healthcare",
+    image: "/sectors/healthcare-upload.png",
+    position: "50% 50%",
+  },
+  {
+    icon: Building,
+    label: "Commercial",
+    image: "/sectors/commercial-upload.png",
+    position: "50% 50%",
+  },
   { icon: Home, label: "Residential", image: "/sectors/residential.jpg", position: "50% 62%" },
   { icon: Factory, label: "Industrial", image: "/sectors/industrial.jpg", position: "50% 50%" },
   {
