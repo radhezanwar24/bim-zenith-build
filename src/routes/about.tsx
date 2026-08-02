@@ -86,9 +86,6 @@ function About() {
           <p className="mx-auto mt-4 max-w-2xl text-base italic text-muted-foreground">
             Engineering Digital Excellence. Delivering Real-World Results.
           </p>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.22em] text-royal">
-            Established in 2022
-          </p>
         </div>
       </section>
 

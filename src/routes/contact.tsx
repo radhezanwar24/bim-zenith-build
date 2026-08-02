@@ -61,17 +61,6 @@ function Contact() {
             <span className="text-navy font-medium">Pune, Maharashtra</span>
           </ContactItem>
 
-          <div className="overflow-hidden rounded-2xl border border-border">
-            <div className="aspect-[4/3] w-full bg-muted">
-              <iframe
-                title="Map"
-                src="https://www.google.com/maps?q=Pune,%20Maharashtra&output=embed"
-                className="h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
         </aside>
 
         <form

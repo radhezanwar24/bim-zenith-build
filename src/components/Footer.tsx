@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-border bg-white text-navy">
+    <footer className="relative mt-20 overflow-hidden border-t border-navy/10 bg-white text-navy shadow-[inset_0_1px_0_rgba(30,93,166,0.06)]">
       <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
 
       <div className="container-page relative grid gap-10 py-14 sm:py-16 md:grid-cols-12 md:gap-12 md:py-20">
@@ -40,6 +40,9 @@ export function Footer() {
             </li>
             <li>
               <FooterLink to="/team">Team</FooterLink>
+            </li>
+            <li>
+              <FooterLink to="/careers">Careers</FooterLink>
             </li>
             <li>
               <FooterLink to="/contact">Contact</FooterLink>
