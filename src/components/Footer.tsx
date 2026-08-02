@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-20 overflow-hidden border-t border-navy/10 bg-white text-navy shadow-[inset_0_1px_0_rgba(30,93,166,0.06)]">
+    <footer className="relative mt-20 overflow-hidden border-t-4 border-navy bg-white text-navy">
       <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
 
       <div className="container-page relative grid gap-10 py-14 sm:py-16 md:grid-cols-12 md:gap-12 md:py-20">
@@ -81,10 +81,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="relative border-t border-navy/15">
-        <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs font-medium text-navy sm:flex-row">
+      <div className="relative border-t border-navy bg-navy">
+        <div className="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs font-medium text-primary-foreground sm:flex-row">
           <p>© {year} Infinity BIM · Established in 2022 · All rights reserved</p>
-          <p className="italic">Endless Possibilities in BIM</p>
+          <p className="italic text-primary-foreground">Endless Possibilities in BIM</p>
         </div>
       </div>
     </footer>

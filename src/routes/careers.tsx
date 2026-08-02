@@ -1,12 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BriefcaseBusiness, Mail, Send, Upload } from "lucide-react";
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { BriefcaseBusiness, FileText, Mail, Send } from "lucide-react";
+import { useState, type FormEvent } from "react";
 
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 
 const contactEmail = "info.infinitybim@gmail.com";
 const whatsappNumber = "919067059933";
-const maxResumeSize = 5 * 1024 * 1024;
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -30,36 +29,12 @@ export const Route = createFileRoute("/careers")({
 });
 
 function Careers() {
-  const [resumeName, setResumeName] = useState("");
-  const [resumeError, setResumeError] = useState("");
   const [sent, setSent] = useState(false);
-
-  const handleResumeChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const file = event.currentTarget.files?.[0];
-    setSent(false);
-
-    if (!file) {
-      setResumeName("");
-      setResumeError("");
-      return;
-    }
-
-    if (file.size > maxResumeSize) {
-      event.currentTarget.value = "";
-      setResumeName("");
-      setResumeError("Please upload a resume up to 5 MB.");
-      return;
-    }
-
-    setResumeName(file.name);
-    setResumeError("");
-  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (resumeError) return;
 
-    const text = buildCareerMessage(event.currentTarget, resumeName);
+    const text = buildCareerMessage(event.currentTarget);
     window.open(
       `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`,
       "_blank",
@@ -88,12 +63,12 @@ function Careers() {
           </span>
           <h2 className="mt-6 text-2xl font-bold tracking-tight text-navy">Join Our Team</h2>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-            Tell us about your experience and attach your resume. This temporary form prepares your
-            application message through WhatsApp or email while backend resume storage is added
-            later.
+            Tell us about your experience. This temporary form prepares your application message
+            through WhatsApp or email while backend resume storage is added later.
           </p>
           <div className="mt-6 rounded-2xl bg-accent/55 p-4 text-sm leading-relaxed text-navy">
-            Resume formats: PDF, DOC, DOCX up to 5 MB.
+            Please attach your resume manually in WhatsApp or email before sending your application.
+            Recommended formats: PDF, DOC, or DOCX up to 5 MB.
           </div>
         </aside>
 
@@ -108,32 +83,20 @@ function Careers() {
             <Field label="Role interested in" name="role" />
 
             <div className="sm:col-span-2">
-              <label htmlFor="resume" className="mb-2 block text-sm font-medium text-navy">
-                Resume <span className="text-muted-foreground">(PDF/DOC/DOCX up to 5 MB)</span>
-              </label>
-              <label
-                htmlFor="resume"
-                className="flex cursor-pointer flex-col items-center justify-center rounded-xl border border-dashed border-royal/35 bg-accent/35 px-4 py-6 text-center transition-colors hover:bg-accent"
-              >
-                <Upload className="h-6 w-6 text-royal" aria-hidden />
-                <span className="mt-2 text-sm font-semibold text-navy">Upload Resume</span>
-                <span className="mt-1 text-xs text-muted-foreground">
-                  {resumeName || "Choose a PDF, DOC, or DOCX file"}
-                </span>
-              </label>
-              <input
-                id="resume"
-                name="resume"
-                type="file"
-                accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                className="sr-only"
-                onChange={handleResumeChange}
-              />
-              {resumeError && (
-                <p className="mt-2 text-sm text-destructive" role="alert">
-                  {resumeError}
-                </p>
-              )}
+              <div className="rounded-xl border border-royal/25 bg-accent/35 px-4 py-5">
+                <div className="flex items-start gap-3">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-white text-royal shadow-sm">
+                    <FileText className="h-5 w-5" aria-hidden />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-navy">Resume attachment</p>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      Please attach your resume manually in the WhatsApp chat or email window before
+                      sending. Use PDF, DOC, or DOCX format up to 5 MB.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="sm:col-span-2">
@@ -163,8 +126,8 @@ function Careers() {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border bg-background px-6 py-3 text-sm font-medium text-navy transition-colors hover:bg-accent sm:w-auto"
               onClick={(event) => {
                 const form = event.currentTarget.form;
-                if (!form?.reportValidity() || resumeError) return;
-                const text = buildCareerMessage(form, resumeName);
+                if (!form?.reportValidity()) return;
+                const text = buildCareerMessage(form);
                 window.location.href = `mailto:${contactEmail}?subject=${encodeURIComponent(
                   "Infinity BIM career application",
                 )}&body=${encodeURIComponent(text)}`;
@@ -187,7 +150,7 @@ function Careers() {
   );
 }
 
-function buildCareerMessage(form: HTMLFormElement, resumeName: string) {
+function buildCareerMessage(form: HTMLFormElement) {
   const data = new FormData(form);
   const name = String(data.get("name") ?? "").trim();
   const email = String(data.get("email") ?? "").trim();
@@ -202,7 +165,7 @@ function buildCareerMessage(form: HTMLFormElement, resumeName: string) {
     `Email: ${email || "Not provided"}`,
     `Phone: ${phone || "Not provided"}`,
     `Role interested in: ${role || "Not specified"}`,
-    `Resume selected: ${resumeName || "Not attached in browser form"}`,
+    "Resume: Please attach the resume manually before sending this application.",
     "",
     "Message:",
     message || "Not provided",
