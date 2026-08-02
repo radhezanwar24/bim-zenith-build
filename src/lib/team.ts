@@ -52,7 +52,7 @@ export const team: Member[] = [
     compactObjectPosition: "center 20%",
     expandedObjectPosition: "center 18%",
     compactScale: 1.04,
-    expandedScale: 0.92,
+    expandedScale: 1,
   },
   {
     name: "Sahil Ahmed Khan",
