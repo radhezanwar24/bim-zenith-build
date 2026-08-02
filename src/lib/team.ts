@@ -11,6 +11,9 @@ export type Member = {
   photo: string;
   linkedin: string;
   compactObjectPosition?: string;
+  expandedObjectPosition?: string;
+  compactScale?: number;
+  expandedScale?: number;
 };
 
 export const team: Member[] = [
@@ -21,6 +24,10 @@ export const team: Member[] = [
     bio: "As Founder & Chief Executive Officer, Malik Jan leads Infinity BIM's strategic vision, business growth, and global expansion. He drives innovation, strategic partnerships, and operational excellence while delivering integrated AEC, BIM, VDC, and digital engineering solutions with a commitment to quality and client success.",
     photo: malik,
     linkedin: "https://www.linkedin.com/in/malikjan01",
+    compactObjectPosition: "center 15%",
+    expandedObjectPosition: "center 12%",
+    compactScale: 1.16,
+    expandedScale: 1.02,
   },
   {
     name: "Avinash Marathe",
@@ -29,6 +36,10 @@ export const team: Member[] = [
     bio: "As Co-Founder & Chief Executive Officer, Avinash drives business strategy, design excellence, and operational leadership at Infinity BIM. He fosters innovation, strengthens client relationships, and ensures the successful delivery of integrated AEC, BIM, VDC, and digital engineering solutions across global markets.",
     photo: avinash,
     linkedin: "https://www.linkedin.com/in/avinash-marathe-350ba41a0",
+    compactObjectPosition: "center 13%",
+    expandedObjectPosition: "center 12%",
+    compactScale: 1.08,
+    expandedScale: 1,
   },
   {
     name: "Yash Zanwar",
@@ -39,6 +50,9 @@ export const team: Member[] = [
     photo: yash,
     linkedin: "https://www.linkedin.com/in/yash-zanwar-5312b1199",
     compactObjectPosition: "center 20%",
+    expandedObjectPosition: "center 18%",
+    compactScale: 1.04,
+    expandedScale: 0.92,
   },
   {
     name: "Sahil Ahmed Khan",
@@ -47,5 +61,9 @@ export const team: Member[] = [
     bio: "As Chief Technology Officer, Sahil leads Infinity BIM's technology strategy, technical excellence, and digital innovation. He oversees BIM standards, VDC workflows, automation, and multidisciplinary project delivery, ensuring scalable, efficient, and future-ready engineering solutions across global projects.",
     photo: sahil,
     linkedin: "https://www.linkedin.com/in/sahil-ahmed-khan",
+    compactObjectPosition: "center 14%",
+    expandedObjectPosition: "center 12%",
+    compactScale: 1.14,
+    expandedScale: 1.02,
   },
 ];

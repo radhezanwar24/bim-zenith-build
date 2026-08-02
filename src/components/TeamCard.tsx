@@ -3,8 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-import linkedinLogo from "@/assets/linkedin-logo.png";
-
 type TeamCardProps = {
   member: Member;
   expanded: boolean;
@@ -14,6 +12,18 @@ type TeamCardProps = {
 };
 
 const premiumEase = [0.16, 1, 0.3, 1] as const;
+
+function LinkedInMark() {
+  return (
+    <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-5 sm:w-5" aria-hidden>
+      <rect width="24" height="24" rx="2.5" fill="#0A66C2" />
+      <path
+        fill="#fff"
+        d="M5.35 8.82h3.05v9.84H5.35V8.82Zm1.53-4.9a1.77 1.77 0 1 1-.02 3.54 1.77 1.77 0 0 1 .02-3.54Zm3.43 4.9h2.92v1.34h.04c.41-.77 1.4-1.58 2.88-1.58 3.08 0 3.65 2.03 3.65 4.66v5.42h-3.05v-4.8c0-1.15-.02-2.62-1.6-2.62-1.6 0-1.85 1.25-1.85 2.54v4.88h-3V8.82Z"
+      />
+    </svg>
+  );
+}
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
@@ -36,6 +46,8 @@ export function TeamCard({
   const [imageReady, setImageReady] = useState(false);
   const isWide = variant === "expanded";
   const compactObjectPosition = member.compactObjectPosition ?? "center 12%";
+  const expandedObjectPosition = member.expandedObjectPosition ?? compactObjectPosition;
+  const imageScale = isWide ? (member.expandedScale ?? 1) : (member.compactScale ?? 1.08);
 
   useEffect(() => {
     setImageReady(false);
@@ -52,7 +64,7 @@ export function TeamCard({
       className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
         isWide
           ? "mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)]"
-          : "flex h-[29rem] flex-col sm:h-full"
+          : "flex h-full flex-col"
       }`}
     >
       {expanded && (
@@ -73,8 +85,8 @@ export function TeamCard({
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
         className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
           isWide
-            ? "h-64 sm:h-72 md:h-full md:min-h-[22rem]"
-            : "h-64 w-full shrink-0 sm:aspect-[4/5] sm:h-auto"
+            ? "mx-auto aspect-[4/5] w-full max-w-[18rem] sm:max-w-[21rem] md:h-full md:max-w-none md:min-h-[22rem]"
+            : "aspect-[4/5] w-full shrink-0"
         }`}
       >
         <motion.div
@@ -91,9 +103,12 @@ export function TeamCard({
           loading="lazy"
           decoding="async"
           onLoad={() => setImageReady(true)}
-          className={`block h-full w-full ${isWide ? "object-cover md:object-contain" : "scale-[1.08] object-cover"}`}
+          className="block h-full w-full object-cover"
           style={
-            isWide ? { objectPosition: "center 14%" } : { objectPosition: compactObjectPosition }
+            {
+              objectPosition: isWide ? expandedObjectPosition : compactObjectPosition,
+              transform: `scale(${imageScale})`,
+            }
           }
           initial={false}
           animate={{ opacity: imageReady ? 1 : 0 }}
@@ -102,16 +117,16 @@ export function TeamCard({
       </button>
 
       <div
-        className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 sm:p-7 md:p-8" : "p-4 sm:p-5"}`}
+        className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 sm:p-7 md:p-8" : "p-3 sm:p-5"}`}
       >
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex items-start justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
-                isWide ? "text-2xl tracking-tight sm:text-3xl" : "text-base sm:text-lg"
+                isWide ? "text-2xl tracking-tight sm:text-3xl" : "text-sm leading-tight sm:text-lg"
               }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
             >
@@ -119,7 +134,7 @@ export function TeamCard({
             </a>
             <p
               className={`mt-2 font-medium leading-snug text-royal ${
-                isWide ? "text-sm sm:text-base" : "text-[0.8rem] sm:text-sm"
+                isWide ? "text-sm sm:text-base" : "text-[0.72rem] sm:text-sm"
               }`}
             >
               {member.role}
@@ -130,9 +145,9 @@ export function TeamCard({
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Open ${member.name}'s LinkedIn profile`}
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-full border border-border bg-white transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent sm:h-9 sm:w-9"
+            className="grid h-7 w-7 shrink-0 place-items-center text-[#0A66C2] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-85 sm:h-9 sm:w-9"
           >
-            <img src={linkedinLogo} alt="" className="h-7 w-7 sm:h-5 sm:w-5" aria-hidden />
+            <LinkedInMark />
           </a>
         </div>
 

@@ -85,14 +85,14 @@ function Team() {
             <motion.div
               key="team-grid"
               layout
-              className="grid grid-cols-1 items-stretch gap-4 min-[520px]:grid-cols-2 sm:gap-5 lg:grid-cols-4"
+              className="grid grid-cols-2 items-stretch gap-3 sm:gap-5 lg:grid-cols-4"
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 18 }}
               transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
             >
               {team.map((member, index) => (
-                <MotionReveal key={member.name} delay={index * 0.08}>
+                <MotionReveal key={member.name} delay={index * 0.08} className="h-full">
                   <TeamCard
                     member={member}
                     expanded={false}
