@@ -144,7 +144,7 @@ function Services() {
           </p>
         </MotionReveal>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-5">
           {coreServices.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -155,19 +155,23 @@ function Services() {
                 viewport={{ once: true, amount: 0.16 }}
                 transition={{ duration: 0.75, delay: (index % 5) * 0.06, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -8 }}
-                className="group relative flex flex-col items-center overflow-hidden rounded-3xl border border-border bg-card p-6 text-center shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)]"
+                className={`group relative flex min-h-[12.5rem] flex-col items-center overflow-hidden rounded-2xl border border-border bg-card p-4 text-center shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/30 hover:shadow-[var(--shadow-elevated)] sm:min-h-0 sm:rounded-3xl sm:p-6 ${
+                  coreServices.length % 2 === 1 && index === coreServices.length - 1
+                    ? "col-span-2 mx-auto w-[calc((100%_-_0.75rem)/2)] sm:w-[calc((100%_-_1.5rem)/2)] lg:col-span-1 lg:w-auto"
+                    : ""
+                }`}
               >
                 <div
                   aria-hidden
                   className="pointer-events-none absolute -right-20 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-sky/10 to-royal/10 opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-100"
                 />
-                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-surface text-royal transition-all duration-500 group-hover:bg-royal group-hover:text-white group-hover:scale-110 shadow-sm border border-border group-hover:border-transparent">
-                  <Icon className="h-6 w-6" aria-hidden />
+                <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-border bg-surface text-royal shadow-sm transition-all duration-500 group-hover:scale-110 group-hover:border-transparent group-hover:bg-royal group-hover:text-white sm:mb-5 sm:h-14 sm:w-14">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
                 </div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-navy mb-3 line-clamp-2 min-h-[40px] flex items-center justify-center font-display">
+                <h3 className="mb-3 flex min-h-[3.6rem] items-center justify-center text-[0.68rem] font-bold uppercase leading-snug tracking-[0.06em] text-navy sm:min-h-[40px] sm:text-sm sm:tracking-wider">
                   {service.name}
                 </h3>
-                <p className="text-xs leading-relaxed text-muted-foreground max-w-[200px] flex-1">
+                <p className="max-w-[200px] flex-1 text-[0.7rem] leading-relaxed text-muted-foreground sm:text-xs">
                   {service.description}
                 </p>
               </motion.article>

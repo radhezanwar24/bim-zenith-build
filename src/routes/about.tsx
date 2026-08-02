@@ -138,9 +138,9 @@ function About() {
               aria-hidden
             />
 
-            <div className="relative grid grid-cols-1 divide-y divide-white/20 text-center md:grid-cols-5 md:divide-x md:divide-y-0">
+            <div className="relative grid grid-cols-2 gap-3 text-center md:grid-cols-5 md:gap-0 md:divide-x md:divide-white/20">
               {/* ACCURATE */}
-              <div className="group flex flex-col items-center p-6 md:py-4 lg:py-6 transition-all duration-300 hover:translate-y-[-4px]">
+              <div className="group flex flex-col items-center rounded-2xl bg-white/5 p-4 transition-all duration-300 hover:translate-y-[-4px] md:rounded-none md:bg-transparent md:py-4 lg:py-6">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
                   <Target className="h-7 w-7" />
                 </div>
@@ -153,7 +153,7 @@ function About() {
               </div>
 
               {/* COORDINATED */}
-              <div className="group flex flex-col items-center p-6 md:py-4 lg:py-6 transition-all duration-300 hover:translate-y-[-4px]">
+              <div className="group flex flex-col items-center rounded-2xl bg-white/5 p-4 transition-all duration-300 hover:translate-y-[-4px] md:rounded-none md:bg-transparent md:py-4 lg:py-6">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
                   <Users className="h-7 w-7" />
                 </div>
@@ -166,7 +166,7 @@ function About() {
               </div>
 
               {/* EFFICIENT */}
-              <div className="group flex flex-col items-center p-6 md:py-4 lg:py-6 transition-all duration-300 hover:translate-y-[-4px]">
+              <div className="group flex flex-col items-center rounded-2xl bg-white/5 p-4 transition-all duration-300 hover:translate-y-[-4px] md:rounded-none md:bg-transparent md:py-4 lg:py-6">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
                   <Clock className="h-7 w-7" />
                 </div>
@@ -178,21 +178,8 @@ function About() {
                 </p>
               </div>
 
-              {/* GLOBAL EXPERIENCE */}
-              <div className="group flex flex-col items-center p-6 md:py-4 lg:py-6 transition-all duration-300 hover:translate-y-[-4px]">
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
-                  <Globe className="h-7 w-7" />
-                </div>
-                <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2 font-display">
-                  Global Experience
-                </h3>
-                <p className="text-xs text-white/70 leading-relaxed max-w-[180px]">
-                  Successfully delivered projects in Asia, North America, Europe & Middle East
-                </p>
-              </div>
-
               {/* COLLABORATIVE */}
-              <div className="group flex flex-col items-center p-6 md:py-4 lg:py-6 transition-all duration-300 hover:translate-y-[-4px]">
+              <div className="group flex flex-col items-center rounded-2xl bg-white/5 p-4 transition-all duration-300 hover:translate-y-[-4px] md:rounded-none md:bg-transparent md:py-4 lg:py-6">
                 <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
                   <Handshake className="h-7 w-7" />
                 </div>
@@ -201,6 +188,19 @@ function About() {
                 </h3>
                 <p className="text-xs text-white/70 leading-relaxed max-w-[180px]">
                   Strong communication and dedicated project support
+                </p>
+              </div>
+
+              {/* GLOBAL EXPERIENCE */}
+              <div className="group col-span-2 mx-auto flex w-[calc((100%_-_0.75rem)/2)] flex-col items-center rounded-2xl bg-white/5 p-4 transition-all duration-300 hover:translate-y-[-4px] md:col-span-1 md:w-auto md:rounded-none md:bg-transparent md:py-4 lg:py-6">
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/5 text-sky transition-all duration-300 group-hover:bg-sky/20 group-hover:scale-110 shadow-inner">
+                  <Globe className="h-7 w-7" />
+                </div>
+                <h3 className="text-sm font-bold uppercase tracking-wider text-white mb-2 font-display">
+                  Global Experience
+                </h3>
+                <p className="text-xs text-white/70 leading-relaxed max-w-[180px]">
+                  Successfully delivered projects in Asia, North America, Europe & Middle East
                 </p>
               </div>
             </div>

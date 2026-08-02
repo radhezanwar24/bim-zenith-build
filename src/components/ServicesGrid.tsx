@@ -45,7 +45,7 @@ export function ServicesGrid() {
   return (
     <ul
       role="list"
-      className="mt-8 grid grid-cols-1 gap-3 min-[520px]:grid-cols-2 sm:mt-12 sm:gap-5 lg:mt-14 lg:grid-cols-3"
+      className="mt-8 grid grid-cols-2 gap-3 sm:mt-12 sm:gap-5 lg:mt-14 lg:grid-cols-3"
     >
       {services.map(({ icon: Icon, title, desc }, i) => (
         <motion.li
@@ -55,7 +55,11 @@ export function ServicesGrid() {
           viewport={{ once: true, amount: 0.18 }}
           transition={{ duration: 0.75, delay: (i % 3) * 0.07, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -6 }}
-          className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)] sm:p-6"
+          className={`group relative overflow-hidden rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)] transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)] sm:p-6 ${
+            services.length % 2 === 1 && i === services.length - 1
+              ? "col-span-2 mx-auto w-[calc((100%_-_0.75rem)/2)] sm:w-[calc((100%_-_1.25rem)/2)] lg:col-span-1 lg:w-auto"
+              : ""
+          }`}
         >
           <div
             aria-hidden
@@ -67,10 +71,12 @@ export function ServicesGrid() {
               aria-hidden
             />
           </span>
-          <h3 className="relative mt-4 text-base font-semibold text-navy sm:mt-5 sm:text-lg">
+          <h3 className="relative mt-4 text-sm font-semibold leading-tight text-navy sm:mt-5 sm:text-lg">
             {title}
           </h3>
-          <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+          <p className="relative mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+            {desc}
+          </p>
         </motion.li>
       ))}
     </ul>

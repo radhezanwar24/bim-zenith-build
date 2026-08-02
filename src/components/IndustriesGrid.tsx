@@ -57,7 +57,11 @@ export function IndustriesGrid() {
           viewport={{ once: true, amount: 0.18 }}
           transition={{ duration: 0.75, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
           whileHover={{ y: -6 }}
-          className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
+          className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors duration-500 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)] ${
+            industries.length % 2 === 1 && i === industries.length - 1
+              ? "col-span-2 mx-auto w-[calc((100%_-_0.75rem)/2)] sm:w-[calc((100%_-_1.5rem)/2)] lg:col-span-1 lg:w-auto"
+              : ""
+          }`}
         >
           {/* Sector Image */}
           <div className="relative aspect-[16/11] w-full overflow-hidden bg-muted">

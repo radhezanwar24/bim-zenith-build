@@ -83,10 +83,10 @@ export function TeamCard({
         onClick={onToggle}
         aria-expanded={expanded}
         aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
-        className={`relative block overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
+        className={`relative block overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
           isWide
-            ? "mx-auto aspect-[4/5] w-full max-w-[18rem] sm:max-w-[21rem] md:h-full md:max-w-none md:min-h-[22rem]"
-            : "aspect-[4/5] w-full shrink-0"
+            ? "mx-auto aspect-[4/5] w-full max-w-[18rem] bg-transparent sm:max-w-[21rem] md:h-full md:max-w-none md:min-h-[22rem]"
+            : "aspect-[4/5] w-full shrink-0 bg-muted"
         }`}
       >
         <motion.div

@@ -376,7 +376,7 @@ function Home() {
               A Partner Built for <span className="text-royal">Complex Delivery</span>
             </h2>
           </div>
-          <div className="mt-10 sm:mt-14 grid gap-6 md:grid-cols-3">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-5 md:grid-cols-3">
             {[
               {
                 icon: Cpu,
@@ -411,14 +411,18 @@ function Home() {
             ].map(({ icon: Icon, title, desc }, i) => (
               <div
                 key={title}
-                className="reveal group rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)]"
+                className="reveal group rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)] transition-all duration-500 hover:-translate-y-1 hover:border-royal/40 hover:shadow-[var(--shadow-elevated)] sm:p-7"
                 style={{ transitionDelay: `${(i % 3) * 80}ms` }}
               >
-                <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-royal to-navy text-primary-foreground shadow-sm transition-transform duration-500 group-hover:scale-110">
-                  <Icon className="h-6 w-6" aria-hidden />
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-royal to-navy text-primary-foreground shadow-sm transition-transform duration-500 group-hover:scale-110 sm:h-12 sm:w-12">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-navy">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                <h3 className="mt-4 text-sm font-semibold leading-tight text-navy sm:mt-5 sm:text-lg">
+                  {title}
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
+                  {desc}
+                </p>
               </div>
             ))}
           </div>
