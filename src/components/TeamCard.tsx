@@ -96,24 +96,41 @@ export function TeamCard({
           transition={{ duration: 0.35, ease: premiumEase }}
           className="absolute inset-0 bg-[linear-gradient(110deg,oklch(0.96_0.005_240),oklch(0.985_0.003_240),oklch(0.94_0.03_240))] bg-[length:220%_100%]"
         />
-        <motion.img
-          ref={imageRef}
-          src={member.photo}
-          alt={`Portrait of ${member.name}, ${member.role}`}
-          loading="lazy"
-          decoding="async"
-          onLoad={() => setImageReady(true)}
-          className="block h-full w-full object-cover"
-          style={
-            {
-              objectPosition: isWide ? expandedObjectPosition : compactObjectPosition,
+        {isWide ? (
+          <motion.img
+            ref={imageRef}
+            src={member.photo}
+            alt={`Portrait of ${member.name}, ${member.role}`}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setImageReady(true)}
+            className="block h-full w-full object-cover"
+            style={{
+              objectPosition: expandedObjectPosition,
               transform: `scale(${imageScale})`,
-            }
-          }
-          initial={false}
-          animate={{ opacity: imageReady ? 1 : 0 }}
-          transition={{ duration: 0.45, ease: premiumEase }}
-        />
+            }}
+            initial={false}
+            animate={{ opacity: imageReady ? 1 : 0 }}
+            transition={{ duration: 0.45, ease: premiumEase }}
+          />
+        ) : (
+          <img
+            ref={imageRef}
+            src={member.photo}
+            alt={`Portrait of ${member.name}, ${member.role}`}
+            loading="eager"
+            decoding="async"
+            onLoad={() => setImageReady(true)}
+            className={`block h-full w-full object-cover transition-opacity duration-500 ${
+              imageReady ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              objectPosition: compactObjectPosition,
+              transform: `scale(${imageScale})`,
+              transformOrigin: "center top",
+            }}
+          />
+        )}
       </button>
 
       <div

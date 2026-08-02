@@ -26,7 +26,7 @@ export const team: Member[] = [
     linkedin: "https://www.linkedin.com/in/malikjan01",
     compactObjectPosition: "center 15%",
     expandedObjectPosition: "center 12%",
-    compactScale: 1.16,
+    compactScale: 1.18,
     expandedScale: 1.02,
   },
   {
@@ -61,9 +61,9 @@ export const team: Member[] = [
     bio: "As Chief Technology Officer, Sahil leads Infinity BIM's technology strategy, technical excellence, and digital innovation. He oversees BIM standards, VDC workflows, automation, and multidisciplinary project delivery, ensuring scalable, efficient, and future-ready engineering solutions across global projects.",
     photo: sahil,
     linkedin: "https://www.linkedin.com/in/sahil-ahmed-khan",
-    compactObjectPosition: "center 14%",
+    compactObjectPosition: "center 10%",
     expandedObjectPosition: "center 12%",
-    compactScale: 1.14,
+    compactScale: 1.22,
     expandedScale: 1.02,
   },
 ];
