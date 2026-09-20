@@ -1,6 +1,6 @@
-import malik from "@/assets/malik.jpg";
+import malik from "@/assets/new_malik.png";
 import avinash from "@/assets/avinash.jpg";
-import yash from "@/assets/yash.jpg";
+import yash from "@/assets/new_yash.png";
 import sahil from "@/assets/sahil.jpg";
 
 export type Member = {
