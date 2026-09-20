@@ -168,7 +168,7 @@ export function TeamCard({
           </a>
         </div>
 
-        <QualificationLines credentials={member.credentials} />
+        {isWide && <QualificationLines credentials={member.credentials} />}
 
         <AnimatePresence initial={false}>
           {expanded && (

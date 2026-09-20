@@ -24,9 +24,9 @@ export const team: Member[] = [
     bio: "As Founder & Chief Executive Officer, Malik Jan leads Infinity BIM's strategic vision, business growth, and global expansion. He drives innovation, strategic partnerships, and operational excellence while delivering integrated AEC, BIM, VDC, and digital engineering solutions with a commitment to quality and client success.",
     photo: malik,
     linkedin: "https://www.linkedin.com/in/malikjan01",
-    compactObjectPosition: "center 15%",
+    compactObjectPosition: "center 20%",
     expandedObjectPosition: "center 12%",
-    compactScale: 1.18,
+    compactScale: 1.4,
     expandedScale: 1.02,
   },
   {
