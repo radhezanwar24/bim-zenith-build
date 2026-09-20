@@ -39,25 +39,31 @@ function Team() {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[90%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_54%,#174c81_100%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[88%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_54%,#174c81_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[90%] bg-[radial-gradient(52rem_28rem_at_50%_47%,rgba(111,195,255,0.2),transparent_72%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-[88%] bg-[radial-gradient(52rem_28rem_at_50%_45%,rgba(111,195,255,0.2),transparent_72%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-[78%] h-40 bg-gradient-to-b from-transparent via-background/72 to-background"
+          className="pointer-events-none absolute inset-x-0 top-[70%] h-36 bg-gradient-to-b from-transparent via-background/70 to-background"
           aria-hidden
         />
-        <div className="container-page relative flex min-h-[58vh] items-center justify-center py-14 sm:min-h-[70vh] sm:py-20 md:min-h-[min(720px,calc(100vh-5rem))] md:py-24">
-          <MotionReveal className="mx-auto max-w-4xl -translate-y-6 text-center md:-translate-y-16">
-            <span className="mb-5 inline-flex items-center rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:px-4 sm:text-xs">
-              Meet Our Team
+        <div className="container-page relative flex flex-col items-center justify-center pt-14 pb-16 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24">
+          <MotionReveal className="mx-auto max-w-4xl text-center">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:text-xs">
+              <span className="h-1.5 w-1.5 rounded-full bg-sky" aria-hidden />
+              Driven by vision. United by excellence.
             </span>
-            <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl md:text-6xl">
-              Meet the Leadership Behind <span className="text-sky-200">Infinity BIM</span>
+            <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl sm:leading-[1.12] md:text-6xl">
+              Meet the Leadership Behind{" "}
+              <br className="hidden sm:inline" />
+              <span className="text-sky-200">Infinity BIM</span>
             </h1>
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg md:text-xl">
+              Transforming the future of the AEC industry through BIM, technology, and innovation.
+            </p>
           </MotionReveal>
         </div>
       </section>
