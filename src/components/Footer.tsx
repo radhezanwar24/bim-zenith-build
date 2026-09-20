@@ -39,6 +39,9 @@ export function Footer() {
               <FooterLink to="/services">Services</FooterLink>
             </li>
             <li>
+              <FooterLink to="/projects">Projects</FooterLink>
+            </li>
+            <li>
               <FooterLink to="/team">Team</FooterLink>
             </li>
             <li>
