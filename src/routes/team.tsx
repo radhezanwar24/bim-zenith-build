@@ -39,19 +39,19 @@ function Team() {
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[88%] bg-[linear-gradient(135deg,#061329_0%,#0d2a52_54%,#174c81_100%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[linear-gradient(135deg,#061329_0%,#0d2a52_50%,#174c81_100%)] [mask-image:linear-gradient(to_bottom,black_60%,rgba(0,0,0,0.8)_75%,transparent_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-[88%] bg-[radial-gradient(52rem_28rem_at_50%_45%,rgba(111,195,255,0.2),transparent_72%)]"
+          className="pointer-events-none absolute inset-x-0 top-0 h-full bg-[radial-gradient(52rem_30rem_at_50%_42%,rgba(111,195,255,0.22),transparent_75%)] [mask-image:linear-gradient(to_bottom,black_60%,transparent_100%)]"
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-x-0 top-[70%] h-36 bg-gradient-to-b from-transparent via-background/70 to-background"
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-b from-transparent via-background/60 to-background sm:h-64"
           aria-hidden
         />
-        <div className="container-page relative flex flex-col items-center justify-center pt-14 pb-16 sm:pt-16 sm:pb-20 md:pt-20 md:pb-24">
-          <MotionReveal className="mx-auto max-w-4xl text-center">
+        <div className="container-page relative flex min-h-[58vh] items-center justify-center py-14 sm:min-h-[70vh] sm:py-20 md:min-h-[min(720px,calc(100vh-5rem))] md:py-24">
+          <MotionReveal className="mx-auto max-w-4xl -translate-y-6 text-center md:-translate-y-16">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:text-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-sky" aria-hidden />
               Driven by vision. United by excellence.
