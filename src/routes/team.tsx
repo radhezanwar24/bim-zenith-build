@@ -53,8 +53,7 @@ function Team() {
         <div className="container-page relative flex min-h-[58vh] items-center justify-center py-14 sm:min-h-[70vh] sm:py-20 md:min-h-[min(720px,calc(100vh-5rem))] md:py-24">
           <MotionReveal className="mx-auto max-w-4xl -translate-y-6 text-center md:-translate-y-16">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky" aria-hidden />
-              Driven by vision. United by excellence.
+              Driven by vision | United by excellence.
             </span>
             <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl sm:leading-[1.12] md:text-6xl">
               Meet the Leadership Behind{" "}
