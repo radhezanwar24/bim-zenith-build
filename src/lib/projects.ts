@@ -1,6 +1,6 @@
-import projectPrestige from "@/assets/project-prestige.png";
-import projectAlFaize from "@/assets/project-al-faize.png";
-import projectCorporateBlock from "@/assets/project-corporate-block.jpg";
+import projectPrestige from "@/assets/project-prestige-new.png";
+import projectAlFaize from "@/assets/project-alfaize-new.png";
+import projectCorporateBlock from "@/assets/project-corporate-new.png";
 
 export type Project = {
   id: string;
