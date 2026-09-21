@@ -1,4 +1,4 @@
-import malik from "@/assets/new_malik.png";
+import malik from "@/assets/malik_updated2.png";
 import avinash from "@/assets/avinash.jpg";
 import yash from "@/assets/new_yash.png";
 import sahil from "@/assets/sahil.jpg";
@@ -26,8 +26,8 @@ export const team: Member[] = [
     linkedin: "https://www.linkedin.com/in/malikjan01",
     compactObjectPosition: "center 0%",
     expandedObjectPosition: "center 10%",
-    compactScale: 1.10,
-    expandedScale: 1.12,
+    compactScale: 1.00,
+    expandedScale: 1.02,
   },
   {
     name: "Avinash Marathe",
