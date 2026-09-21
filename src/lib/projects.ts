@@ -1,5 +1,5 @@
-import projectPrestige from "@/assets/project-prestige-new.png";
-import projectAlFaize from "@/assets/project-alfaize-new.png";
+import projectPrestige from "@/assets/project-alfaize-new.png";
+import projectAlFaize from "@/assets/project-prestige-new.png";
 import projectCorporateBlock from "@/assets/project-corporate-new.png";
 
 export type Project = {
