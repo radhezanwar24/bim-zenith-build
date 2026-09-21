@@ -20,7 +20,7 @@ export const projects: Project[] = [
     location: "Bengaluru, India",
     category: "Residential Development",
     description:
-      "Comprehensive multi-tower residential development delivering high-precision architectural and structural BIM modeling, multidisciplinary clash coordination, and construction-ready documentation.",
+      "A large-scale residential development comprising four 32-floor towers, supported by a coordinated digital workflow for architectural and structural development, model quality, multidisciplinary coordination, construction documentation, and visual communication.",
     image: projectPrestige,
     services: [
       "Architectural & Structural BIM",
