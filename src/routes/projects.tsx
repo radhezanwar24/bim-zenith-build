@@ -106,13 +106,11 @@ function ProjectsPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: idx * 0.12, ease: premiumEase }}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
+              onClick={() => setSelectedProject(project)}
+              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
             >
               {/* IMAGE CONTAINER */}
-              <div
-                className="relative aspect-[16/10] w-full cursor-pointer overflow-hidden bg-muted"
-                onClick={() => setSelectedProject(project)}
-              >
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -141,44 +139,9 @@ function ProjectsPage() {
                 </div>
 
                 {/* TITLE */}
-                <h3
-                  className="cursor-pointer text-xl font-bold tracking-tight text-navy transition-colors hover:text-royal"
-                  onClick={() => setSelectedProject(project)}
-                >
+                <h3 className="text-xl font-bold tracking-tight text-navy transition-colors group-hover:text-royal">
                   {project.title}
                 </h3>
-
-                {/* DESCRIPTION */}
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
-                </p>
-
-                {/* SERVICE HIGHLIGHTS */}
-                <div className="mt-5 border-t border-border/70 pt-4">
-                  <span className="mb-2.5 block text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-royal">
-                    Key BIM Scope
-                  </span>
-                  <ul className="space-y-1.5 text-xs text-foreground/85">
-                    {project.services.map((service) => (
-                      <li key={service} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-royal" />
-                        <span>{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* ACTION BUTTON */}
-                <div className="mt-6 pt-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm font-medium text-navy transition-all duration-300 hover:border-royal hover:bg-royal hover:text-white"
-                  >
-                    Explore Project Scope
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-                </div>
               </div>
             </motion.article>
           ))}

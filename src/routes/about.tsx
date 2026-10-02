@@ -224,28 +224,6 @@ function About() {
         </div>
       </section>
 
-      {/* CLIENT TESTIMONIALS */}
-      <section className="border-b border-border bg-surface py-14 sm:py-20 md:py-28">
-        <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-              Client Testimonials
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
-              What our clients are saying about us.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-dashed border-border bg-background px-5 py-12 text-center sm:px-8 sm:py-16 shadow-[var(--shadow-card)]">
-            <p className="text-lg font-medium text-navy">Client feedback is being collected.</p>
-            <p className="mt-2 text-sm text-muted-foreground max-w-md mx-auto">
-              We partner with global teams to deliver exceptional digital delivery results. Verified
-              client stories will be published after review and approval.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* COMPANY VISION */}
       <section className="relative overflow-hidden bg-navy py-14 sm:py-20 md:py-28 text-primary-foreground">
         <div className="pointer-events-none absolute inset-0 bg-blueprint opacity-25" aria-hidden />
