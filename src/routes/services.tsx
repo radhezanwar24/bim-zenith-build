@@ -128,9 +128,9 @@ function Services() {
           <div className="flex items-center justify-center gap-4 mb-4">
             <div className="h-[2px] w-12 bg-royal/40 rounded-full" />
             <span className="text-xs font-bold uppercase tracking-[0.2em] text-royal font-display flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-royal" />
+
               Our Core Services
-              <span className="h-1.5 w-1.5 rounded-full bg-royal" />
+
             </span>
             <div className="h-[2px] w-12 bg-royal/40 rounded-full" />
           </div>

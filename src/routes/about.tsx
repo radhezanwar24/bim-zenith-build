@@ -57,7 +57,7 @@ function About() {
         <div className="container-page relative flex min-h-[62vh] items-center pt-28 pb-16 sm:pt-32 sm:pb-20 md:pt-40 md:pb-32">
           <div className="max-w-3xl fade-up">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky" /> Innovation in Progress
+              Innovation in Progress
             </span>
             <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white sm:text-5xl md:text-6xl">
               Wall Automation{" "}

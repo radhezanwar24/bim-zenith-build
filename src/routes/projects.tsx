@@ -65,7 +65,6 @@ function ProjectsPage() {
         <div className="container-page relative flex min-h-[54vh] items-center justify-center py-14 sm:min-h-[64vh] sm:py-20 md:min-h-[min(640px,calc(100vh-6rem))] md:py-24">
           <MotionReveal className="mx-auto max-w-4xl -translate-y-4 text-center md:-translate-y-12">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sky shadow-sm backdrop-blur sm:mb-6 sm:text-xs">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky" aria-hidden />
               OUR PROJECTS
             </span>
             <h1 className="text-3xl font-bold tracking-tight text-white drop-shadow-[0_18px_45px_rgba(0,0,0,0.28)] sm:text-5xl sm:leading-[1.12] md:text-6xl">
@@ -82,14 +81,10 @@ function ProjectsPage() {
       {/* PROJECTS SHOWCASE SECTION */}
       <section className="container-page pb-20 sm:pb-24 md:pb-32">
         <MotionReveal className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
-          <div className="mb-3 flex items-center justify-center gap-3">
-            <div className="h-[2px] w-10 rounded-full bg-royal/40" />
-            <span className="text-xs font-bold uppercase tracking-[0.2em] text-royal">
-              Selected Project Experience
-            </span>
-            <div className="h-[2px] w-10 rounded-full bg-royal/40" />
-          </div>
-          <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-royal">
+            Selected Project Experience
+          </span>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight text-navy sm:text-4xl md:text-5xl">
             Our Landmark Projects
           </h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -97,66 +92,167 @@ function ProjectsPage() {
           </p>
         </MotionReveal>
 
-        {/* 3-COLUMN PROJECT GRID */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project, idx) => (
-            <motion.article
-              key={project.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: idx * 0.12, ease: premiumEase }}
-              onClick={() => setSelectedProject(project)}
-              className="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
+        {/* TEAM-STYLE IN-PAGE EXPANSION OR 3-COLUMN GRID */}
+        <AnimatePresence mode="wait">
+          {selectedProject ? (
+            /* EXPANDED PROJECT SHOWCASE CARD (NON-SCROLLABLE) */
+            <motion.div
+              key={selectedProject.id}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.42, ease: premiumEase }}
+              className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-2xl sm:p-8 md:p-10"
             >
-              {/* IMAGE CONTAINER */}
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{ objectPosition: project.objectPosition ?? "center" }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-xs font-medium text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
-                  View details <ChevronRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
+              <button
+                type="button"
+                onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
+                className="absolute right-4 top-4 z-10 grid h-9 w-9 place-items-center rounded-full border border-border bg-background text-navy shadow-sm backdrop-blur transition-all duration-300 hover:scale-105 hover:border-royal hover:bg-accent"
+              >
+                <X className="h-4 w-4" />
+              </button>
 
-              {/* CARD CONTENT */}
-              <div className="flex flex-1 flex-col p-6">
-                {/* CATEGORY & LOCATION */}
-                <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
-                  <span className="inline-flex items-center gap-1 rounded-md bg-royal/10 px-2.5 py-1 text-royal">
-                    <Building2 className="h-3.5 w-3.5" />
-                    {project.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-md bg-muted px-2.5 py-1 text-foreground/80">
-                    <MapPin className="h-3.5 w-3.5 text-royal" />
-                    {project.location}
-                  </span>
+              <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1.1fr)] md:gap-10">
+                {/* LEFT: IMAGE */}
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted shadow-sm md:h-full">
+                  <img
+                    src={selectedProject.image}
+                    alt={selectedProject.title}
+                    className="h-full w-full object-cover"
+                    style={{ objectPosition: selectedProject.objectPosition ?? "center" }}
+                  />
                 </div>
 
-                {/* TITLE */}
-                <h3 className="text-xl font-bold tracking-tight text-navy transition-colors group-hover:text-royal">
-                  {project.title}
-                </h3>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+                {/* RIGHT: DETAILS */}
+                <div className="flex flex-col justify-between">
+                  <div>
+                    {/* CATEGORY & LOCATION */}
+                    <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
+                      <span className="inline-flex items-center gap-1 rounded-md bg-royal/10 px-3 py-1 text-royal font-semibold">
+                        <Building2 className="h-3.5 w-3.5" />
+                        {selectedProject.category}
+                      </span>
+                      <span className="inline-flex items-center gap-1 rounded-md bg-muted px-3 py-1 text-foreground/80 font-medium">
+                        <MapPin className="h-3.5 w-3.5 text-royal" />
+                        {selectedProject.location}
+                      </span>
+                    </div>
 
-        {/* BOTTOM CALL TO ACTION */}
-        <MotionReveal className="mt-20 overflow-hidden rounded-3xl border border-royal/20 bg-gradient-to-br from-navy via-navy to-[#113a68] p-8 text-white shadow-xl sm:p-12 md:mt-24 md:p-16">
+                    {/* TITLE */}
+                    <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-navy sm:text-3xl">
+                      {selectedProject.title}
+                    </h3>
+
+                    {/* DESCRIPTION */}
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                      {selectedProject.description}
+                    </p>
+
+                    {/* BIM SCOPE CHECKLIST */}
+                    <div className="mt-6 rounded-xl border border-border/80 bg-muted/40 p-5">
+                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-navy">
+                        <Layers className="h-4 w-4 text-royal" />
+                        Key BIM Scope
+                      </div>
+                      <ul className="mt-3 grid grid-cols-1 gap-2 text-xs font-medium text-foreground/85 sm:grid-cols-2 sm:text-sm">
+                        {selectedProject.services.map((service) => (
+                          <li key={service} className="flex items-center gap-2">
+                            <CheckCircle2 className="h-4 w-4 shrink-0 text-royal" />
+                            <span>{service}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {/* ACTION BUTTONS */}
+                  <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(null)}
+                      className="rounded-full border border-border px-5 py-2.5 text-sm font-medium text-navy transition-colors hover:bg-muted"
+                    >
+                      Back to All Projects
+                    </button>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-royal"
+                    >
+                      Inquire About Similar Projects
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ) : (
+            /* 3-COLUMN PROJECT GRID WITH UNIFORM HEIGHT */
+            <motion.div
+              key="project-grid"
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 16 }}
+              transition={{ duration: 0.42, ease: premiumEase }}
+              className="grid grid-cols-1 items-stretch gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3"
+            >
+              {projects.map((project, idx) => (
+                <MotionReveal key={project.id} delay={idx * 0.08} className="h-full">
+                  <motion.article
+                    onClick={() => setSelectedProject(project)}
+                    className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
+                  >
+                    {/* IMAGE CONTAINER */}
+                    <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-muted">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        style={{ objectPosition: project.objectPosition ?? "center" }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-navy/85 px-3 py-1 text-xs font-medium text-white opacity-0 backdrop-blur transition-opacity duration-300 group-hover:opacity-100">
+                        View details <ChevronRight className="h-3.5 w-3.5" />
+                      </span>
+                    </div>
+
+                    {/* CARD CONTENT */}
+                    <div className="flex flex-1 flex-col justify-between p-6">
+                      {/* CATEGORY & LOCATION */}
+                      <div className="mb-3 flex flex-wrap items-center gap-2 text-xs font-medium text-muted-foreground">
+                        <span className="inline-flex items-center gap-1 rounded-md bg-royal/10 px-2.5 py-1 text-royal font-semibold">
+                          <Building2 className="h-3.5 w-3.5" />
+                          {project.category}
+                        </span>
+                        <span className="inline-flex items-center gap-1 rounded-md bg-muted px-2.5 py-1 text-foreground/80 font-medium">
+                          <MapPin className="h-3.5 w-3.5 text-royal" />
+                          {project.location}
+                        </span>
+                      </div>
+
+                      {/* TITLE */}
+                      <h3 className="text-xl font-bold tracking-tight text-navy transition-colors group-hover:text-royal">
+                        {project.title}
+                      </h3>
+                    </div>
+                  </motion.article>
+                </MotionReveal>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* BOTTOM CALL TO ACTION BANNER */}
+        <MotionReveal className="mt-20 overflow-hidden rounded-3xl border border-royal/20 bg-navy p-8 text-white shadow-xl sm:p-12 md:mt-24 md:p-16">
           <div className="mx-auto max-w-3xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-sky backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" /> Start Your Project
             </span>
-            <h3 className="mt-6 text-2xl font-bold tracking-tight sm:text-3xl md:text-4xl">
+            <h3 className="mt-5 mb-3 text-2xl font-extrabold tracking-tight text-white drop-shadow-sm sm:text-3xl md:text-4xl">
               Ready to Accelerate Your Project with Infinity BIM?
             </h3>
-            <p className="mt-4 text-base leading-relaxed text-white/80 sm:text-lg">
+            <p className="mt-2 text-base leading-relaxed text-white/90 sm:text-lg">
               Partner with our team of BIM professionals for clash-free models, constructability reviews, and intelligent digital engineering workflows.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -177,109 +273,6 @@ function ProjectsPage() {
           </div>
         </MotionReveal>
       </section>
-
-      {/* PROJECT DETAILS MODAL / DIALOG */}
-      <AnimatePresence>
-        {selectedProject && (
-          <div className="fixed inset-0 z-50 grid place-items-center p-4 sm:p-6 md:p-8">
-            {/* BACKDROP */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              onClick={() => setSelectedProject(null)}
-              className="absolute inset-0 bg-navy/70 backdrop-blur-sm"
-              aria-hidden
-            />
-
-            {/* MODAL CONTENT */}
-            <motion.div
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-project-title"
-              initial={{ opacity: 0, scale: 0.95, y: 16 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 16 }}
-              transition={{ duration: 0.35, ease: premiumEase }}
-              className="relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-border bg-card p-6 shadow-2xl sm:p-8 md:p-10"
-            >
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border border-border bg-background text-navy transition-colors hover:bg-muted"
-                aria-label="Close project modal"
-              >
-                <X className="h-4 w-4" />
-              </button>
-
-              <div className="aspect-[16/9] w-full overflow-hidden rounded-xl bg-muted">
-                <img
-                  src={selectedProject.image}
-                  alt={selectedProject.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-
-              <div className="mt-6">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-1 rounded-md bg-royal/10 px-3 py-1 text-xs font-semibold text-royal">
-                    <Building2 className="h-3.5 w-3.5" />
-                    {selectedProject.category}
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-md bg-muted px-3 py-1 text-xs font-medium text-foreground/80">
-                    <MapPin className="h-3.5 w-3.5 text-royal" />
-                    {selectedProject.location}
-                  </span>
-                </div>
-
-                <h3
-                  id="modal-project-title"
-                  className="mt-3 text-2xl font-bold tracking-tight text-navy sm:text-3xl"
-                >
-                  {selectedProject.title}
-                </h3>
-
-                <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                  {selectedProject.description}
-                </p>
-
-                <div className="mt-6 rounded-xl border border-border/80 bg-muted/40 p-5">
-                  <div className="flex items-center gap-2 text-sm font-bold text-navy">
-                    <Layers className="h-4 w-4 text-royal" />
-                    BIM Delivery Scope & Capabilities
-                  </div>
-                  <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 text-sm text-foreground/80">
-                    {selectedProject.services.map((service) => (
-                      <li key={service} className="flex items-center gap-2">
-                        <CheckCircle2 className="h-4 w-4 shrink-0 text-royal" />
-                        <span>{service}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-6">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(null)}
-                    className="rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted"
-                  >
-                    Close
-                  </button>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-2.5 text-sm font-medium text-white shadow-sm transition-all hover:bg-royal"
-                  >
-                    Inquire About Similar Projects
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
