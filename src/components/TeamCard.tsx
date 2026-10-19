@@ -15,7 +15,7 @@ const premiumEase = [0.16, 1, 0.3, 1] as const;
 
 function LinkedInMark() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6 sm:h-5 sm:w-5" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden>
       <rect width="24" height="24" rx="2.5" fill="#0A66C2" />
       <path
         fill="#fff"
@@ -27,9 +27,14 @@ function LinkedInMark() {
 
 function QualificationLines({ credentials }: { credentials: string }) {
   return (
-    <div className="mt-3 space-y-1 text-[0.6rem] uppercase leading-relaxed tracking-[0.08em] text-muted-foreground sm:space-y-1.5 sm:text-[0.68rem] sm:tracking-[0.13em]">
+    <div className="mt-2.5 flex flex-col gap-1">
       {credentials.split("|").map((item) => (
-        <p key={item.trim()}>{item.trim()}</p>
+        <p
+          key={item.trim()}
+          className="text-[0.6rem] font-medium uppercase tracking-[0.13em] text-muted-foreground"
+        >
+          {item.trim()}
+        </p>
       ))}
     </div>
   );
@@ -43,13 +48,13 @@ function ProfileSection({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1.5">
-      <p className="text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-royal/70">
+    <div>
+      <p className="mb-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-royal/65">
         {label}
       </p>
-      <div className="text-sm leading-relaxed text-muted-foreground sm:text-[0.9rem]">
+      <p className="text-[0.8rem] leading-relaxed text-foreground/70 sm:text-sm">
         {children}
-      </div>
+      </p>
     </div>
   );
 }
@@ -73,69 +78,32 @@ export function TeamCard({
 
   useEffect(() => {
     setImageReady(false);
-    const image = imageRef.current;
-    if (image?.complete && image.naturalWidth > 0) {
-      setImageReady(true);
-    }
+    const img = imageRef.current;
+    if (img?.complete && img.naturalWidth > 0) setImageReady(true);
   }, [member.photo]);
 
-  return (
-    <motion.article
-      layout
-      transition={{ duration: 0.45, ease: premiumEase }}
-      className={`group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)] ${
-        isWide
-          ? "mx-auto grid w-full max-w-5xl grid-cols-1 md:grid-cols-[minmax(14rem,0.8fr)_minmax(0,1.2fr)]"
-          : "flex h-full flex-col"
-      }`}
-    >
-      {expanded && (
+  /* ── COMPACT CARD (unchanged) ─────────────────────────────── */
+  if (!isWide) {
+    return (
+      <motion.article
+        layout
+        transition={{ duration: 0.45, ease: premiumEase }}
+        className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] transition-colors duration-300 hover:border-royal/35 hover:shadow-[var(--shadow-elevated)]"
+      >
         <button
           type="button"
-          onClick={onClose}
-          aria-label={`Close ${member.name}'s profile details`}
-          className="absolute right-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border border-border bg-background/90 text-navy shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent"
+          onClick={onToggle}
+          aria-expanded={expanded}
+          aria-label={`Expand ${member.name}'s profile`}
+          className="relative block aspect-[4/5] w-full shrink-0 overflow-hidden bg-muted text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2"
         >
-          <X className="h-4 w-4" aria-hidden />
-        </button>
-      )}
-
-      <button
-        type="button"
-        onClick={onToggle}
-        aria-expanded={expanded}
-        aria-label={`${expanded ? "Collapse" : "Expand"} ${member.name}'s profile details`}
-        className={`relative block overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-offset-2 ${
-          isWide
-            ? "mx-auto aspect-[4/5] w-full max-w-[18rem] bg-transparent sm:max-w-[21rem] md:h-full md:max-w-none md:min-h-[22rem]"
-            : "aspect-[4/5] w-full shrink-0 bg-muted"
-        }`}
-      >
-        <motion.div
-          aria-hidden
-          initial={false}
-          animate={{ opacity: imageReady ? 0 : 1 }}
-          transition={{ duration: 0.35, ease: premiumEase }}
-          className="absolute inset-0 bg-[linear-gradient(110deg,oklch(0.96_0.005_240),oklch(0.985_0.003_240),oklch(0.94_0.03_240))] bg-[length:220%_100%]"
-        />
-        {isWide ? (
-          <motion.img
-            ref={imageRef}
-            src={member.photo}
-            alt={`Portrait of ${member.name}, ${member.role}`}
-            loading="lazy"
-            decoding="async"
-            onLoad={() => setImageReady(true)}
-            className="block h-full w-full object-cover"
-            style={{
-              objectPosition: expandedObjectPosition,
-              transform: `scale(${imageScale})`,
-            }}
+          <motion.div
+            aria-hidden
             initial={false}
-            animate={{ opacity: imageReady ? 1 : 0 }}
-            transition={{ duration: 0.45, ease: premiumEase }}
+            animate={{ opacity: imageReady ? 0 : 1 }}
+            transition={{ duration: 0.35, ease: premiumEase }}
+            className="absolute inset-0 bg-[linear-gradient(110deg,oklch(0.96_0.005_240),oklch(0.985_0.003_240),oklch(0.94_0.03_240))]"
           />
-        ) : (
           <img
             ref={imageRef}
             src={member.photo}
@@ -152,79 +120,171 @@ export function TeamCard({
               transformOrigin: "center top",
             }}
           />
-        )}
-      </button>
+        </button>
 
-      <div
-        className={`flex flex-1 flex-col ${isWide ? "justify-start overflow-y-auto p-5 sm:p-7 md:p-8" : "p-3 sm:p-5"}`}
-      >
-        <div className="flex items-start justify-between gap-2 sm:gap-3">
-          <div className="min-w-0">
+        <div className="flex flex-1 flex-col p-3 sm:p-5">
+          <div className="flex items-start justify-between gap-2">
+            <div className="min-w-0">
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Open ${member.name}'s LinkedIn profile`}
+                className="inline-block text-sm font-semibold leading-tight text-navy transition-colors hover:text-royal sm:text-lg"
+              >
+                {member.name}
+              </a>
+              <p className="mt-1 text-[0.72rem] font-medium leading-snug text-royal sm:text-sm">
+                {member.role}
+              </p>
+            </div>
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
-                isWide
-                  ? "text-2xl tracking-tight sm:text-3xl"
-                  : "text-sm leading-tight sm:text-lg"
-              }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
+              className="grid h-7 w-7 shrink-0 place-items-center text-[#0A66C2] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-85 sm:h-9 sm:w-9"
             >
-              {member.name}
+              <LinkedInMark />
             </a>
-            <p
-              className={`mt-2 font-medium leading-snug text-royal ${
-                isWide ? "text-sm sm:text-base" : "text-[0.72rem] sm:text-sm"
-              }`}
-            >
-              {member.role}
-            </p>
           </div>
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open ${member.name}'s LinkedIn profile`}
-            className="grid h-7 w-7 shrink-0 place-items-center text-[#0A66C2] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-85 sm:h-9 sm:w-9"
-          >
-            <LinkedInMark />
-          </a>
         </div>
+      </motion.article>
+    );
+  }
 
-        {isWide && <QualificationLines credentials={member.credentials} />}
+  /* ── EXPANDED CARD ────────────────────────────────────────── */
+  return (
+    <motion.article
+      layout
+      transition={{ duration: 0.45, ease: premiumEase }}
+      className="relative mx-auto w-full max-w-5xl overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-elevated)]"
+    >
+      {/* Close button */}
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label={`Close ${member.name}'s profile`}
+        className="absolute right-3 top-3 z-20 grid h-8 w-8 place-items-center rounded-full border border-border bg-background/90 text-navy shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-royal hover:bg-accent"
+      >
+        <X className="h-4 w-4" aria-hidden />
+      </button>
 
+      {/* Inner grid — image | content */}
+      <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr]">
+
+        {/* ── LEFT: Photo ── */}
+        <button
+          type="button"
+          onClick={onToggle}
+          aria-expanded={expanded}
+          aria-label={`Collapse ${member.name}'s profile`}
+          className="relative block min-h-[300px] overflow-hidden text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-royal focus-visible:ring-inset md:min-h-[580px]"
+        >
+          {/* Skeleton shimmer */}
+          <motion.div
+            aria-hidden
+            initial={false}
+            animate={{ opacity: imageReady ? 0 : 1 }}
+            transition={{ duration: 0.35, ease: premiumEase }}
+            className="absolute inset-0 bg-[linear-gradient(110deg,oklch(0.96_0.005_240),oklch(0.985_0.003_240),oklch(0.94_0.03_240))]"
+          />
+          {/* Photo — fills the entire column */}
+          <motion.img
+            ref={imageRef}
+            src={member.photo}
+            alt={`Portrait of ${member.name}, ${member.role}`}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setImageReady(true)}
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{
+              objectPosition: expandedObjectPosition,
+              transform: `scale(${imageScale})`,
+              transformOrigin: "center top",
+            }}
+            initial={false}
+            animate={{ opacity: imageReady ? 1 : 0 }}
+            transition={{ duration: 0.45, ease: premiumEase }}
+          />
+          {/* Subtle right-edge fade for seamless blend into content */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-r from-transparent to-card/30 hidden md:block"
+          />
+        </button>
+
+        {/* ── RIGHT: Content ── */}
         <AnimatePresence initial={false}>
           {expanded && (
             <motion.div
-              key="profile-sections"
-              initial={{ opacity: 0, height: 0, y: 8 }}
-              animate={{ opacity: 1, height: "auto", y: 0 }}
-              exit={{ opacity: 0, height: 0, y: 6 }}
-              transition={{ duration: 0.42, ease: premiumEase }}
-              className="mt-6 space-y-5 overflow-hidden"
+              key="expanded-content"
+              initial={{ opacity: 0, x: 16 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 12 }}
+              transition={{ duration: 0.4, ease: premiumEase, delay: 0.06 }}
+              className="flex max-h-[580px] flex-col overflow-y-auto px-6 py-7 sm:px-8 sm:py-8"
             >
-              <ProfileSection label="Director's Role">
-                {member.bio}
-              </ProfileSection>
+              {/* Name + LinkedIn */}
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${member.name}'s LinkedIn profile`}
+                    className="inline-block text-2xl font-semibold tracking-tight text-navy transition-colors hover:text-royal sm:text-3xl"
+                  >
+                    {member.name}
+                  </a>
+                  <p className="mt-1.5 text-sm font-medium text-royal sm:text-base">
+                    {member.role}
+                  </p>
+                </div>
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${member.name}'s LinkedIn profile`}
+                  className="mt-0.5 shrink-0 text-[#0A66C2] transition-all duration-300 hover:-translate-y-0.5 hover:opacity-85"
+                >
+                  <LinkedInMark />
+                </a>
+              </div>
 
-              <div className="h-px w-full bg-border/60" />
+              {/* Credentials */}
+              <QualificationLines credentials={member.credentials} />
 
-              <ProfileSection label="Professional Journey">
-                {member.journey}
-              </ProfileSection>
+              {/* Divider */}
+              <div className="my-5 h-px w-full bg-border/70" />
 
-              <div className="h-px w-full bg-border/60" />
+              {/* Profile sections */}
+              <div className="space-y-5">
+                <ProfileSection label="Director's Role">
+                  {member.bio}
+                </ProfileSection>
 
-              <ProfileSection label="Philosophy & Mindset">
-                {member.philosophy}
-              </ProfileSection>
+                <div className="h-px w-full bg-border/50" />
 
-              <div className="h-px w-full bg-border/60" />
+                <ProfileSection label="Professional Journey">
+                  {member.journey}
+                </ProfileSection>
 
-              <ProfileSection label="Vision">
-                {member.vision}
-              </ProfileSection>
+                <div className="h-px w-full bg-border/50" />
+
+                <ProfileSection label="Philosophy & Mindset">
+                  {member.philosophy}
+                </ProfileSection>
+
+                <div className="h-px w-full bg-border/50" />
+
+                <ProfileSection label="Vision">
+                  {member.vision}
+                </ProfileSection>
+              </div>
+
+              {/* Bottom breathing room */}
+              <div className="mt-6" />
             </motion.div>
           )}
         </AnimatePresence>
