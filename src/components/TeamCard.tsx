@@ -35,6 +35,25 @@ function QualificationLines({ credentials }: { credentials: string }) {
   );
 }
 
+function ProfileSection({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <p className="text-[0.6rem] font-semibold uppercase tracking-[0.15em] text-royal/70">
+        {label}
+      </p>
+      <div className="text-sm leading-relaxed text-muted-foreground sm:text-[0.9rem]">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export function TeamCard({
   member,
   expanded,
@@ -46,8 +65,11 @@ export function TeamCard({
   const [imageReady, setImageReady] = useState(false);
   const isWide = variant === "expanded";
   const compactObjectPosition = member.compactObjectPosition ?? "center 12%";
-  const expandedObjectPosition = member.expandedObjectPosition ?? compactObjectPosition;
-  const imageScale = isWide ? (member.expandedScale ?? 1) : (member.compactScale ?? 1.08);
+  const expandedObjectPosition =
+    member.expandedObjectPosition ?? compactObjectPosition;
+  const imageScale = isWide
+    ? (member.expandedScale ?? 1)
+    : (member.compactScale ?? 1.08);
 
   useEffect(() => {
     setImageReady(false);
@@ -134,7 +156,7 @@ export function TeamCard({
       </button>
 
       <div
-        className={`flex flex-1 flex-col ${isWide ? "justify-center p-5 sm:p-7 md:p-8" : "p-3 sm:p-5"}`}
+        className={`flex flex-1 flex-col ${isWide ? "justify-start overflow-y-auto p-5 sm:p-7 md:p-8" : "p-3 sm:p-5"}`}
       >
         <div className="flex items-start justify-between gap-2 sm:gap-3">
           <div className="min-w-0">
@@ -143,7 +165,9 @@ export function TeamCard({
               target="_blank"
               rel="noopener noreferrer"
               className={`inline-block font-semibold text-navy transition-colors hover:text-royal ${
-                isWide ? "text-2xl tracking-tight sm:text-3xl" : "text-sm leading-tight sm:text-lg"
+                isWide
+                  ? "text-2xl tracking-tight sm:text-3xl"
+                  : "text-sm leading-tight sm:text-lg"
               }`}
               aria-label={`Open ${member.name}'s LinkedIn profile`}
             >
@@ -172,18 +196,36 @@ export function TeamCard({
 
         <AnimatePresence initial={false}>
           {expanded && (
-            <motion.p
-              key="bio"
+            <motion.div
+              key="profile-sections"
               initial={{ opacity: 0, height: 0, y: 8 }}
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: 6 }}
               transition={{ duration: 0.42, ease: premiumEase }}
-              className={`overflow-hidden leading-relaxed text-muted-foreground ${
-                isWide ? "mt-5 text-sm sm:text-base" : "mt-4 text-sm"
-              }`}
+              className="mt-6 space-y-5 overflow-hidden"
             >
-              {member.bio}
-            </motion.p>
+              <ProfileSection label="Director's Role">
+                {member.bio}
+              </ProfileSection>
+
+              <div className="h-px w-full bg-border/60" />
+
+              <ProfileSection label="Professional Journey">
+                {member.journey}
+              </ProfileSection>
+
+              <div className="h-px w-full bg-border/60" />
+
+              <ProfileSection label="Philosophy & Mindset">
+                {member.philosophy}
+              </ProfileSection>
+
+              <div className="h-px w-full bg-border/60" />
+
+              <ProfileSection label="Vision">
+                {member.vision}
+              </ProfileSection>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
