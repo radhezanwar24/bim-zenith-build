@@ -1,7 +1,5 @@
 import malik from "@/assets/malik_updated2.png";
-import avinash from "@/assets/avinash.jpg";
 import yash from "@/assets/new_yash.png";
-import sahil from "@/assets/sahil.jpg";
 
 export type Member = {
   name: string;
@@ -18,35 +16,11 @@ export type Member = {
 
 export const team: Member[] = [
   {
-    name: "Malik Jan",
-    role: "Founder & CEO",
-    credentials: "Civil Engineer | BIM Certified Professional",
-    bio: "As Founder & Chief Executive Officer, Malik Jan leads Infinity BIM's strategic vision, business growth, and global expansion. He drives innovation, strategic partnerships, and operational excellence while delivering integrated AEC, BIM, VDC, and digital engineering solutions with a commitment to quality and client success.",
-    photo: malik,
-    linkedin: "https://www.linkedin.com/in/malikjan01",
-    compactObjectPosition: "center 0%",
-    expandedObjectPosition: "center 10%",
-    compactScale: 1.00,
-    expandedScale: 1.02,
-  },
-  {
-    name: "Avinash Marathe",
-    role: "Co-Founder & CEO",
-    credentials: "Architect | BIM Certified Professional",
-    bio: "As Co-Founder & Chief Executive Officer, Avinash drives business strategy, design excellence, and operational leadership at Infinity BIM. He fosters innovation, strengthens client relationships, and ensures the successful delivery of integrated AEC, BIM, VDC, and digital engineering solutions across global markets.",
-    photo: avinash,
-    linkedin: "https://www.linkedin.com/in/avinash-marathe-350ba41a0",
-    compactObjectPosition: "center 13%",
-    expandedObjectPosition: "center 12%",
-    compactScale: 1.08,
-    expandedScale: 1,
-  },
-  {
     name: "Yash Zanwar",
-    role: "CBDO & Partner",
+    role: "Director",
     credentials:
       "Architect | BIM Certified Professional | Master's in Construction Project Management",
-    bio: "As Chief Business Development Officer, Yash leads global business development, strategic partnerships, and client engagement at Infinity BIM. He drives market expansion, identifies growth opportunities, and builds long-term relationships while delivering value-driven AEC, BIM, VDC, and digital engineering solutions.",
+    bio: "Yash leads Infinity BIM’s strategic growth, business development, and client relationships, while overseeing technical delivery, resource management, and financial planning to drive sustainable growth and long-term business value.",
     photo: yash,
     linkedin: "https://www.linkedin.com/in/yash-zanwar-5312b1199",
     compactObjectPosition: "center 20%",
@@ -55,15 +29,16 @@ export const team: Member[] = [
     expandedScale: 1,
   },
   {
-    name: "Sahil Ahmed Khan",
-    role: "CTO & Partner",
+    name: "Malik",
+    role: "Director",
     credentials: "Civil Engineer | BIM Certified Professional",
-    bio: "As Chief Technology Officer, Sahil leads Infinity BIM's technology strategy, technical excellence, and digital innovation. He oversees BIM standards, VDC workflows, automation, and multidisciplinary project delivery, ensuring scalable, efficient, and future-ready engineering solutions across global projects.",
-    photo: sahil,
-    linkedin: "https://www.linkedin.com/in/sahil-ahmed-khan",
-    compactObjectPosition: "center 10%",
-    expandedObjectPosition: "center 12%",
-    compactScale: 1.22,
+    bio: "Malik leads Infinity BIM’s operational management, client coordination, business documentation, and administrative processes, ensuring efficient execution, structured workflows, and consistent organizational performance.",
+    photo: malik,
+    linkedin: "https://www.linkedin.com/in/malikjan01",
+    compactObjectPosition: "center 0%",
+    expandedObjectPosition: "center 10%",
+    compactScale: 1.00,
     expandedScale: 1.02,
   },
 ];
+
