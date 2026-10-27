@@ -38,7 +38,7 @@ export const team: Member[] = [
     expandedScale: 1,
   },
   {
-    name: "Malik",
+    name: "Malik Jann",
     role: "Director | Infinity BIM",
     credentials: "Civil Engineer | BIM Certified Professional",
     bio: "Malik leads Infinity BIM's operational management, client coordination, business documentation, and administrative processes, ensuring efficient execution, structured workflows, and consistent organizational performance.",
